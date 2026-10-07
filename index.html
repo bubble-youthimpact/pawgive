@@ -163,9 +163,9 @@ h1,h2,h3{font-family:var(--display);color:var(--ink);font-weight:400;font-variat
 .detail .ph{aspect-ratio:1/1;border-radius:24px}
 .detail h1{font-family:var(--body);font-weight:700;font-size:clamp(34px,4vw,50px)}
 .detail .head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:18px 0 30px}
-.heart{background:none;border:0;cursor:pointer;color:var(--bad);padding:4px}
+.heart{background:none;border:0;cursor:pointer;color:#C11119;padding:4px}
 .heart svg{width:30px;height:30px}
-.heart.on svg{fill:var(--bad)}
+.heart.on{--heart-fill:#C11119}
 .facts{display:flex;gap:16px;flex-wrap:wrap}
 .facts span{display:inline-flex;gap:10px;align-items:center;border:1.5px solid var(--line);border-radius:999px;padding:12px 24px;font-weight:600;font-size:16px}
 .facts svg{width:20px;height:20px}
@@ -405,7 +405,8 @@ html[lang=ko] h1,html[lang=ko] h2,html[lang=ko] h3{font-family:var(--body);font-
 html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
 
 /* Accounts */
-.hello{font-size:15px;color:var(--ink);white-space:nowrap;max-width:16ch;overflow:hidden;text-overflow:ellipsis}
+.hello{white-space:nowrap;max-width:22ch;overflow:hidden;text-overflow:ellipsis;display:inline-block!important}
+.hello[hidden]{display:none!important}
 .hello[hidden],.member[hidden],.guest[hidden]{display:none!important}
 .auth .or{display:flex;align-items:center;gap:14px;margin:20px 0;color:var(--muted);font-size:14px}
 .auth .or::before,.auth .or::after{content:"";flex:1;height:1px;background:var(--line)}
@@ -413,7 +414,7 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
 .auth .google-btn:hover{border-color:var(--ink)}
 .g-icon{width:20px;height:20px;flex:none}
 .auth button:disabled{opacity:.6;cursor:default}
-@media (max-width:980px){.right .hello,.right .logout{display:none!important}}
+
 
 .f-saved{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 20px;font:inherit;font-size:16px;cursor:pointer}
 .f-saved:hover{border-color:var(--ink)}
@@ -422,25 +423,37 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
 @media (max-width:620px){.f-saved{font-size:15px;padding:10px 16px}}
 
 /* Profile */
-.profile-grid{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(24px,4vw,48px);align-items:start;margin-top:clamp(28px,4vw,48px)}
-.profile-card h2{margin-bottom:22px}
-.profile-card input[readonly]{background:var(--bg);color:var(--muted)}
-.profile-actions{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:18px}
+.profile-panel{background:var(--surface);border-radius:24px;padding:clamp(24px,4vw,44px);margin-top:22px}
+.profile-head{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.avatar{width:72px;height:72px;border-radius:50%;background:var(--sage);color:var(--ink);display:grid;place-items:center;font-size:30px;font-weight:600;flex:none}
+.who{flex:1;min-width:0}
+.who h1{font-family:var(--body);font-weight:700;font-size:clamp(24px,2.8vw,32px);line-height:1.2;overflow-wrap:anywhere}
+.who p{margin:6px 0 0;color:var(--muted);font-size:15px;overflow-wrap:anywhere}
+.head-actions{display:flex;gap:20px;flex-wrap:wrap}
 .text-btn{background:none;border:0;padding:6px 0;font:inherit;font-size:15px;color:var(--ink);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
 .text-btn:hover{opacity:.75}
-.fav-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.fav-empty{grid-column:1/-1;background:var(--surface);border-radius:22px;padding:36px;text-align:center;color:var(--ink-2)}
+.text-btn[hidden]{display:none}
+.profile-edit{margin-top:30px;max-width:620px}
+.profile-edit label{display:block;font-size:14px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--ink-2);margin-bottom:8px}
+.profile-edit .inline{display:flex;gap:10px;flex-wrap:wrap}
+.profile-edit input{flex:1;min-width:0;border:1.5px solid #dcd8cc;border-radius:999px;padding:13px 18px;font:inherit;font-size:17px;color:var(--text);background:#fff}
+.profile-edit input:focus{outline:none;border-color:var(--ink)}
+.profile-edit .pill-btn{padding:12px 24px}
+.profile-edit .form-msg{text-align:left}
+.profile-divider{height:1px;background:var(--line);margin:clamp(28px,4vw,40px) 0}
+.fav-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.profile-panel .pet-card{background:var(--bg)}
+.fav-empty{grid-column:1/-1;background:var(--bg);border-radius:22px;padding:36px;text-align:center;color:var(--ink-2)}
 .fav-empty a{display:inline-block;margin-top:14px}
-@media (max-width:900px){.profile-grid{grid-template-columns:1fr}}
-@media (max-width:480px){.fav-grid{grid-template-columns:1fr}}
+@media (max-width:900px){.fav-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.fav-grid{grid-template-columns:1fr}.profile-edit .inline .pill-btn{width:100%;justify-content:center}}
 /* Heart on pet cards */
 .pet-card{position:relative}
-.fav-badge{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--bad);display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.12);z-index:1}
+.fav-badge{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#C11119;display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.12);z-index:1}
 .fav-badge svg{width:20px;height:20px}
-.fav-badge.on svg{fill:var(--bad)}
+.fav-badge.on{--heart-fill:#C11119}
 .fav-badge:hover{transform:scale(1.06)}
-a.hello{text-decoration:underline;text-decoration-color:transparent;text-underline-offset:5px;transition:text-decoration-color .15s}
-a.hello:hover{text-decoration-color:var(--ink)}
+
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -456,7 +469,7 @@ a.hello:hover{text-decoration-color:var(--ink)}
   <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></g></symbol>
   <symbol id="i-sex" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10" cy="10" r="5"/><path d="M10 15v6M7 18h6M14 6l5-4M15 2h4v4"/></g></symbol>
   <symbol id="i-ruler" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 16 16 3l5 5L8 21z"/><path d="M7 12l2 2M10 9l2 2M13 6l2 2"/></g></symbol>
-  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-9.2-9.3C1.6 7.2 4 4 7.3 4c2 0 3.6 1.1 4.7 2.7C13.1 5.1 14.7 4 16.7 4 20 4 22.4 7.2 21.2 10.7 19.5 15.4 12 20 12 20z" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-9.2-9.3C1.6 7.2 4 4 7.3 4c2 0 3.6 1.1 4.7 2.7C13.1 5.1 14.7 4 16.7 4 20 4 22.4 7.2 21.2 10.7 19.5 15.4 12 20 12 20z" style="fill:var(--heart-fill,none)" stroke="currentColor" stroke-width="1.6"/></symbol>
   <symbol id="i-img" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m3 18 5-5 4 4 3-3 6 6"/></g></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></g></symbol>
   <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
@@ -472,14 +485,13 @@ a.hello:hover{text-decoration-color:var(--ink)}
       <button class="pill-btn lang" id="lang" type="button"><svg><use href="#i-globe"/></svg><span>ENG</span></button>
       <a class="pill-btn guest" href="#signup">Sign Up</a>
       <a class="pill-btn solid guest" href="#login">Login</a>
-      <a class="hello member" href="#profile" hidden></a>
-      <button class="pill-btn member logout" type="button" hidden>Log out</button>
+      <a class="pill-btn solid hello member" href="#profile" hidden></a>
       <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
     </div>
   </div>
   <div class="mobile-nav" id="mobileNav">
     <a href="#about">About</a><a href="#pets">Pets</a><a href="#shelters">Shelters</a><a href="#resources">Resources</a><a href="#quiz">Quiz</a><a href="#contact">Contact</a>
-    <div class="row"><a class="pill-btn guest" href="#signup">Sign Up</a><a class="pill-btn solid guest" href="#login">Login</a><a class="hello member" href="#profile" hidden></a><button class="pill-btn member logout" type="button" hidden>Log out</button></div>
+    <div class="row"><a class="pill-btn guest" href="#signup">Sign Up</a><a class="pill-btn solid guest" href="#login">Login</a><a class="pill-btn solid hello member" href="#profile" hidden></a></div>
   </div>
 </header>
 
@@ -573,7 +585,7 @@ a.hello:hover{text-decoration-color:var(--ink)}
 
 <!-- PET DETAIL -->
 <section class="page" id="p-pet"><div class="wrap">
-  <a class="back" href="#pets"><svg width="20" height="20"><use href="#i-back"/></svg>Back to all pets</a>
+  <a class="back" id="petBack" href="#pets"><svg width="20" height="20"><use href="#i-back"/></svg><span>Back to all pets</span></a>
   <div class="detail" id="petDetail"></div>
 </div></section>
 
@@ -658,23 +670,24 @@ a.hello:hover{text-decoration-color:var(--ink)}
 <!-- SIGN UP -->
 <section class="page" id="p-profile"><div class="wrap">
   <span class="eyebrow">My profile</span>
-  <h1 class="h-xl" style="margin-top:22px" id="profileTitle"></h1>
-  <div class="profile-grid">
-    <form class="form-card profile-card" id="profileForm" novalidate>
-      <h2 class="h-md">Profile details</h2>
-      <div class="field"><label for="pf-name">Name</label><input id="pf-name" type="text" required></div>
-      <div class="field"><label for="pf-email">Email</label><input id="pf-email" type="email" readonly></div>
-      <button class="pill-btn solid wide-btn" id="pf-save" type="submit">Save changes</button>
-      <div class="profile-actions">
+  <div class="profile-panel">
+    <div class="profile-head">
+      <div class="avatar" id="pfAvatar" aria-hidden="true"></div>
+      <div class="who"><h1 id="profileTitle"></h1><p id="pfEmailText"></p></div>
+      <div class="head-actions">
         <button class="text-btn" id="pf-pass" type="button">Change password</button>
         <button class="text-btn logout" type="button">Log out</button>
       </div>
+    </div>
+    <form class="profile-edit" id="profileForm" novalidate>
+      <label for="pf-name">Name</label>
+      <div class="inline"><input id="pf-name" type="text" required><button class="pill-btn solid" id="pf-save" type="submit">Save changes</button></div>
+      <input id="pf-email" type="hidden">
       <p class="form-msg" id="profileMsg" hidden></p>
     </form>
-    <div class="profile-favs">
-      <div class="sec-head" style="margin-top:0"><h2 class="h-md">Saved pets</h2><span class="f-count" id="favCount"></span></div>
-      <div class="grid fav-grid" id="favGrid"></div>
-    </div>
+    <div class="profile-divider"></div>
+    <div class="sec-head" style="margin:0 0 24px"><h2 class="h-md">Saved pets</h2><span class="f-count" id="favCount"></span></div>
+    <div class="grid fav-grid" id="favGrid"></div>
   </div>
 </div></section>
 
@@ -4842,9 +4855,11 @@ function renderProfile() {
   const user = auth && auth.currentUser;
   if (!user) return;
   const name = user.displayName || user.email.split('@')[0];
-  $('#profileTitle').textContent = LANG === 'ko' ? `${name}님, 안녕하세요` : `Hi, ${name}`;
+  $('#profileTitle').textContent = name;
   if (document.activeElement !== $('#pf-name')) $('#pf-name').value = user.displayName || '';
   $('#pf-email').value = user.email || '';
+  $('#pfEmailText').textContent = user.email || '';
+  $('#pfAvatar').textContent = (name.trim()[0] || '?').toUpperCase();
   $('#pf-pass').hidden = !(user.providerData || []).some(p => p.providerId === 'password');
   const favs = PETS.filter(p => FAVS.has(p.id));
   $('#favCount').textContent = LANG === 'ko' ? `${favs.length}마리` : `${favs.length} ${favs.length === 1 ? 'pet' : 'pets'}`;
@@ -4880,6 +4895,7 @@ document.addEventListener('click', async e => {
   add ? FAVS.add(id) : FAVS.delete(id);
   btn.classList.toggle('on', add); btn.setAttribute('aria-pressed', add);
   try {
+    if (!db) return refreshFavViews();
     const FV = firebase.firestore.FieldValue;
     await favDoc().set({ favorites: add ? FV.arrayUnion(id) : FV.arrayRemove(id) }, { merge: true });
   } catch (err) {
@@ -4973,9 +4989,18 @@ document.addEventListener('click', e => {
   const h = a.getAttribute('href').slice(1);
   if (h) go(h);
 });
+let backTo = 'pets';
 function route(h) {
   h = h || 'home'; let page = h;
-  if (h.startsWith('pet-')) { page = 'pet'; renderDetail(h.slice(4)); }
+  if (h.startsWith('pet-')) {
+    page = 'pet'; renderDetail(h.slice(4));
+    // Remember where the visitor came from so "Back" returns there
+    const from = (document.querySelector('.page.active') || {}).id;
+    if (from === 'p-profile' || from === 'p-home' || from === 'p-pets') backTo = from.slice(2);
+    const labels = { pets: ['Back to all pets', '전체 반려동물로 돌아가기'], profile: ['Back to my profile', '내 프로필로 돌아가기'], home: ['Back to home', '홈으로 돌아가기'] };
+    $('#petBack').setAttribute('href', '#' + backTo);
+    $('#petBack span').textContent = tx(...labels[backTo]);
+  }
   else if (!PAGES.includes(h)) page = 'home';
   if (page === 'profile') {
     if (!auth) page = 'login';
