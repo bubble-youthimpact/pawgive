@@ -30,7 +30,7 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;backgroun
 .top .wrap{display:flex;align-items:center;gap:28px;height:84px}
 .logo{display:flex;align-items:center;font-family:var(--logo);font-size:34px;letter-spacing:.5px;color:#cfe0c8;-webkit-text-stroke:1.6px var(--ink);line-height:1}
 .logo svg{width:30px;height:30px;margin:0 -4px;position:relative;top:2px}
-.nav{display:flex;gap:36px;font-size:17px}
+.nav{display:flex;gap:36px;font-size:17px;margin-left:clamp(12px,1.5vw,24px)}
 .nav a{color:var(--ink);padding:6px 0;text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:1px;text-underline-offset:7px;transition:text-decoration-color .15s,opacity .15s}
 .nav a.on{text-decoration-color:var(--ink)}
 .nav a:hover{opacity:.75}
@@ -133,7 +133,7 @@ h1,h2,h3{font-family:var(--display);color:var(--ink);font-weight:400;font-variat
 .home-sec .shelter ul{font-size:15px}.home-sec .shelter h3{font-size:18px}.home-sec .shelter .go .pill-btn{font-size:15px}
 
 /* Pets */
-.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:28px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:clamp(28px,3.5vw,44px)}
 .filters select{appearance:none;-webkit-appearance:none;border:1.5px solid var(--line);background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%231E4218' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") right 14px center/16px no-repeat;color:var(--ink);border-radius:999px;padding:10px 40px 10px 20px;font:inherit;font-size:16px;cursor:pointer;max-width:100%}
 .filters select:hover{border-color:var(--ink)}
 .filters select.set{background-color:var(--sage-soft);border-color:var(--ink);font-weight:500}
@@ -252,7 +252,8 @@ h1,h2,h3{font-family:var(--display);color:var(--ink);font-weight:400;font-variat
 .auth .submit{width:100%;border:0;border-radius:999px;padding:20px;font-size:20px;background:var(--ink);color:#fff;cursor:pointer;font-family:inherit}
 .auth .submit:disabled{background:#c6c6c6;cursor:not-allowed}
 .auth .alt{text-align:center;font-size:20px;margin-top:56px}
-.auth .alt a{color:#C4520F;font-weight:600;transition:opacity .15s}
+.auth .alt a{color:var(--ink);transition:opacity .15s}
+.auth .alt b{font-weight:600}
 .auth .alt a:hover{opacity:.75}
 .auth .form-msg{font-size:16px}
 
@@ -387,7 +388,7 @@ footer{border-top:1px solid var(--line);padding-block:64px 28px;background:var(-
 .home-sec .shelter .go .pill-btn{font-size:14px}
 
 /* Resources: first section sits as close to the intro as the Shelters grid does */
-#resSections > .res-sec:first-child{margin-top:clamp(36px,4.5vw,60px)}
+#resSections > .res-sec:first-child{margin-top:clamp(28px,3.5vw,44px)}
 
 /* Guide viewer */
 .viewer{position:fixed;inset:0;z-index:100;background:rgba(20,32,18,.82);display:flex;justify-content:center;overflow-y:auto;padding:calc(env(safe-area-inset-top,0px) + 76px) 16px calc(env(safe-area-inset-bottom,0px) + 32px)}
@@ -402,6 +403,44 @@ html[lang=ko] body{word-break:keep-all}
 html[lang=ko]{--display:var(--body)}
 html[lang=ko] h1,html[lang=ko] h2,html[lang=ko] h3{font-family:var(--body);font-weight:700;letter-spacing:-.02em}
 html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
+
+/* Accounts */
+.hello{font-size:15px;color:var(--ink);white-space:nowrap;max-width:16ch;overflow:hidden;text-overflow:ellipsis}
+.hello[hidden],.member[hidden],.guest[hidden]{display:none!important}
+.auth .or{display:flex;align-items:center;gap:14px;margin:20px 0;color:var(--muted);font-size:14px}
+.auth .or::before,.auth .or::after{content:"";flex:1;height:1px;background:var(--line)}
+.auth .google-btn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;border:1.5px solid #dcd8cc;background:#fff;color:var(--ink);border-radius:999px;padding:14px;font:inherit;font-size:17px;cursor:pointer}
+.auth .google-btn:hover{border-color:var(--ink)}
+.g-icon{width:20px;height:20px;flex:none}
+.auth button:disabled{opacity:.6;cursor:default}
+@media (max-width:980px){.right .hello,.right .logout{display:none!important}}
+
+.f-saved{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 20px;font:inherit;font-size:16px;cursor:pointer}
+.f-saved:hover{border-color:var(--ink)}
+.f-saved.set{background:var(--sage-soft);border-color:var(--ink);font-weight:500}
+.f-saved[hidden]{display:none}
+@media (max-width:620px){.f-saved{font-size:15px;padding:10px 16px}}
+
+/* Profile */
+.profile-grid{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(24px,4vw,48px);align-items:start;margin-top:clamp(28px,4vw,48px)}
+.profile-card h2{margin-bottom:22px}
+.profile-card input[readonly]{background:var(--bg);color:var(--muted)}
+.profile-actions{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:18px}
+.text-btn{background:none;border:0;padding:6px 0;font:inherit;font-size:15px;color:var(--ink);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.text-btn:hover{opacity:.75}
+.fav-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.fav-empty{grid-column:1/-1;background:var(--surface);border-radius:22px;padding:36px;text-align:center;color:var(--ink-2)}
+.fav-empty a{display:inline-block;margin-top:14px}
+@media (max-width:900px){.profile-grid{grid-template-columns:1fr}}
+@media (max-width:480px){.fav-grid{grid-template-columns:1fr}}
+/* Heart on pet cards */
+.pet-card{position:relative}
+.fav-badge{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--bad);display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.12);z-index:1}
+.fav-badge svg{width:20px;height:20px}
+.fav-badge.on svg{fill:var(--bad)}
+.fav-badge:hover{transform:scale(1.06)}
+a.hello{text-decoration:underline;text-decoration-color:transparent;text-underline-offset:5px;transition:text-decoration-color .15s}
+a.hello:hover{text-decoration-color:var(--ink)}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -431,14 +470,16 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
     </nav>
     <div class="right">
       <button class="pill-btn lang" id="lang" type="button"><svg><use href="#i-globe"/></svg><span>ENG</span></button>
-      <a class="pill-btn" href="#signup">Sign Up</a>
-      <a class="pill-btn solid" href="#login">Login</a>
+      <a class="pill-btn guest" href="#signup">Sign Up</a>
+      <a class="pill-btn solid guest" href="#login">Login</a>
+      <a class="hello member" href="#profile" hidden></a>
+      <button class="pill-btn member logout" type="button" hidden>Log out</button>
       <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
     </div>
   </div>
   <div class="mobile-nav" id="mobileNav">
     <a href="#about">About</a><a href="#pets">Pets</a><a href="#shelters">Shelters</a><a href="#resources">Resources</a><a href="#quiz">Quiz</a><a href="#contact">Contact</a>
-    <div class="row"><a class="pill-btn" href="#signup">Sign Up</a><a class="pill-btn solid" href="#login">Login</a></div>
+    <div class="row"><a class="pill-btn guest" href="#signup">Sign Up</a><a class="pill-btn solid guest" href="#login">Login</a><a class="hello member" href="#profile" hidden></a><button class="pill-btn member logout" type="button" hidden>Log out</button></div>
   </div>
 </header>
 
@@ -522,6 +563,7 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
     <select id="f-weight" aria-label="Weight"></select>
     <select id="f-age" aria-label="Age"></select>
     <select id="f-region" aria-label="Location"></select>
+    <button class="f-saved" id="f-saved" type="button" hidden aria-pressed="false">♡ Saved</button>
     <button class="f-reset" id="f-reset" type="button" hidden>Clear filters</button>
     <span class="f-count" id="f-count"></span>
   </div>
@@ -540,7 +582,7 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
   <span class="eyebrow">Shelters</span>
   <h1 class="h-xl" style="margin-top:22px">Find shelters near you</h1>
   <p class="lead">Meet the wonderful animals waiting to find their forever families.</p>
-  <div class="filters" style="margin-top:clamp(28px,3.5vw,44px)"><select id="s-region" aria-label="Region"></select><span class="f-count" id="s-count"></span></div>
+  <div class="filters"><select id="s-region" aria-label="Region"></select><span class="f-count" id="s-count"></span></div>
   <div class="grid g3" id="shelterGrid" style="margin-top:clamp(20px,2.5vw,28px)"></div>
   <div class="center"><button class="pill-btn" id="shelterMore" type="button" hidden>Show more</button></div>
 </div></section>
@@ -591,7 +633,8 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
       <div class="field"><label for="c-email">Email</label><input id="c-email" type="email" required></div>
       <div class="field"><label for="c-int">I'm interested in</label><input id="c-int" type="text"></div>
       <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" required></textarea></div>
-      <button class="pill-btn solid wide-btn" type="submit" style="margin-top:28px">Send message <svg width="20" height="20"><use href="#i-send"/></svg></button>
+      <input type="text" id="c-honey" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <button class="pill-btn solid wide-btn" id="c-send" type="submit" style="margin-top:28px">Send message <svg width="20" height="20"><use href="#i-send"/></svg></button>
       <p class="form-msg" id="contactMsg" hidden></p>
     </form>
   </div>
@@ -605,12 +648,36 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
     <div class="field"><label for="l-pass">Password<i>*</i></label><input id="l-pass" type="password" required></div>
     <div class="forgot"><a href="#login" id="forgot">Forgot your password?</a></div>
     <button class="submit" type="submit">Login</button>
+    <div class="or"><span>or</span></div>
+    <button class="google-btn" type="button"><svg class="g-icon" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg><span>Continue with Google</span></button>
     <p class="form-msg" id="loginMsg" hidden></p>
-    <p class="alt">Don't have an account? <a href="#signup">Sign up</a></p>
+    <p class="alt"><a href="#signup">Don't have an account? <b>Sign up</b></a></p>
   </form>
 </div></section>
 
 <!-- SIGN UP -->
+<section class="page" id="p-profile"><div class="wrap">
+  <span class="eyebrow">My profile</span>
+  <h1 class="h-xl" style="margin-top:22px" id="profileTitle"></h1>
+  <div class="profile-grid">
+    <form class="form-card profile-card" id="profileForm" novalidate>
+      <h2 class="h-md">Profile details</h2>
+      <div class="field"><label for="pf-name">Name</label><input id="pf-name" type="text" required></div>
+      <div class="field"><label for="pf-email">Email</label><input id="pf-email" type="email" readonly></div>
+      <button class="pill-btn solid wide-btn" id="pf-save" type="submit">Save changes</button>
+      <div class="profile-actions">
+        <button class="text-btn" id="pf-pass" type="button">Change password</button>
+        <button class="text-btn logout" type="button">Log out</button>
+      </div>
+      <p class="form-msg" id="profileMsg" hidden></p>
+    </form>
+    <div class="profile-favs">
+      <div class="sec-head" style="margin-top:0"><h2 class="h-md">Saved pets</h2><span class="f-count" id="favCount"></span></div>
+      <div class="grid fav-grid" id="favGrid"></div>
+    </div>
+  </div>
+</div></section>
+
 <section class="page" id="p-signup"><div class="wrap">
   <form class="auth" id="signupForm" novalidate>
     <h1>Sign Up</h1>
@@ -620,8 +687,10 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
     <div class="field"><label for="s-pass2">Confirm password<i>*</i></label><input id="s-pass2" type="password" required></div>
     <label class="agree" for="s-agree"><input id="s-agree" type="checkbox"><span>I agree to the terms and conditions.</span></label>
     <button class="submit" id="signupBtn" type="submit" disabled>Sign Up</button>
+    <div class="or"><span>or</span></div>
+    <button class="google-btn" type="button"><svg class="g-icon" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg><span>Continue with Google</span></button>
     <p class="form-msg" id="signupMsg" hidden></p>
-    <p class="alt">Already have an account? <a href="#login">Login</a></p>
+    <p class="alt"><a href="#login">Already have an account? <b>Login</b></a></p>
   </form>
 </div></section>
 </main>
@@ -655,6 +724,9 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
   <img id="viewerImg" src="" alt="">
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/firebase@10.14.1/firebase-app-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/firebase@10.14.1/firebase-auth-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/firebase@10.14.1/firebase-firestore-compat.js"></script>
 <script>
 /* =====================================================================
    DATA — replace the [placeholders] below with your real content.
@@ -4314,6 +4386,14 @@ const KO = {
   "Visit now": "방문하기",
   "Watch now": "영상 보기",
   "Show more": "더 보기",
+  "My profile": "내 프로필",
+  "Profile details": "프로필 정보",
+  "Save changes": "변경사항 저장",
+  "Change password": "비밀번호 변경",
+  "Saved pets": "관심 반려동물",
+  "Log out": "로그아웃",
+  "Continue with Google": "Google로 계속하기",
+  "or": "또는",
   "Clear filters": "필터 초기화",
   "Show less": "접기",
   "Basic Quiz": "기본 퀴즈",
@@ -4350,7 +4430,9 @@ const KO = {
   "Back to top": "맨 위로",
   "Close ✕": "닫기 ✕",
   "Please fill in your name, a valid email and a message.": "이름, 올바른 이메일, 메시지를 모두 입력해 주세요.",
-  "Thanks! This is a preview, so the message was not sent anywhere yet.": "감사합니다! 지금은 미리보기 버전이라 메시지가 실제로 전송되지는 않았어요.",
+  "Sending…": "보내는 중…",
+  "Thanks! Your message was sent. We’ll get back to you soon.": "감사합니다! 메시지가 전송되었어요. 곧 답변드릴게요.",
+  "Sorry, your message couldn’t be sent. Please try again, or email us directly.": "메시지를 보내지 못했어요. 다시 시도하시거나 이메일로 직접 연락해 주세요.",
   "Enter your email and password.": "이메일과 비밀번호를 입력해 주세요.",
   "Login is not connected yet in this preview.": "미리보기 버전에서는 아직 로그인이 연결되어 있지 않아요.",
   "Password reset is not connected yet in this preview.": "미리보기 버전에서는 아직 비밀번호 재설정이 연결되어 있지 않아요.",
@@ -4416,6 +4498,7 @@ const petImg = (p, extra = '') => p.image
 
 function petCard(p) {
   return `<article class="card pet-card" tabindex="0" data-id="${p.id}">
+    <button class="fav-badge${FAVS.has(p.id) ? ' on' : ''}" type="button" data-fav="${p.id}" aria-pressed="${FAVS.has(p.id)}" aria-label="${LANG === 'ko' ? '관심 반려동물 저장' : 'Save to favourites'}">${ico('i-heart')}</button>
     ${petImg(p)}
     <div class="body"><div class="row"><h3>${esc(petName(p))}</h3><span class="status"><i class="dot ${statusCls(p.status)}"></i>${esc(p.status)}</span></div>
     <p>${esc(petStory(p))}</p></div></article>`;
@@ -4423,7 +4506,8 @@ function petCard(p) {
 const PAGE = 12;
 let petShown = PAGE;
 const THIS_YEAR = new Date().getFullYear();
-const F = { species: '', breed: '', size: '', sex: '', weight: '', age: '', region: '' };
+let FAVS = new Set();
+const F = { species: '', breed: '', size: '', sex: '', weight: '', age: '', region: '', saved: '' };
 const WEIGHTS = [['u5', 'Under 5kg', '5kg 미만', w => w < 5], ['5-10', '5–10kg', '5–10kg', w => w >= 5 && w < 10], ['10-20', '10–20kg', '10–20kg', w => w >= 10 && w < 20], ['20', '20kg+', '20kg 이상', w => w >= 20]];
 const AGES = [['baby', 'Baby (under 1)', '아기 (1살 미만)', a => a < 1], ['young', 'Young (1–2)', '청년 (1–2살)', a => a >= 1 && a <= 2], ['adult', 'Adult (3–7)', '성체 (3–7살)', a => a >= 3 && a <= 7], ['senior', 'Senior (8+)', '노령 (8살 이상)', a => a >= 8]];
 const SPECIES = [['Dog', 'Dog', '강아지'], ['Cat', 'Cat', '고양이'], ['Rabbit', 'Rabbit', '토끼']];
@@ -4431,6 +4515,7 @@ const tx = (en, ko) => LANG === 'ko' ? ko : en;
 function petMatches(p, skip) {
   if (F.species && skip !== 'species' && p.type !== F.species) return false;
   if (F.breed && skip !== 'breed' && p.breed !== F.breed) return false;
+  if (F.saved && !FAVS.has(p.id)) return false;
   if (F.size && skip !== 'size' && p.size !== F.size) return false;
   if (F.sex && skip !== 'sex' && p.sex !== F.sex) return false;
   if (F.weight && skip !== 'weight') { const w = parseFloat(p.weight); const r = WEIGHTS.find(x => x[0] === F.weight); if (isNaN(w) || !r[3](w)) return false; }
@@ -4457,12 +4542,18 @@ function buildFilters() {
   setOptions('#f-age', tx('Any age', '모든 나이'), opts('age', AGES.map(([v, en, ko, t]) => [v, en, ko, p => { const y = parseInt(p.born); return !isNaN(y) && t(THIS_YEAR - y); }])));
   const regs = [...new Set(PETS.filter(p => p.region).map(p => p.region))].sort();
   setOptions('#f-region', tx('All locations', '모든 지역'), opts('region', regs.map(r => [r, r, PETS.find(p => p.region === r).region_ko, p => p.region === r])));
+  const sv = $('#f-saved');
+  sv.hidden = !(window.PG_AUTH && window.PG_AUTH.currentUser);
+  if (sv.hidden) F.saved = '';
+  sv.classList.toggle('set', !!F.saved); sv.setAttribute('aria-pressed', !!F.saved);
+  sv.textContent = (LANG === 'ko' ? '♡ 관심 반려동물' : '♡ Saved') + ` (${FAVS.size})`;
   $('#f-reset').hidden = !Object.values(F).some(Boolean);
 }
 ['species', 'breed', 'size', 'sex', 'weight', 'age', 'region'].forEach(k => $('#f-' + k).addEventListener('change', e => {
   F[k] = e.target.value; petShown = PAGE; renderPets();
 }));
 $('#f-reset').addEventListener('click', () => { Object.keys(F).forEach(k => F[k] = ''); petShown = PAGE; renderPets(); });
+$('#f-saved').addEventListener('click', () => { F.saved = F.saved ? '' : '1'; petShown = PAGE; renderPets(); });
 function renderPets() {
   buildFilters();
   const list = PETS.filter(p => petMatches(p));
@@ -4483,10 +4574,10 @@ function renderHomePets() {
 }
 renderHomePets();
 document.addEventListener('click', e => {
-  const c = e.target.closest('.pet-card'); if (c) go('pet-' + c.dataset.id);
+  const c = e.target.closest('.pet-card'); if (c && !e.target.closest('[data-fav]')) go('pet-' + c.dataset.id);
 });
 document.addEventListener('keydown', e => {
-  const c = e.target.closest?.('.pet-card'); if (c && e.key === 'Enter') go('pet-' + c.dataset.id);
+  const c = e.target.closest?.('.pet-card'); if (c && e.key === 'Enter' && !e.target.closest('[data-fav]')) go('pet-' + c.dataset.id);
 });
 $('#petMore').addEventListener('click', () => { petShown += PAGE; renderPets(); });
 renderPets();
@@ -4499,7 +4590,7 @@ function renderDetail(id) {
     <div>${petImg(p, "border-radius:24px")}</div>
     <div>
       <span class="status"><i class="dot ${statusCls(p.status)}"></i>${esc(p.status)}</span>
-      <div class="head"><h1>${esc(petName(p))}</h1><button class="heart" type="button" aria-label="Save to favourites" onclick="this.classList.toggle('on')">${ico('i-heart')}</button></div>
+      <div class="head"><h1>${esc(petName(p))}</h1><button class="heart${FAVS.has(p.id) ? ' on' : ''}" type="button" data-fav="${p.id}" aria-pressed="${FAVS.has(p.id)}" aria-label="${LANG === 'ko' ? '관심 반려동물 저장' : 'Save to favourites'}">${ico('i-heart')}</button></div>
       <div class="facts"><span>${ico('i-cal')}${esc(petBorn(p))}</span><span>${ico('i-sex')}${esc(petSex(p))}</span><span>${ico('i-ruler')}${esc(petSize(p))}</span></div>
       <h2>Breed</h2><p class="txt">${esc(petBreed(p))}</p>
       <h2>Story</h2><p class="txt">${esc(petStory(p))}</p>
@@ -4659,26 +4750,185 @@ const quizRelabel = [mountQuiz('quiz-basic'), mountQuiz('quiz-trivia')];
 
 /* Forms (demo only — connect to your backend later) */
 function note(id, text) { const el = $(id); el.textContent = text; el.hidden = false; }
-$('#contactForm').addEventListener('submit', e => {
+/* Contact form → FormSubmit (formsubmit.co) → your inbox.
+   To change where messages go, change CONTACT_TO. */
+const CONTACT_TO = 'bubble.youthimpact@gmail.com';
+$('#contactForm').addEventListener('submit', async e => {
   e.preventDefault();
   if (!$('#c-name').value.trim() || !$('#c-email').value.includes('@') || !$('#c-msg').value.trim())
     return note('#contactMsg', 'Please fill in your name, a valid email and a message.');
-  note('#contactMsg', 'Thanks! This is a preview, so the message was not sent anywhere yet.');
-  e.target.reset();
+  if ($('#c-honey').value) return; // spam bot filled the hidden field
+  const btn = $('#c-send'); btn.disabled = true;
+  note('#contactMsg', 'Sending…');
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/' + CONTACT_TO, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name: $('#c-name').value.trim(),
+        email: $('#c-email').value.trim(),
+        'interested in': $('#c-int').value.trim(),
+        message: $('#c-msg').value.trim(),
+        _subject: 'New message from the Pawgive website',
+        _template: 'table',
+        _captcha: 'false'
+      })
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || String(data.success) === 'false') throw new Error(data.message || 'failed');
+    note('#contactMsg', 'Thanks! Your message was sent. We’ll get back to you soon.');
+    e.target.reset();
+  } catch (err) {
+    note('#contactMsg', 'Sorry, your message couldn’t be sent. Please try again, or email us directly.');
+  } finally { btn.disabled = false; }
 });
+/* ===================== ACCOUNTS (Firebase Authentication) =====================
+   Works on the live site only. Project: pawgive-63d8f */
+const firebaseConfig = {
+  apiKey: "AIzaSyBmbhpNVBhwjtDcjybXXrPXhtz7v8AdFrA",
+  authDomain: "pawgive-63d8f.firebaseapp.com",
+  projectId: "pawgive-63d8f",
+  storageBucket: "pawgive-63d8f.firebasestorage.app",
+  messagingSenderId: "197508034587",
+  appId: "1:197508034587:web:32a8ad8c0a3d9edd2bc8be"
+};
+let auth = null;
+try { if (window.firebase) { firebase.initializeApp(firebaseConfig); auth = firebase.auth(); } } catch (e) { auth = null; }
+window.PG_AUTH = auth;
+const AUTH_ERR = {
+  'auth/invalid-email': ['Enter a valid email address.', '올바른 이메일 주소를 입력해 주세요.'],
+  'auth/missing-password': ['Enter your password.', '비밀번호를 입력해 주세요.'],
+  'auth/invalid-credential': ['Email or password is incorrect.', '이메일 또는 비밀번호가 올바르지 않아요.'],
+  'auth/wrong-password': ['Email or password is incorrect.', '이메일 또는 비밀번호가 올바르지 않아요.'],
+  'auth/user-not-found': ['Email or password is incorrect.', '이메일 또는 비밀번호가 올바르지 않아요.'],
+  'auth/email-already-in-use': ['An account with this email already exists. Try logging in.', '이미 가입된 이메일이에요. 로그인해 주세요.'],
+  'auth/weak-password': ['Password must be at least 6 characters.', '비밀번호는 6자 이상이어야 해요.'],
+  'auth/too-many-requests': ['Too many attempts. Please wait a moment and try again.', '시도가 너무 많아요. 잠시 후 다시 시도해 주세요.'],
+  'auth/popup-closed-by-user': ['The Google window was closed before you finished.', 'Google 로그인 창이 닫혔어요.'],
+  'auth/popup-blocked': ['Your browser blocked the Google window. Allow pop-ups and try again.', '브라우저가 Google 로그인 창을 막았어요. 팝업을 허용한 뒤 다시 시도해 주세요.'],
+  'auth/operation-not-allowed': ['This way of signing in isn’t turned on yet.', '아직 사용할 수 없는 로그인 방법이에요.'],
+  'auth/unauthorized-domain': ['This website address isn’t allowed to sign in yet.', '이 웹사이트 주소는 아직 로그인이 허용되지 않았어요.'],
+  'auth/network-request-failed': ['Couldn’t connect. Check your internet and try again.', '연결할 수 없어요. 인터넷 연결을 확인한 뒤 다시 시도해 주세요.']
+};
+const authError = err => { const m = AUTH_ERR[err && err.code]; return m ? tx(m[0], m[1]) : tx('Something went wrong. Please try again.', '문제가 발생했어요. 다시 시도해 주세요.'); };
+const noAuth = id => note(id, tx('Accounts only work on the live website, not in this preview.', '계정 기능은 미리보기가 아닌 실제 사이트에서만 작동해요.'));
+async function busy(form, fn) {
+  const btns = form.querySelectorAll('button');
+  btns.forEach(b => b.disabled = true);
+  try { await fn(); }
+  finally { btns.forEach(b => b.disabled = false); if (form.id === 'signupForm') $('#signupBtn').disabled = !$('#s-agree').checked; }
+}
+function updateAccountUI(user) {
+  document.querySelectorAll('.guest').forEach(el => el.hidden = !!user);
+  document.querySelectorAll('.member').forEach(el => el.hidden = !user);
+  const name = user ? (user.displayName || user.email.split('@')[0]) : '';
+  document.querySelectorAll('.hello').forEach(el => el.textContent = LANG === 'ko' ? `${name}님` : `Hi, ${name}`);
+}
+let db = null;
+try { if (auth && firebase.firestore) db = firebase.firestore(); } catch (e) { db = null; }
+const favDoc = () => db.collection('users').doc(auth.currentUser.uid);
+async function loadFavs(user) {
+  FAVS = new Set();
+  if (user && db) {
+    try { const snap = await favDoc().get(); FAVS = new Set((snap.exists && snap.data().favorites) || []); } catch (e) {}
+  }
+  refreshFavViews();
+}
+function refreshFavViews() {
+  renderPets(); renderHomePets(); renderProfile();
+  if (currentPet && $('#p-pet').classList.contains('active')) renderDetail(currentPet);
+}
+function renderProfile() {
+  const user = auth && auth.currentUser;
+  if (!user) return;
+  const name = user.displayName || user.email.split('@')[0];
+  $('#profileTitle').textContent = LANG === 'ko' ? `${name}님, 안녕하세요` : `Hi, ${name}`;
+  if (document.activeElement !== $('#pf-name')) $('#pf-name').value = user.displayName || '';
+  $('#pf-email').value = user.email || '';
+  $('#pf-pass').hidden = !(user.providerData || []).some(p => p.providerId === 'password');
+  const favs = PETS.filter(p => FAVS.has(p.id));
+  $('#favCount').textContent = LANG === 'ko' ? `${favs.length}마리` : `${favs.length} ${favs.length === 1 ? 'pet' : 'pets'}`;
+  $('#favGrid').innerHTML = favs.length ? favs.map(petCard).join('') : `<div class="fav-empty">${LANG === 'ko' ? '아직 저장한 반려동물이 없어요. 마음에 드는 아이의 ♡를 눌러 보세요.' : 'No saved pets yet. Tap the ♡ on any pet to save it here.'}<br><a class="pill-btn solid" href="#pets">${LANG === 'ko' ? '반려동물 둘러보기' : 'Browse pets'}</a></div>`;
+}
+let authReady = false;
+if (auth) auth.onAuthStateChanged(user => {
+  authReady = true; updateAccountUI(user); loadFavs(user);
+  if (!user && $('#p-profile').classList.contains('active')) go('login');
+});
+$('#profileForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const user = auth && auth.currentUser; if (!user) return go('login');
+  const name = $('#pf-name').value.trim();
+  if (!name) return note('#profileMsg', tx('Please enter your name.', '이름을 입력해 주세요.'));
+  $('#pf-save').disabled = true;
+  try { await user.updateProfile({ displayName: name }); updateAccountUI(user); renderProfile(); note('#profileMsg', tx('Saved.', '저장되었어요.')); }
+  catch (err) { note('#profileMsg', authError(err)); }
+  finally { $('#pf-save').disabled = false; }
+});
+$('#pf-pass').addEventListener('click', async () => {
+  const user = auth && auth.currentUser; if (!user) return;
+  try { await auth.sendPasswordResetEmail(user.email); note('#profileMsg', tx(`We sent a link to ${user.email} to change your password.`, `${user.email}로 비밀번호 변경 링크를 보냈어요.`)); }
+  catch (err) { note('#profileMsg', authError(err)); }
+});
+document.addEventListener('click', async e => {
+  const btn = e.target.closest('[data-fav]'); if (!btn) return;
+  const id = btn.dataset.fav;
+  if (!auth || !auth.currentUser) {
+    return go('login');
+  }
+  const add = !FAVS.has(id);
+  add ? FAVS.add(id) : FAVS.delete(id);
+  btn.classList.toggle('on', add); btn.setAttribute('aria-pressed', add);
+  try {
+    const FV = firebase.firestore.FieldValue;
+    await favDoc().set({ favorites: add ? FV.arrayUnion(id) : FV.arrayRemove(id) }, { merge: true });
+  } catch (err) {
+    add ? FAVS.delete(id) : FAVS.add(id);
+    btn.classList.toggle('on', !add); btn.setAttribute('aria-pressed', !add);
+  }
+  refreshFavViews();
+});
+document.querySelectorAll('.logout').forEach(b => b.addEventListener('click', () => auth && auth.signOut().then(() => go('home'))));
+
 $('#loginForm').addEventListener('submit', e => {
   e.preventDefault();
   if (!$('#l-email').value.includes('@') || !$('#l-pass').value) return note('#loginMsg', 'Enter your email and password.');
-  note('#loginMsg', 'Login is not connected yet in this preview.');
+  if (!auth) return noAuth('#loginMsg');
+  busy(e.target, async () => {
+    try { await auth.signInWithEmailAndPassword($('#l-email').value.trim(), $('#l-pass').value); e.target.reset(); $('#loginMsg').hidden = true; go('home'); }
+    catch (err) { note('#loginMsg', authError(err)); }
+  });
 });
-$('#forgot').addEventListener('click', e => { e.preventDefault(); note('#loginMsg', 'Password reset is not connected yet in this preview.'); });
+$('#forgot').addEventListener('click', async e => {
+  e.preventDefault();
+  const email = $('#l-email').value.trim();
+  if (!email.includes('@')) return note('#loginMsg', tx('Type your email above, then click “Forgot your password?” again.', '위에 이메일을 입력한 뒤 “비밀번호를 잊으셨나요?”를 다시 눌러 주세요.'));
+  if (!auth) return noAuth('#loginMsg');
+  try { await auth.sendPasswordResetEmail(email); note('#loginMsg', tx(`If an account exists for ${email}, we’ve sent a password reset link. Check your inbox and spam folder.`, `${email}로 가입된 계정이 있다면 비밀번호 재설정 링크를 보냈어요. 받은편지함과 스팸함을 확인해 주세요.`)); }
+  catch (err) { note('#loginMsg', authError(err)); }
+});
 $('#s-agree').addEventListener('change', e => $('#signupBtn').disabled = !e.target.checked);
 $('#signupForm').addEventListener('submit', e => {
   e.preventDefault();
   if (!$('#s-name').value.trim() || !$('#s-email').value.includes('@') || !$('#s-pass').value) return note('#signupMsg', 'Please fill in every required field.');
   if ($('#s-pass').value !== $('#s-pass2').value) return note('#signupMsg', 'The two passwords don’t match.');
-  note('#signupMsg', 'Sign up is not connected yet in this preview.');
+  if ($('#s-pass').value.length < 6) return note('#signupMsg', tx('Password must be at least 6 characters.', '비밀번호는 6자 이상이어야 해요.'));
+  if (!auth) return noAuth('#signupMsg');
+  busy(e.target, async () => {
+    try {
+      const cred = await auth.createUserWithEmailAndPassword($('#s-email').value.trim(), $('#s-pass').value);
+      await cred.user.updateProfile({ displayName: $('#s-name').value.trim() });
+      updateAccountUI(auth.currentUser);
+      e.target.reset(); $('#signupBtn').disabled = true; $('#signupMsg').hidden = true; go('home');
+    } catch (err) { note('#signupMsg', authError(err)); }
+  });
 });
+document.querySelectorAll('.google-btn').forEach(btn => btn.addEventListener('click', async () => {
+  const msg = btn.closest('form').querySelector('.form-msg');
+  if (!auth) return noAuth('#' + msg.id);
+  try { await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()); msg.hidden = true; go('home'); }
+  catch (err) { note('#' + msg.id, authError(err)); }
+}));
 
 function setLang(lang) {
   LANG = lang;
@@ -4686,8 +4936,9 @@ function setLang(lang) {
   document.documentElement.lang = lang;
   $('#lang span').textContent = lang === 'ko' ? '한국어' : 'ENG';
   $('#lang').setAttribute('aria-label', lang === 'ko' ? 'Switch to English' : '한국어로 보기');
+  if (typeof auth !== 'undefined' && auth) { auth.languageCode = lang; updateAccountUI(auth.currentUser); }
   renderTeam(); renderResources(); quizRelabel.forEach(f => f());
-  renderPets(); renderHomePets(); renderShelters(); renderHomeShelters(); if (currentPet && $('#p-pet').classList.contains('active')) renderDetail(currentPet);
+  renderPets(); renderHomePets(); renderShelters(); renderHomeShelters(); if (auth && auth.currentUser) renderProfile(); if (currentPet && $('#p-pet').classList.contains('active')) renderDetail(currentPet);
   trTree(document.body);
 }
 $('#lang').addEventListener('click', () => setLang(LANG === 'ko' ? 'en' : 'ko'));
@@ -4710,7 +4961,7 @@ function setHdr(){ document.documentElement.style.setProperty('--hdr', document.
 setHdr(); addEventListener('resize', setHdr);
 
 /* Router */
-const PAGES = ['home','about','pets','shelters','resources','quiz','contact','login','signup'];
+const PAGES = ['home','about','pets','shelters','resources','quiz','contact','login','signup','profile'];
 function go(h) {
   route(h);
   try { history.replaceState(null, '', '#' + (h.startsWith('pet-') ? 'pets' : h)); } catch (e) {}
@@ -4726,6 +4977,12 @@ function route(h) {
   h = h || 'home'; let page = h;
   if (h.startsWith('pet-')) { page = 'pet'; renderDetail(h.slice(4)); }
   else if (!PAGES.includes(h)) page = 'home';
+  if (page === 'profile') {
+    if (!auth) page = 'login';
+    else if (!auth.currentUser) { if (authReady) page = 'login'; }
+    else renderProfile();
+  }
+  if ((page === 'login' || page === 'signup') && auth && auth.currentUser) { page = 'profile'; renderProfile(); }
   document.querySelectorAll('.page').forEach(p => p.classList.toggle('active', p.id === 'p-' + page));
   document.querySelectorAll('#nav a, .foot-cols a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + (page === 'pet' ? 'pets' : page)));
   $('#mobileNav').classList.remove('open');
