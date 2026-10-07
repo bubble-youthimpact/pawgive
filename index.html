@@ -454,6 +454,9 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
 .fav-badge.on{--heart-fill:#C11119}
 .fav-badge:hover{transform:scale(1.06)}
 
+
+#pf-save{transition:background-color .25s,border-color .25s}
+#pf-save.saved{background:#12B878;border-color:#12B878;color:#fff}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -4788,10 +4791,15 @@ $('#contactForm').addEventListener('submit', async e => {
       })
     });
     const data = await res.json().catch(() => ({}));
-    if (!res.ok || String(data.success) === 'false') throw new Error(data.message || 'failed');
+    if (!res.ok || String(data.success) === 'false') {
+      console.warn('FormSubmit:', res.status, data);
+      if (/activat/i.test(data.message || '')) return note('#contactMsg', tx('This form is waiting to be activated. Please check the Pawgive inbox for the activation email.', '문의 양식이 아직 활성화되지 않았어요. 포기브 메일함에서 활성화 이메일을 확인해 주세요.'));
+      throw new Error(data.message || 'failed');
+    }
     note('#contactMsg', 'Thanks! Your message was sent. We’ll get back to you soon.');
     e.target.reset();
   } catch (err) {
+    console.warn('Contact form error:', err);
     note('#contactMsg', 'Sorry, your message couldn’t be sent. Please try again, or email us directly.');
   } finally { btn.disabled = false; }
 });
@@ -4876,9 +4884,16 @@ $('#profileForm').addEventListener('submit', async e => {
   const name = $('#pf-name').value.trim();
   if (!name) return note('#profileMsg', tx('Please enter your name.', '이름을 입력해 주세요.'));
   $('#pf-save').disabled = true;
-  try { await user.updateProfile({ displayName: name }); updateAccountUI(user); renderProfile(); note('#profileMsg', tx('Saved.', '저장되었어요.')); }
+  const btn = $('#pf-save');
+  try {
+    await user.updateProfile({ displayName: name }); updateAccountUI(user); renderProfile();
+    $('#profileMsg').hidden = true;
+    clearTimeout(btn._t);
+    btn.classList.add('saved'); btn.textContent = tx('Saved', '저장됨');
+    btn._t = setTimeout(() => { btn.classList.remove('saved'); btn.textContent = tx('Save changes', '변경사항 저장'); }, 2000);
+  }
   catch (err) { note('#profileMsg', authError(err)); }
-  finally { $('#pf-save').disabled = false; }
+  finally { btn.disabled = false; }
 });
 $('#pf-pass').addEventListener('click', async () => {
   const user = auth && auth.currentUser; if (!user) return;
