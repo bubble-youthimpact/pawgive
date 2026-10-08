@@ -35,7 +35,7 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;backgroun
 .nav a.on{text-decoration-color:var(--ink)}
 .nav a:hover{opacity:.75}
 .right{margin-left:auto;display:flex;gap:14px;align-items:center}
-.pill-btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 26px;font-size:16px;font-weight:500;cursor:pointer;border:1.5px solid var(--ink);background:transparent;color:var(--ink);transition:background .15s,color .15s}
+.pill-btn{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 26px;font-size:16px;font-weight:500;cursor:pointer;border:1.5px solid var(--ink);background:transparent;color:var(--ink);transition:background .15s,color .15s}
 .pill-btn.solid{background:var(--ink);color:#fff}
 .pill-btn.solid:hover{background:#16330f}
 .pill-btn:not(.solid):hover{background:var(--sage-soft)}
@@ -43,7 +43,7 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;backgroun
 .lang svg{width:18px;height:18px}
 .menu-btn{display:none;background:none;border:1.5px solid var(--ink);border-radius:10px;padding:8px 10px;cursor:pointer;color:var(--ink)}
 .mobile-nav{display:none}
-@media (max-width:980px){
+@media (max-width:1200px){
   .nav,.right .pill-btn:not(.lang){display:none}
   .menu-btn{display:block}
   .mobile-nav.open{display:flex;flex-direction:column;gap:4px;padding:8px clamp(16px,4vw,32px) 18px;border-top:1px solid var(--line)}
@@ -259,7 +259,7 @@ h1,h2,h3{font-family:var(--display);color:var(--ink);font-weight:400;font-variat
 
 /* Responsive pass */
 .card h3,.card p,.at p,.contact dd{overflow-wrap:anywhere}
-@media (max-width:980px){
+@media (max-width:1200px){
   .top .wrap{height:72px;gap:16px}
   .right{gap:10px}
 }
@@ -505,7 +505,7 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
     <div>
       <span class="eyebrow">Adoption, done kindly</span>
       <h1 class="hero-title" style="margin-top:22px">Whether you’re here to adopt or surrender, we can help you with both.</h1>
-      <p>Pawgive connects you with shelters and other people, and most importantly; pets. We also provide manuals for the crucial steps and processes for adoption, surrendering, and taking care of your pet.</p>
+      <p>Pawgive connects you with shelters, people, and most importantly; pets. We also provide manuals for the crucial steps and processes for adoption, surrendering, and taking care of your pet.</p>
       <div class="btn-row"><a class="pill-btn solid" href="#pets">Meet the pets</a><a class="pill-btn" href="#shelters">Visit a shelter</a></div>
       <div class="stats">
         <div><b>25k+</b><span>Adoptions</span></div>
@@ -755,7 +755,7 @@ const SITE = {
 };
 
 const TEAM = [
-  { name: "Lena Yooeun Lee", role: "Founder & CEO", role_ko: "설립자 겸 대표", image: "", bio_ko: "Yooeun은 포기브(Pawgive)의 설립자이자 강아지를 사랑하는 반려인입니다. 사람들이 더 책임감 있게 강아지를 입양하고, 파양하고, 돌볼 수 있도록 돕고 동물 학대에 대한 인식을 높이기 위해 포기브를 설립했습니다. 포기브를 통해 더 건강한 입양·파양 문화를 만들고, 모든 동물과 반려동물이 안전한 평생 가정을 찾기를 진심으로 바랍니다.", bio: "Yooeun is the founder of Pawgive (포기브), and is a dog lover and dog owner. She founded Pawgive (포기브) to help others adopt, surrender, and take care of dogs more responsibly and raise awareness regarding animal cruelty. Through Pawgive, she hopes to promote a healthier system of adoption and surrendering of animals, and sincerely wishes each and every animal and pet a safe forever home." }
+  { name: "Lena Yooeun Lee", role: "Founder & CEO", role_ko: "설립자 겸 대표", image: "", bio_ko: "이유은은 포기브의 설립자이며, 강아지를 키우고 매우 사랑합니다. 그는 다른 이들이 애완동물을 책임있게 입양, 파양하고 돌볼 수 있도록, 그리고 동물학대에 대해서 알리기 위해서 포기브를 설립하게 되었습니다. 그는 포기브를 통해 동물 입양과 보호자의 책임감 있는 파양의 건강한 시스템을 확산시키고, 모든 동물과 반려동물이 안전한 가정을 갖길 진심으로 바랍니다.", bio: "Yooeun is the founder of Pawgive (포기브), and is a dog lover and dog owner. She founded Pawgive (포기브) to help others adopt, surrender, and take care of dogs more responsibly and raise awareness regarding animal cruelty. Through Pawgive, she hopes to promote a healthier system of adoption and surrendering of animals, and sincerely wishes each and every animal and pet a safe forever home." }
 ];
 
 // status: "Adopted" | "Available" | "Unsure"   type: "Dog" | "Cat" | "Rabbit"
@@ -2876,7 +2876,7 @@ const SHELTERS = [
   "email": "rlavkstjs@korea.kr",
   "instagram": "https://www.instagram.com/gapyeong_animal/",
   "website": "",
-  "image": "",
+  "image": "images/shelters/gapyeong.webp",
   "region": "Gyeonggi",
   "region_ko": "경기"
  },
@@ -3002,7 +3002,7 @@ const SHELTERS = [
   "email": "",
   "instagram": "https://www.instagram.com/yangpyeong_animal/",
   "website": "",
-  "image": "https://cdn.incheonilbo.com/news/photo/202211/1170542_461029_369.jpg",
+  "image": "images/shelters/yangpyeong.webp",
   "region": "Gyeonggi",
   "region_ko": "경기"
  },
@@ -3016,7 +3016,7 @@ const SHELTERS = [
   "email": "",
   "instagram": "",
   "website": "",
-  "image": "",
+  "image": "images/shelters/yeongyang.webp",
   "region": "Gyeongbuk",
   "region_ko": "경북"
  },
@@ -3128,7 +3128,7 @@ const SHELTERS = [
   "email": "",
   "instagram": "https://www.instagram.com/walkon_shelter/",
   "website": "",
-  "image": "",
+  "image": "images/shelters/walkon.webp",
   "region": "",
   "region_ko": ""
  },
@@ -3156,7 +3156,7 @@ const SHELTERS = [
   "email": "jaeeun.edition@gmail.com",
   "instagram": "https://www.instagram.com/findinglove_dog/",
   "website": "https://link.inpock.co.kr/findinglove_dog",
-  "image": "",
+  "image": "images/shelters/findinglove.webp",
   "region": "",
   "region_ko": ""
  },
@@ -3170,7 +3170,7 @@ const SHELTERS = [
   "email": "",
   "instagram": "https://www.instagram.com/flf_shelter/",
   "website": "https://linktr.ee/flf_shelter",
-  "image": "",
+  "image": "images/shelters/four-legged-friends.webp",
   "region": "",
   "region_ko": ""
  },
@@ -3240,7 +3240,7 @@ const SHELTERS = [
   "email": "",
   "instagram": "",
   "website": "",
-  "image": "",
+  "image": "images/shelters/gyeongsan.webp",
   "region": "Gyeongbuk",
   "region_ko": "경북"
  },
@@ -3254,7 +3254,7 @@ const SHELTERS = [
   "email": "",
   "instagram": "",
   "website": "",
-  "image": "",
+  "image": "images/shelters/kyungdong.webp",
   "region": "Incheon",
   "region_ko": "인천"
  },
@@ -3268,7 +3268,7 @@ const SHELTERS = [
   "email": "",
   "instagram": "https://www.instagram.com/bgpet119/",
   "website": "https://cafe.daum.net/BnKAnimalProtection",
-  "image": "http://www.ceojhn.com/news/articleView.html?idxno=9509",
+  "image": "images/shelters/white-pigeon.webp",
   "region": "Busan",
   "region_ko": "부산"
  },
@@ -3282,7 +3282,7 @@ const SHELTERS = [
   "email": "guroani@naver.com",
   "instagram": "https://www.instagram.com/guro_dogcat/",
   "website": "http://gurocenter.org/bbs/board.php?bo_table=Adoption",
-  "image": "http://gurocenter.org/theme/ace/assets/images/web/15.jpg",
+  "image": "images/shelters/guro.webp",
   "region": "Seoul",
   "region_ko": "서울"
  },
@@ -3310,7 +3310,7 @@ const SHELTERS = [
   "email": "",
   "instagram": "https://www.instagram.com/jeongeup_as/",
   "website": "",
-  "image": "",
+  "image": "images/shelters/jeongeup.webp",
   "region": "Jeonbuk",
   "region_ko": "전북"
  },
@@ -3324,7 +3324,7 @@ const SHELTERS = [
   "email": "",
   "instagram": "",
   "website": "",
-  "image": "",
+  "image": "images/shelters/animal-protection-assoc.webp",
   "region": "Busan",
   "region_ko": "부산"
  },
@@ -3366,7 +3366,7 @@ const SHELTERS = [
   "email": "",
   "instagram": "https://www.instagram.com/dbshelter_bigmama/",
   "website": "",
-  "image": "",
+  "image": "images/shelters/dongbu.webp",
   "region": "Busan",
   "region_ko": "부산"
  },
@@ -3380,7 +3380,7 @@ const SHELTERS = [
   "email": "",
   "instagram": "",
   "website": "",
-  "image": "",
+  "image": "images/shelters/gangjin.webp",
   "region": "Gwangju·Jeonnam",
   "region_ko": "광주·전남"
  },
@@ -3394,7 +3394,7 @@ const SHELTERS = [
   "email": "",
   "instagram": "",
   "website": "",
-  "image": "",
+  "image": "images/shelters/goryeong.webp",
   "region": "Gyeongbuk",
   "region_ko": "경북"
  },
@@ -3422,7 +3422,7 @@ const SHELTERS = [
   "email": "",
   "instagram": "https://www.instagram.com/hanul_protect/",
   "website": "",
-  "image": "",
+  "image": "images/shelters/gokseong.webp",
   "region": "Gwangju·Jeonnam",
   "region_ko": "광주·전남"
  },
@@ -3604,7 +3604,7 @@ const SHELTERS = [
   "email": "",
   "instagram": "",
   "website": "",
-  "image": "",
+  "image": "images/shelters/hwasun.webp",
   "region": "Gwangju·Jeonnam",
   "region_ko": "광주·전남"
  },
@@ -4341,8 +4341,8 @@ const KO = {
   "Login": "로그인",
   "Sign up": "회원가입",
   "Adoption, done kindly": "따뜻한 입양의 시작",
-  "Whether you’re here to adopt or surrender, we can help you with both.": "입양을 원하시든, 파양을 고민하시든 포기브가 함께합니다.",
-  "Pawgive connects you with shelters and other people, and most importantly; pets. We also provide manuals for the crucial steps and processes for adoption, surrendering, and taking care of your pet.": "포기브는 여러분을 보호소와 사람들, 그리고 무엇보다 반려동물과 연결합니다. 입양, 파양, 반려동물 돌봄에 필요한 중요한 단계와 절차를 안내하는 매뉴얼도 제공합니다.",
+  "Whether you’re here to adopt or surrender, we can help you with both.": "저희는 당신이 입양을하러 오셨든, 파양하러 오셨든, 둘다 도와드릴 수 있습니다.",
+  "Pawgive connects you with shelters, people, and most importantly; pets. We also provide manuals for the crucial steps and processes for adoption, surrendering, and taking care of your pet.": "포기브는 당신을 보호소들과 사람들, 그리고 애완동물들에게 소개해 드립니다. 애완동물을 키울때 어디서 시작할지 모르는 분들을 위해서 입양, 파양, 그리고 애완동물을 키울때 알아야 하는 사항들을 정리한 매뉴얼들, 동영상들, 그리고 웹사이트들을 제공합니다.",
   "Meet the pets": "반려동물 만나기",
   "Visit a shelter": "보호소 둘러보기",
   "Adoptions": "입양",
@@ -4353,25 +4353,25 @@ const KO = {
   "See all pets": "전체 보기",
   "View all pets": "모든 반려동물 보기",
   "The journey": "입양 여정",
-  "Helping you every step of the way.": "모든 단계를 함께합니다.",
-  "Explore": "둘러보기",
-  "Explore pet profiles from shelters and people in your community. Get to know each pet’s personality, needs, and story to find a companion who’s right for you.": "보호소와 지역 사회의 반려동물 프로필을 둘러보세요. 각 아이의 성격, 필요, 이야기를 알아보고 나에게 맞는 반려동물을 찾아보세요.",
+  "Helping you every step of the way.": "과정의 모든 단계를 함께합니다.",
+  "Explore": "찾아보기",
+  "Explore pet profiles from shelters and people in your community. Get to know each pet’s personality, needs, and story to find a companion who’s right for you.": "주변에 있는 유기동물들의 펫 프로필과 보호소들, 그리고 다른 사람들을 알아보세요. 각 유기동물의 성격, 특이사항과 스토리를 찾아보면서 마음에 쏙 드는 유기동물을 찾아보세요.",
   "Adopt": "입양하기",
-  "Not sure where to start? We’ll guide you through the adoption process, from understanding what to prepare to taking the next steps toward bringing your new pet home.": "어디서부터 시작해야 할지 모르겠나요? 무엇을 준비해야 하는지부터 새 가족을 집으로 데려오는 다음 단계까지, 입양 과정을 안내해 드립니다.",
-  "Thrive": "함께 살아가기",
-  "Adoption is just the beginning. Find practical guides, tips, and resources to help you care for your pet and build a happy life together.": "입양은 시작일 뿐입니다. 반려동물을 돌보고 함께 행복한 삶을 꾸리는 데 도움이 되는 실용적인 가이드와 팁, 자료를 찾아보세요.",
+  "Not sure where to start? We’ll guide you through the adoption process, from understanding what to prepare to taking the next steps toward bringing your new pet home.": "입양을 처음 해보시나요? 입양하는 과정에서 저희가 도와주겠습니다. 입양하기 위해서 무엇이 필요한지, 다음 단계로 어떻게 넘어가는지 등을 도와줘 유기동물을 집으로 데려 올 수 있게 도와줍니다.",
+  "Thrive": "열심히 사랑하기",
+  "Adoption is just the beginning. Find practical guides, tips, and resources to help you care for your pet and build a happy life together.": "입양은 고작 시작입니다. 유용한 가이드와 팁, 그리고 자료들을 웹사이트에서 찾아서 반려동물과 행복한 삶을 꾸려 보세요.",
   "Our partners": "협력 보호소",
   "Shelters in the network": "네트워크 보호소",
   "See all shelters": "전체 보기",
-  "Looking for a companion?": "반려동물을 찾고 계신가요?",
-  "Start exploring pets looking for a loving home.": "따뜻한 가정을 기다리는 반려동물을 만나보세요.",
+  "Looking for a companion?": "반려동물을 찾고 있나요?",
+  "Start exploring pets looking for a loving home.": "따뜻한 가족을 찾고 있는 유기동물들을 알아보기 시작하세요.",
   "Start browsing": "둘러보기",
   "About us": "소개",
-  "We Pawgive and Pawget your mistakes.": "포기브는 실수를 용서하고, 반려동물을 포기하지 않습니다.",
-  "Pawgive is a website that strives to help you find a companion to love, for shelters to have more visibility, and most importantly, find these animals a happy home.": "포기브는 여러분이 사랑할 반려동물을 찾고, 보호소가 더 많이 알려지고, 무엇보다 동물들이 행복한 가정을 찾을 수 있도록 돕는 웹사이트입니다.",
+  "We Pawgive and Pawget your mistakes.": "저희는 당신의 실수들을 포기브하고 포게트합니다.",
+  "Pawgive is a website that strives to help you find a companion to love, for shelters to have more visibility, and most importantly, find these animals a happy home.": "포기브는 당신이 사랑할 수 있는 운명의 짝을 만날 수 있게, 보호소들이 홍보를 더 쉽게 하기 위해서, 그리고 많은 아이들이 가족을 찾을 수 있기 위해서 세운 웹사이트 입니다.",
   "Our belief": "우리의 믿음",
-  "All pets deserve a safe, caring, and hospitable home.": "모든 반려동물은 안전하고 따뜻한 가정에서 살 자격이 있습니다.",
-  "Our most important role in adoption is helping you and shelters verify if you are ready for a pet. After all, adopting and taking care of a pet is not an easy responsibility to handle. We will help you determine if you are ready to take on a pet, as well as help you determine yourself if you’re ready through our manuals. If not, don’t worry, we’ll be happy to help you adopt when you are. Remember, pets are not disposable objects, or a simple transaction. They are a living being and companion to love.": "입양에서 저희의 가장 중요한 역할은 여러분과 보호소가 반려동물을 맞을 준비가 되었는지 확인하도록 돕는 것입니다. 반려동물을 입양하고 돌보는 일은 결코 가벼운 책임이 아닙니다. 저희는 여러분이 반려동물을 맞이할 준비가 되었는지 판단하도록 돕고, 매뉴얼을 통해 스스로 확인할 수 있도록 안내합니다. 아직 준비가 되지 않았더라도 걱정하지 마세요. 준비가 되었을 때 기꺼이 입양을 도와드리겠습니다. 반려동물은 쓰고 버리는 물건이나 단순한 거래 대상이 아니라, 사랑해야 할 생명이자 동반자라는 것을 기억해 주세요.",
+  "All pets deserve a safe, caring, and hospitable home.": "모든 반려동물들은 안전하고, 다정하고 친절한 가족을 받을 권리가 있습니다.",
+  "Our most important role in adoption is helping you and shelters verify if you are ready for a pet. After all, adopting and taking care of a pet is not an easy responsibility to handle. We will help you determine if you are ready to take on a pet, as well as help you determine yourself if you’re ready through our manuals. If not, don’t worry, we’ll be happy to help you adopt when you are. Remember, pets are not disposable objects, or a simple transaction. They are a living being and companion to love.": "입양 절차에서 저희의 가장 중요한 역할은 당신이 반려동물을 돌볼 준비가 되었는지를 확인하는 것을 도와주는 것입니다. 생명을 입양하고 돌본다는 것은 누구에게나 쉬운 결정이 아니기 때문입니다. 저희는 당신이 입양을 하기에 준비되어 있는지를 도와주고, 스스로 자신이 동물을 입양하기에 적합한지를 확인하는 것을 도와주는 매뉴얼들과 자료들을 제공해드립니다. 만약에 그렇지 않다면, 준비가 되었을때 입양하는 것을 도와드릴테니 걱정하거나 초조해질 필요가 없습니다. 그리고 하나 꼭 기억해주세요. 애완동물은 소비를 하고 버리는 제품이 아닙니다. 사랑을 받아야하는 소중한 생명체입니다.",
   "Browse pets": "반려동물 둘러보기",
   "Our team": "우리 팀",
   "Meet our team": "팀 소개",
