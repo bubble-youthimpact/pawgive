@@ -1,4 +1,34 @@
-<title>Pawgive</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>
+/* Works on bubble-youthimpact.github.io/pawgive/ now and on a custom domain later */
+(function () {
+  var seg = location.pathname.split('/')[1];
+  window.PG_BASE = /\.github\.io$/.test(location.hostname) && seg ? '/' + seg + '/' : '/';
+  document.write('<base href="' + window.PG_BASE + '">');
+})();
+</script>
+<title>Pawgive | Find your companion</title>
+<meta name="description" content="Pawgive is a student-run platform helping abandoned pets in Korea find loving homes. Meet adoptable dogs and cats, find shelters, and learn about responsible adoption.">
+<meta name="theme-color" content="#F9F7EF">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pawgive">
+<meta property="og:title" content="Pawgive | Find your companion">
+<meta property="og:description" content="Pawgive is a student-run platform helping abandoned pets in Korea find loving homes. Meet adoptable dogs and cats, find shelters, and learn about responsible adoption.">
+<meta property="og:url" content="https://bubble-youthimpact.github.io/pawgive/">
+<meta property="og:image" content="https://bubble-youthimpact.github.io/pawgive/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pawgive | Find your companion">
+<meta name="twitter:description" content="Pawgive is a student-run platform helping abandoned pets in Korea find loving homes. Meet adoptable dogs and cats, find shelters, and learn about responsible adoption.">
+<meta name="twitter:image" content="https://bubble-youthimpact.github.io/pawgive/images/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&family=Fraunces:opsz,wght@9..144,300..700&family=Lilita+One&display=swap" rel="stylesheet">
@@ -42,14 +72,8 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;backgroun
 .lang{padding:5px 14px;font-size:16px}
 .lang svg{width:18px;height:18px}
 .menu-btn{display:none;background:none;border:1.5px solid var(--ink);border-radius:10px;padding:8px 10px;cursor:pointer;color:var(--ink)}
-.mobile-nav{display:none}
 @media (max-width:1200px){
   .nav,.right .pill-btn:not(.lang){display:none}
-  .menu-btn{display:block}
-  .mobile-nav.open{display:flex;flex-direction:column;gap:4px;padding:8px clamp(16px,4vw,32px) 18px;border-top:1px solid var(--line)}
-  .mobile-nav a{padding:10px 0;font-size:17px}
-  .mobile-nav .row{display:flex;gap:12px;margin-top:10px}
-  .mobile-nav .row a.pill-btn{flex:1;justify-content:center;padding:12px 20px;font-size:16px}
 }
 
 /* Shared */
@@ -125,8 +149,8 @@ h1,h2,h3{font-family:var(--display);color:var(--ink);font-weight:400;font-variat
 .shelter .title{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .shelter h3{font-family:var(--body);font-size:20px;font-weight:600}
 .shelter ul{list-style:none;padding:0;margin:16px 0 22px;display:flex;flex-direction:column;gap:10px;font-size:17px}
-.shelter li{display:flex;gap:12px;align-items:flex-start}
-.shelter li svg{width:20px;height:20px;flex:none;margin-top:3px}
+.shelter li{display:flex;gap:12px;align-items:flex-start;line-height:1.45}
+.shelter li svg{width:20px;height:1.45em;flex:none;margin:0}  /* box = one text line, so the icon centres on the first line */
 .shelter .go{display:flex;justify-content:center}
 .shelter .go .pill-btn{padding:6px 26px;font-size:18px}
 .ig{width:28px;height:28px;color:#C13584;flex:none}
@@ -248,7 +272,7 @@ h1,h2,h3{font-family:var(--display);color:var(--ink);font-weight:400;font-variat
 .auth .agree{display:flex;align-items:center;gap:14px;font-size:20px;margin:14px 0 50px;cursor:pointer}
 .auth .agree input{appearance:none;width:28px;height:28px;border:2px solid var(--ink);border-radius:50%;margin:0;cursor:pointer;flex:none}
 .auth .agree input:checked{background:radial-gradient(circle,var(--ink) 0 45%,transparent 50%)}
-.auth .agree span{text-decoration:underline}
+.auth .agree span{text-decoration:none}
 .auth .submit{width:100%;border:0;border-radius:999px;padding:20px;font-size:20px;background:var(--ink);color:#fff;cursor:pointer;font-family:inherit}
 .auth .submit:disabled{background:#c6c6c6;cursor:not-allowed}
 .auth .alt{text-align:center;font-size:20px;margin-top:56px}
@@ -326,6 +350,7 @@ footer{border-top:1px solid var(--line);padding-block:64px 28px;background:var(-
 .copy-btn:hover{border-color:var(--ink)}
 .ig-link{display:inline-flex;align-items:center;gap:8px}
 .ig-link .ig{width:20px;height:20px}
+.mail-link .ig{color:var(--ink)}
 .foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:48px;padding-top:22px;border-top:1px solid var(--line);font-size:14.5px}
 .foot-bottom p{margin:0}
 .top-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:0;color:var(--ink);font-size:14.5px;cursor:pointer;padding:6px 0}
@@ -457,8 +482,57 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
 
 #pf-save{transition:background-color .25s,border-color .25s}
 #pf-save.saved{background:#12B878;border-color:#12B878;color:#fff}
-</style>
 
+/* ---- Messages: red errors, green success ---- */
+.form-msg.error,.auth .form-msg.error{color:#C11119}
+.form-msg.ok,.auth .form-msg.ok{color:#12865A}
+.form-msg.info,.auth .form-msg.info{color:var(--ink-2)}
+.text-btn.logout{color:#C11119}
+
+/* ---- Header language pill ---- */
+.lang{background:var(--surface);border-color:var(--line);padding:7px 14px;font-size:15px;font-weight:500;gap:6px}
+.lang:hover{background:var(--surface);border-color:var(--ink)}
+.lang svg{width:16px;height:16px}
+.menu-btn{display:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:0;cursor:pointer}
+.menu-btn:hover{border-color:var(--ink)}
+@media (max-width:1200px){.menu-btn{display:inline-flex}}
+
+/* ---- Full-screen mobile menu ---- */
+.mmenu{position:fixed;inset:0;z-index:300;background:var(--bg);display:flex;flex-direction:column;overflow-y:auto;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 28px)}
+.mmenu[hidden]{display:none}
+.mm-top{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding:env(safe-area-inset-top,0px) clamp(16px,4vw,32px) 0;border-bottom:1px solid var(--line);flex:none}
+.mm-close{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none}
+.mm-close:hover{border-color:var(--ink)}
+.mm-lang{display:flex;gap:4px;margin:20px clamp(16px,4vw,32px) 4px;padding:4px;border:1.5px solid var(--line);border-radius:999px;background:var(--surface)}
+.mm-lang button{flex:1;border:0;background:none;color:var(--ink);border-radius:999px;padding:10px 12px;font:inherit;font-size:15px;font-weight:500;cursor:pointer}
+.mm-lang button.on{background:var(--ink);color:#fff}
+.mm-links{display:flex;flex-direction:column;padding-inline:clamp(16px,4vw,32px)}
+.mm-links a{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 2px;border-bottom:1px solid var(--line);font-size:22px;font-weight:500;color:var(--ink)}
+.mm-links a svg{width:22px;height:22px;flex:none}
+.mm-links a.on{font-weight:700}
+.mm-account{display:flex;gap:12px;flex-wrap:wrap;padding:28px clamp(16px,4vw,32px) 0}
+.mm-account .pill-btn{flex:1;justify-content:center;padding:14px 20px;font-size:16px}
+.mm-account [hidden]{display:none!important}
+
+/* ---- Legal pages & 404 ---- */
+.legal-wrap{max-width:860px}
+.legal-date{margin:14px 0 0;color:var(--muted);font-size:15px}
+.legal{margin-top:clamp(28px,4vw,44px);background:var(--surface);border-radius:24px;padding:clamp(22px,4vw,48px);font-size:16.5px;line-height:1.7;color:var(--text)}
+.legal h2{font-family:var(--body);font-weight:700;font-size:20px;margin:32px 0 10px;color:var(--ink)}
+.legal h2:first-of-type{margin-top:26px}
+.legal p{margin:0 0 12px}
+.legal ul{margin:0 0 12px;padding-left:22px}
+.legal li{margin-bottom:8px}
+html[lang=ko] .lang-en,html:not([lang=ko]) .lang-ko{display:none!important}
+.foot-legal{margin-left:10px;white-space:nowrap}
+.foot-legal a{text-decoration:underline;text-underline-offset:3px}
+.foot-legal a:hover{opacity:.75}
+.auth .agree a{text-decoration:underline;text-underline-offset:3px;font-weight:600;color:var(--ink)}
+.nf-wrap{text-align:left;padding-block:clamp(20px,6vw,80px)}
+@media (max-width:620px){.foot-legal{display:block;margin:6px 0 0}}
+</style>
+</head>
+<body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-paw" viewBox="0 0 32 32"><g fill="#E2611B" stroke="#fff" stroke-width="1.4"><ellipse cx="16" cy="21" rx="7.5" ry="6.5"/><ellipse cx="7" cy="13" rx="3" ry="3.8"/><ellipse cx="12.5" cy="7.5" rx="3" ry="3.8"/><ellipse cx="19.5" cy="7.5" rx="3" ry="3.8"/><ellipse cx="25" cy="13" rx="3" ry="3.8"/></g></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -480,23 +554,32 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#home"><img src="images/logo.webp" alt="Pawgive" style="height:34px;width:auto;display:block"></a>
+    <a class="logo" href="./"><img src="images/logo.webp" alt="Pawgive" style="height:34px;width:auto;display:block"></a>
     <nav class="nav" id="nav">
-      <a href="#about">About</a><a href="#pets">Pets</a><a href="#shelters">Shelters</a><a href="#resources">Resources</a><a href="#quiz">Quiz</a><a href="#contact">Contact</a>
+      <a href="about">About</a><a href="pets">Pets</a><a href="shelters">Shelters</a><a href="resources">Resources</a><a href="quiz">Quiz</a><a href="contact">Contact</a>
     </nav>
     <div class="right">
-      <button class="pill-btn lang" id="lang" type="button"><svg><use href="#i-globe"/></svg><span>ENG</span></button>
-      <a class="pill-btn guest" href="#signup">Sign Up</a>
-      <a class="pill-btn solid guest" href="#login">Login</a>
-      <a class="pill-btn solid hello member" href="#profile" hidden></a>
-      <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+      <button class="pill-btn lang" id="lang" type="button"><svg><use href="#i-globe"/></svg><span>EN</span></button>
+      <a class="pill-btn guest" href="signup">Sign Up</a>
+      <a class="pill-btn solid guest" href="login">Login</a>
+      <a class="pill-btn solid hello member" href="profile" hidden></a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     </div>
   </div>
-  <div class="mobile-nav" id="mobileNav">
-    <a href="#about">About</a><a href="#pets">Pets</a><a href="#shelters">Shelters</a><a href="#resources">Resources</a><a href="#quiz">Quiz</a><a href="#contact">Contact</a>
-    <div class="row"><a class="pill-btn guest" href="#signup">Sign Up</a><a class="pill-btn solid guest" href="#login">Login</a><a class="pill-btn solid hello member" href="#profile" hidden></a></div>
-  </div>
 </header>
+
+<div class="mmenu" id="mobileNav" hidden role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="mm-top">
+    <a class="logo" href="./"><img src="images/logo.webp" alt="Pawgive" style="height:32px;width:auto;display:block"></a>
+    <button class="mm-close" id="menuClose" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="mm-lang" role="group" aria-label="Language"><button type="button" data-setlang="en">English</button><button type="button" data-setlang="ko">한국어</button></div>
+  <nav class="mm-links" aria-label="Main"><a href="about"><span>About</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="pets"><span>Pets</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="shelters"><span>Shelters</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="resources"><span>Resources</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="quiz"><span>Quiz</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="contact"><span>Contact</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></nav>
+  <div class="mm-account">
+    <a class="pill-btn guest" href="signup">Sign Up</a><a class="pill-btn solid guest" href="login">Login</a>
+    <a class="pill-btn solid hello member" href="profile" hidden></a>
+  </div>
+</div>
 
 <main>
 <!-- HOME -->
@@ -506,7 +589,7 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
       <span class="eyebrow">Adoption, done kindly</span>
       <h1 class="hero-title" style="margin-top:22px">Whether you’re here to adopt or surrender, we can help you with both.</h1>
       <p>Pawgive connects you with shelters, people, and most importantly; pets. We also provide manuals for the crucial steps and processes for adoption, surrendering, and taking care of your pet.</p>
-      <div class="btn-row"><a class="pill-btn solid" href="#pets">Meet the pets</a><a class="pill-btn" href="#shelters">Visit a shelter</a></div>
+      <div class="btn-row"><a class="pill-btn solid" href="pets">Meet the pets</a><a class="pill-btn" href="shelters">Visit a shelter</a></div>
       <div class="stats">
         <div><b>25k+</b><span>Adoptions</span></div>
         <div><b>120</b><span>Partner shelters</span></div>
@@ -518,9 +601,9 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
 
   <div class="home-sec">
     <span class="eyebrow">Meet a few</span>
-    <div class="sec-head"><h2 class="h-md">This week's companions</h2><a class="link-arrow" href="#pets">See all pets <svg><use href="#i-arrow"/></svg></a></div>
+    <div class="sec-head"><h2 class="h-md">This week's companions</h2><a class="link-arrow" href="pets">See all pets <svg><use href="#i-arrow"/></svg></a></div>
     <div class="grid g4" id="homePets"></div>
-    <div class="center"><a class="ghost-btn" href="#pets">View all pets <svg width="18" height="18"><use href="#i-arrow"/></svg></a></div>
+    <div class="center"><a class="ghost-btn" href="pets">View all pets <svg width="18" height="18"><use href="#i-arrow"/></svg></a></div>
   </div>
 
   <div class="home-sec journey">
@@ -535,13 +618,13 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
 
   <div class="home-sec">
     <span class="eyebrow">Our partners</span>
-    <div class="sec-head"><h2 class="h-md">Shelters in the network</h2><a class="link-arrow" href="#shelters">See all shelters <svg><use href="#i-arrow"/></svg></a></div>
+    <div class="sec-head"><h2 class="h-md">Shelters in the network</h2><a class="link-arrow" href="shelters">See all shelters <svg><use href="#i-arrow"/></svg></a></div>
     <div class="grid g3" id="homeShelters"></div>
   </div>
 
   <div class="home-sec cta">
     <div><h2>Looking for a companion?</h2><p>Start exploring pets looking for a loving home.</p></div>
-    <a class="ghost-btn" href="#pets">Start browsing</a>
+    <a class="ghost-btn" href="pets">Start browsing</a>
   </div>
 </div></section>
 
@@ -555,7 +638,7 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
     <span class="eyebrow">Our belief</span>
     <h2 class="h-xl" style="margin-top:22px">All pets deserve a safe, caring, and hospitable home.</h2>
     <p class="lead" style="max-width:80ch;margin-top:32px">Our most important role in adoption is helping you and shelters verify if you are ready for a pet. After all, adopting and taking care of a pet is not an easy responsibility to handle. We will help you determine if you are ready to take on a pet, as well as help you determine yourself if you’re ready through our manuals. If not, don’t worry, we’ll be happy to help you adopt when you are. Remember, pets are not disposable objects, or a simple transaction. They are a living being and companion to love.</p>
-    <a class="pill-btn solid" href="#pets" style="margin-top:40px;padding:12px 22px">Browse pets</a>
+    <a class="pill-btn solid" href="pets" style="margin-top:40px;padding:12px 22px">Browse pets</a>
   </div>
 
   <div style="margin-top:clamp(64px,9vw,110px)">
@@ -588,7 +671,7 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
 
 <!-- PET DETAIL -->
 <section class="page" id="p-pet"><div class="wrap">
-  <a class="back" id="petBack" href="#pets"><svg width="20" height="20"><use href="#i-back"/></svg><span>Back to all pets</span></a>
+  <a class="back" id="petBack" href="pets"><svg width="20" height="20"><use href="#i-back"/></svg><span>Back to all pets</span></a>
   <div class="detail" id="petDetail"></div>
 </div></section>
 
@@ -661,12 +744,12 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
     <h1>Login</h1>
     <div class="field"><label for="l-email">Email<i>*</i></label><input id="l-email" type="email" required></div>
     <div class="field"><label for="l-pass">Password<i>*</i></label><input id="l-pass" type="password" required></div>
-    <div class="forgot"><a href="#login" id="forgot">Forgot your password?</a></div>
+    <div class="forgot"><a href="login" id="forgot">Forgot your password?</a></div>
     <button class="submit" type="submit">Login</button>
     <div class="or"><span>or</span></div>
     <button class="google-btn" type="button"><svg class="g-icon" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg><span>Continue with Google</span></button>
     <p class="form-msg" id="loginMsg" hidden></p>
-    <p class="alt"><a href="#signup">Don't have an account? <b>Sign up</b></a></p>
+    <p class="alt"><a href="signup">Don't have an account? <b>Sign up</b></a></p>
   </form>
 </div></section>
 
@@ -694,6 +777,182 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
   </div>
 </div></section>
 
+<!-- PRIVACY -->
+<section class="page" id="p-privacy"><div class="wrap legal-wrap">
+  <span class="eyebrow">Legal</span>
+  <h1 class="h-xl" style="margin-top:22px">Privacy Policy</h1>
+  <p class="legal-date"><span class="lang-en">Effective date: November 4, 2026</span><span class="lang-ko">시행일: 2026년 11월 4일</span></p>
+  <div class="legal lang-en">
+    <p>This Privacy Policy explains what information Pawgive (“we”, “us”) collects when you use our website, how we use it, and the choices you have. Pawgive is a student-run project that helps people find adoptable pets and animal shelters in South Korea.</p>
+    <h2>1. Information we collect</h2>
+    <ul>
+      <li><strong>Account information.</strong> When you sign up, we collect your name and email address. Your password is handled by Google Firebase Authentication; we never see or store it. If you continue with Google, we receive your name and email address from your Google account.</li>
+      <li><strong>Saved pets.</strong> If you save pets to your favourites, we store the list of those pets with your account.</li>
+      <li><strong>Contact messages.</strong> When you use the contact form, we receive your name, email address, what you are interested in, and your message.</li>
+      <li><strong>Preferences.</strong> Your language choice is stored in your own browser, not on our servers.</li>
+      <li><strong>Technical information.</strong> Our hosting and service providers automatically process basic technical data, such as your IP address and browser type, to deliver the website and keep it secure.</li>
+    </ul>
+    <h2>2. How we use your information</h2>
+    <ul>
+      <li>To create and manage your account and let you log in.</li>
+      <li>To save and show your favourite pets.</li>
+      <li>To reply to messages you send us.</li>
+      <li>To send account emails you ask for, such as password reset links.</li>
+      <li>To keep the website secure and working properly.</li>
+    </ul>
+    <p>We do not sell your personal information, show advertising, or use your information for marketing without your permission.</p>
+    <h2>3. Services we use</h2>
+    <p>We share information only with the service providers that run parts of the website for us:</p>
+    <ul>
+      <li><strong>Google Firebase</strong> (Authentication and Cloud Firestore), for accounts and saved pets.</li>
+      <li><strong>FormSubmit</strong> (formsubmit.co), which delivers contact form messages to our email inbox.</li>
+      <li><strong>GitHub Pages</strong>, which hosts the website.</li>
+      <li><strong>Google Fonts</strong> and <strong>jsDelivr</strong>, which deliver fonts and code libraries to your browser.</li>
+    </ul>
+    <p>These providers may process information on servers outside South Korea, including in the United States. Pet photos and shelter images may load from the shelters’ own websites.</p>
+    <h2>4. How long we keep it</h2>
+    <p>We keep your account information and saved pets until you delete your account or ask us to delete them. Contact messages are kept only as long as needed to respond to you, and normally no longer than one year.</p>
+    <h2>5. Your rights</h2>
+    <p>You can see and change your name on your profile page at any time. You may also ask us to access, correct, or delete your personal information, or to delete your account, by emailing <strong>pawgive@gmail.com</strong>. We will respond as soon as we can.</p>
+    <h2>6. Children</h2>
+    <p>If you are under 14, please ask a parent or guardian before creating an account or sending us your information.</p>
+    <h2>7. Cookies and browser storage</h2>
+    <p>We do not use advertising or tracking cookies. Firebase stores your sign-in session in your browser so you stay logged in, and we store your language choice there too. You can clear these at any time in your browser settings.</p>
+    <h2>8. Security</h2>
+    <p>We use established services and access rules that let each person read and change only their own saved pets. No method of storing information online is completely secure, but we work to protect your information.</p>
+    <h2>9. Changes to this policy</h2>
+    <p>If we update this policy, we will post the new version on this page and change the effective date above.</p>
+    <h2>10. Contact</h2>
+    <p>Questions about your privacy? Email us at <strong>pawgive@gmail.com</strong>.</p>
+  </div>
+  <div class="legal lang-ko">
+    <p>본 개인정보처리방침은 포기브(이하 “포기브” 또는 “저희”)가 웹사이트 이용 시 어떤 정보를 수집하고, 어떻게 이용하며, 이용자에게 어떤 선택권이 있는지 설명합니다. 포기브는 대한민국의 입양 가능한 반려동물과 동물보호소를 찾을 수 있도록 돕는 학생 운영 프로젝트입니다.</p>
+    <h2>1. 수집하는 정보</h2>
+    <ul>
+      <li><strong>계정 정보.</strong> 회원가입 시 이름과 이메일 주소를 수집합니다. 비밀번호는 Google Firebase 인증이 처리하며, 포기브는 비밀번호를 보거나 저장하지 않습니다. Google로 계속하기를 이용하는 경우 Google 계정의 이름과 이메일 주소를 받습니다.</li>
+      <li><strong>관심 반려동물.</strong> 관심 반려동물을 저장하면 해당 목록이 계정과 함께 저장됩니다.</li>
+      <li><strong>문의 내용.</strong> 문의 양식을 이용하면 이름, 이메일 주소, 관심 분야, 메시지를 받습니다.</li>
+      <li><strong>설정.</strong> 언어 설정은 포기브 서버가 아닌 이용자의 브라우저에 저장됩니다.</li>
+      <li><strong>기술 정보.</strong> 웹사이트 제공과 보안을 위해 호스팅 및 서비스 제공업체가 IP 주소, 브라우저 종류 등 기본적인 기술 정보를 자동으로 처리합니다.</li>
+    </ul>
+    <h2>2. 정보 이용 목적</h2>
+    <ul>
+      <li>계정 생성·관리 및 로그인 제공</li>
+      <li>관심 반려동물 저장 및 표시</li>
+      <li>보내주신 문의에 대한 답변</li>
+      <li>비밀번호 재설정 링크 등 이용자가 요청한 계정 관련 이메일 발송</li>
+      <li>웹사이트의 보안 유지 및 정상 운영</li>
+    </ul>
+    <p>포기브는 개인정보를 판매하지 않으며, 광고를 게재하지 않고, 동의 없이 마케팅에 이용하지 않습니다.</p>
+    <h2>3. 이용하는 서비스</h2>
+    <p>포기브는 웹사이트 운영을 위해 아래 서비스 제공업체와만 정보를 공유합니다.</p>
+    <ul>
+      <li><strong>Google Firebase</strong> (인증 및 Cloud Firestore): 계정 및 관심 반려동물 저장</li>
+      <li><strong>FormSubmit</strong> (formsubmit.co): 문의 양식 메시지를 포기브 이메일로 전달</li>
+      <li><strong>GitHub Pages</strong>: 웹사이트 호스팅</li>
+      <li><strong>Google Fonts</strong>, <strong>jsDelivr</strong>: 글꼴 및 코드 라이브러리 제공</li>
+    </ul>
+    <p>이들 업체는 미국 등 대한민국 외 지역의 서버에서 정보를 처리할 수 있습니다. 반려동물 사진과 보호소 이미지는 각 보호소의 웹사이트에서 불러올 수 있습니다.</p>
+    <h2>4. 보유 기간</h2>
+    <p>계정 정보와 관심 반려동물은 계정을 삭제하거나 삭제를 요청할 때까지 보관합니다. 문의 내용은 답변에 필요한 기간 동안만 보관하며, 통상 1년을 넘기지 않습니다.</p>
+    <h2>5. 이용자의 권리</h2>
+    <p>프로필 페이지에서 언제든지 이름을 확인하고 변경할 수 있습니다. 개인정보의 열람, 정정, 삭제 또는 계정 삭제를 원하시면 <strong>pawgive@gmail.com</strong>으로 이메일을 보내 주세요. 최대한 빠르게 처리하겠습니다.</p>
+    <h2>6. 아동</h2>
+    <p>만 14세 미만이라면 계정을 만들거나 정보를 보내기 전에 부모님 또는 보호자의 동의를 받아 주세요.</p>
+    <h2>7. 쿠키 및 브라우저 저장소</h2>
+    <p>포기브는 광고·추적용 쿠키를 사용하지 않습니다. 로그인 상태 유지를 위해 Firebase가 브라우저에 로그인 정보를 저장하며, 언어 설정도 브라우저에 저장됩니다. 브라우저 설정에서 언제든지 삭제할 수 있습니다.</p>
+    <h2>8. 보안</h2>
+    <p>포기브는 신뢰할 수 있는 서비스와 접근 규칙을 사용하여 각 이용자가 본인의 관심 반려동물만 보고 변경할 수 있도록 합니다. 온라인에서 완벽하게 안전한 저장 방법은 없지만, 정보 보호를 위해 노력하고 있습니다.</p>
+    <h2>9. 방침의 변경</h2>
+    <p>본 방침이 변경되는 경우 이 페이지에 새로운 내용을 게시하고 위의 시행일을 변경합니다.</p>
+    <h2>10. 문의</h2>
+    <p>개인정보에 관한 문의는 <strong>pawgive@gmail.com</strong>으로 보내 주세요.</p>
+  </div>
+</div></section>
+
+<!-- TERMS -->
+<section class="page" id="p-terms"><div class="wrap legal-wrap">
+  <span class="eyebrow">Legal</span>
+  <h1 class="h-xl" style="margin-top:22px">Terms of Service</h1>
+  <p class="legal-date"><span class="lang-en">Effective date: November 4, 2026</span><span class="lang-ko">시행일: 2026년 11월 4일</span></p>
+  <div class="legal lang-en">
+    <p>These Terms of Service (“Terms”) apply to your use of the Pawgive website. By using the website or creating an account, you agree to these Terms.</p>
+    <h2>1. About Pawgive</h2>
+    <p>Pawgive is a free, student-run website that shares information about adoptable pets, animal shelters in South Korea, and resources on adopting, surrendering, and caring for pets.</p>
+    <h2>2. Pet and shelter information</h2>
+    <p>Pet profiles and shelter details are gathered from shelters and other public sources. We try to keep them accurate, but they may be incomplete or out of date. Pawgive is not an animal shelter and does not arrange adoptions or surrenders. Please contact the shelter directly to confirm a pet’s status and the adoption process before making any decisions.</p>
+    <h2>3. Accounts</h2>
+    <ul>
+      <li>Provide accurate information when you create an account.</li>
+      <li>Keep your password private. You are responsible for activity on your account.</li>
+      <li>You can stop using your account at any time, and you can ask us to delete it by emailing pawgive@gmail.com.</li>
+      <li>We may suspend or remove accounts that break these Terms.</li>
+    </ul>
+    <h2>4. Acceptable use</h2>
+    <p>You agree not to:</p>
+    <ul>
+      <li>use the website for anything illegal or harmful to animals or people;</li>
+      <li>send false, abusive, or spam messages through the contact form;</li>
+      <li>try to break, overload, or gain unauthorized access to the website or its services;</li>
+      <li>copy large amounts of the website’s content by automated means.</li>
+    </ul>
+    <h2>5. Content and ownership</h2>
+    <p>The Pawgive name, logo, design, and original text belong to Pawgive. Pet photos, shelter information, and linked guides, videos, and websites belong to their respective owners and are shown to help animals find homes.</p>
+    <h2>6. Links to other websites</h2>
+    <p>The website links to shelters and other third-party websites. We are not responsible for their content, services, or privacy practices.</p>
+    <h2>7. Disclaimer and limitation of liability</h2>
+    <p>The website is provided “as is”, without warranties of any kind. To the extent permitted by law, Pawgive is not liable for any loss or damage arising from your use of the website or from relying on its information, including decisions about adopting or surrendering an animal.</p>
+    <h2>8. Changes</h2>
+    <p>We may update these Terms from time to time. We will post the new version on this page and change the effective date above. Continuing to use the website means you accept the updated Terms.</p>
+    <h2>9. Governing law</h2>
+    <p>These Terms are governed by the laws of the Republic of Korea.</p>
+    <h2>10. Contact</h2>
+    <p>Questions about these Terms? Email us at <strong>pawgive@gmail.com</strong>.</p>
+  </div>
+  <div class="legal lang-ko">
+    <p>본 이용약관(이하 “약관”)은 포기브 웹사이트 이용에 적용됩니다. 웹사이트를 이용하거나 계정을 만들면 본 약관에 동의하는 것으로 봅니다.</p>
+    <h2>1. 포기브 소개</h2>
+    <p>포기브는 입양 가능한 반려동물, 대한민국의 동물보호소, 그리고 입양·파양·반려동물 돌봄에 관한 자료를 제공하는 무료 학생 운영 웹사이트입니다.</p>
+    <h2>2. 반려동물 및 보호소 정보</h2>
+    <p>반려동물 프로필과 보호소 정보는 보호소 및 기타 공개된 자료에서 수집합니다. 정확성을 유지하기 위해 노력하지만, 정보가 불완전하거나 최신이 아닐 수 있습니다. 포기브는 동물보호소가 아니며 입양이나 파양을 직접 진행하지 않습니다. 결정하기 전에 반드시 해당 보호소에 직접 연락하여 반려동물의 상태와 입양 절차를 확인해 주세요.</p>
+    <h2>3. 계정</h2>
+    <ul>
+      <li>계정을 만들 때 정확한 정보를 제공해 주세요.</li>
+      <li>비밀번호는 다른 사람과 공유하지 마세요. 계정에서 발생하는 활동은 이용자 본인의 책임입니다.</li>
+      <li>언제든지 계정 이용을 중단할 수 있으며, pawgive@gmail.com으로 이메일을 보내 계정 삭제를 요청할 수 있습니다.</li>
+      <li>본 약관을 위반하는 계정은 이용이 정지되거나 삭제될 수 있습니다.</li>
+    </ul>
+    <h2>4. 이용 시 금지 사항</h2>
+    <p>다음 행위를 해서는 안 됩니다.</p>
+    <ul>
+      <li>불법적이거나 동물 또는 사람에게 해가 되는 목적으로 웹사이트를 이용하는 행위</li>
+      <li>문의 양식으로 허위, 욕설 또는 스팸 메시지를 보내는 행위</li>
+      <li>웹사이트나 서비스를 방해하거나, 과부하를 일으키거나, 무단으로 접근하려는 행위</li>
+      <li>자동화된 방법으로 웹사이트의 콘텐츠를 대량으로 복제하는 행위</li>
+    </ul>
+    <h2>5. 콘텐츠 및 권리</h2>
+    <p>포기브의 이름, 로고, 디자인 및 직접 작성한 글은 포기브에 속합니다. 반려동물 사진, 보호소 정보, 연결된 가이드·영상·웹사이트는 각 권리자에게 속하며, 동물들이 가족을 찾도록 돕기 위해 소개합니다.</p>
+    <h2>6. 외부 웹사이트 링크</h2>
+    <p>웹사이트에는 보호소 및 기타 외부 웹사이트로 연결되는 링크가 있습니다. 포기브는 외부 웹사이트의 콘텐츠, 서비스, 개인정보 처리에 대해 책임지지 않습니다.</p>
+    <h2>7. 면책 및 책임의 제한</h2>
+    <p>웹사이트는 “있는 그대로” 제공되며 어떠한 보증도 하지 않습니다. 법이 허용하는 범위에서, 포기브는 웹사이트 이용 또는 웹사이트 정보에 의존하여 발생한 손실이나 손해(입양 또는 파양에 관한 결정 포함)에 대해 책임지지 않습니다.</p>
+    <h2>8. 약관의 변경</h2>
+    <p>포기브는 약관을 수시로 변경할 수 있습니다. 변경 시 이 페이지에 새로운 약관을 게시하고 위의 시행일을 변경합니다. 변경 후에도 웹사이트를 계속 이용하면 변경된 약관에 동의하는 것으로 봅니다.</p>
+    <h2>9. 준거법</h2>
+    <p>본 약관은 대한민국 법률에 따릅니다.</p>
+    <h2>10. 문의</h2>
+    <p>약관에 관한 문의는 <strong>pawgive@gmail.com</strong>으로 보내 주세요.</p>
+  </div>
+</div></section>
+
+<!-- 404 -->
+<section class="page" id="p-404"><div class="wrap nf-wrap">
+  <span class="eyebrow">404</span>
+  <h1 class="h-xl" style="margin-top:22px">Page not found</h1>
+  <p class="lead">The page you’re looking for doesn’t exist or has moved.</p>
+  <div class="btn-row" style="margin-top:32px"><a class="pill-btn solid" href="./">Go to homepage</a><a class="pill-btn" href="pets">Meet the pets</a></div>
+</div></section>
+
 <section class="page" id="p-signup"><div class="wrap">
   <form class="auth" id="signupForm" novalidate>
     <h1>Sign Up</h1>
@@ -701,12 +960,12 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
     <div class="field"><label for="s-email">Email<i>*</i></label><input id="s-email" type="email" required></div>
     <div class="field"><label for="s-pass">Password<i>*</i></label><input id="s-pass" type="password" required></div>
     <div class="field"><label for="s-pass2">Confirm password<i>*</i></label><input id="s-pass2" type="password" required></div>
-    <label class="agree" for="s-agree"><input id="s-agree" type="checkbox"><span>I agree to the terms and conditions.</span></label>
+    <label class="agree" for="s-agree"><input id="s-agree" type="checkbox"><span class="lang-en">I agree to the <a href="terms">Terms of Service</a> and <a href="privacy">Privacy Policy</a>.</span><span class="lang-ko"><a href="terms">이용약관</a> 및 <a href="privacy">개인정보처리방침</a>에 동의합니다.</span></label>
     <button class="submit" id="signupBtn" type="submit" disabled>Sign Up</button>
     <div class="or"><span>or</span></div>
     <button class="google-btn" type="button"><svg class="g-icon" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg><span>Continue with Google</span></button>
     <p class="form-msg" id="signupMsg" hidden></p>
-    <p class="alt"><a href="#login">Already have an account? <b>Login</b></a></p>
+    <p class="alt"><a href="login">Already have an account? <b>Login</b></a></p>
   </form>
 </div></section>
 </main>
@@ -715,21 +974,21 @@ html[lang=ko] .stats b,html[lang=ko] .steps .n{font-weight:700}
   <div class="wrap">
     <div class="foot-main">
       <div class="foot-brand">
-        <a class="logo" href="#home"><img src="images/logo.webp" alt="Pawgive home" style="height:34px;width:auto;display:block"></a>
+        <a class="logo" href="./"><img src="images/logo.webp" alt="Pawgive home" style="height:34px;width:auto;display:block"></a>
         <p>Connecting loving families with pets in need of a forever home.</p>
       </div>
       <nav class="foot-cols" aria-label="Footer">
-        <div><h4>Find a pet</h4><a href="#pets">Pets</a><a href="#shelters">Shelters</a><a href="#quiz">Quiz</a></div>
-        <div><h4>Learn</h4><a href="#resources">Resources</a><a href="#about">About us</a><a href="#contact">Contact</a></div>
-        <div><h4>Account</h4><a href="#signup">Sign up</a><a href="#login">Login</a></div>
+        <div><h4>Find a pet</h4><a href="pets">Pets</a><a href="shelters">Shelters</a><a href="quiz">Quiz</a></div>
+        <div><h4>Learn</h4><a href="resources">Resources</a><a href="about">About us</a><a href="contact">Contact</a></div>
+        <div><h4>Account</h4><a href="signup">Sign up</a><a href="login">Login</a></div>
         <div class="foot-contact"><h4>Get in touch</h4>
-          <div class="copy-row"><span data-bind="email" id="footEmail"></span><button type="button" class="copy-btn" id="copyEmail">Copy</button></div>
+          <a href="mailto:pawgive@gmail.com" class="ig-link mail-link" id="footEmail"><svg class="ig"><use href="#i-mail"/></svg><span data-bind="email"></span></a>
           <a href="https://www.instagram.com/pawgive" target="_blank" rel="noopener" class="ig-link"><svg class="ig"><use href="#i-ig"/></svg><span data-bind="instagram"></span></a>
         </div>
       </nav>
     </div>
     <div class="foot-bottom">
-      <p>© PawGive. All Rights Reserved.</p>
+      <p>© Pawgive. All Rights Reserved. <span class="foot-legal"><a href="privacy">Privacy Policy</a> · <a href="terms">Terms of Service</a></span></p>
       <button type="button" class="top-btn" id="toTop">Back to top <svg width="16" height="16" style="transform:rotate(-90deg)"><use href="#i-arrow"/></svg></button>
     </div>
   </div>
@@ -4454,7 +4713,14 @@ const KO = {
   "Password reset is not connected yet in this preview.": "미리보기 버전에서는 아직 비밀번호 재설정이 연결되어 있지 않아요.",
   "Please fill in every required field.": "필수 항목을 모두 입력해 주세요.",
   "The two passwords don’t match.": "두 비밀번호가 일치하지 않아요.",
-  "Sign up is not connected yet in this preview.": "미리보기 버전에서는 아직 회원가입이 연결되어 있지 않아요."
+  "Sign up is not connected yet in this preview.": "미리보기 버전에서는 아직 회원가입이 연결되어 있지 않아요.",
+  "Privacy Policy": "개인정보처리방침",
+  "Terms of Service": "이용약관",
+  "Legal": "법적 고지",
+  "Page not found": "페이지를 찾을 수 없어요",
+  "The page you’re looking for doesn’t exist or has moved.": "찾으시는 페이지가 없거나 다른 곳으로 이동했어요.",
+  "Go to homepage": "홈으로 가기",
+  "© Pawgive. All Rights Reserved.": "© Pawgive. All Rights Reserved."
 };
 let LANG = 'en';
 try { if (localStorage.getItem('pawgive-lang') === 'ko') LANG = 'ko'; } catch (e) {}
@@ -4765,7 +5031,7 @@ function mountQuiz(rootId) {
 const quizRelabel = [mountQuiz('quiz-basic'), mountQuiz('quiz-trivia')];
 
 /* Forms (demo only — connect to your backend later) */
-function note(id, text) { const el = $(id); el.textContent = text; el.hidden = false; }
+function note(id, text, kind = 'error') { const el = $(id); el.textContent = text; el.hidden = false; el.classList.remove('error', 'ok', 'info'); el.classList.add(kind); }
 /* Contact form → FormSubmit (formsubmit.co) → your inbox.
    To change where messages go, change CONTACT_TO. */
 const CONTACT_TO = 'bubble.youthimpact@gmail.com';
@@ -4775,7 +5041,7 @@ $('#contactForm').addEventListener('submit', async e => {
     return note('#contactMsg', 'Please fill in your name, a valid email and a message.');
   if ($('#c-honey').value) return; // spam bot filled the hidden field
   const btn = $('#c-send'); btn.disabled = true;
-  note('#contactMsg', 'Sending…');
+  note('#contactMsg', 'Sending…', 'info');
   try {
     const res = await fetch('https://formsubmit.co/ajax/' + CONTACT_TO, {
       method: 'POST',
@@ -4793,10 +5059,10 @@ $('#contactForm').addEventListener('submit', async e => {
     const data = await res.json().catch(() => ({}));
     if (!res.ok || String(data.success) === 'false') {
       console.warn('FormSubmit:', res.status, data);
-      if (/activat/i.test(data.message || '')) return note('#contactMsg', tx('This form is waiting to be activated. Please check the Pawgive inbox for the activation email.', '문의 양식이 아직 활성화되지 않았어요. 포기브 메일함에서 활성화 이메일을 확인해 주세요.'));
+      if (/activat/i.test(data.message || '')) return note('#contactMsg', tx('This form is waiting to be activated. Please check the Pawgive inbox for the activation email.', '문의 양식이 아직 활성화되지 않았어요. 포기브 메일함에서 활성화 이메일을 확인해 주세요.'), 'info');
       throw new Error(data.message || 'failed');
     }
-    note('#contactMsg', 'Thanks! Your message was sent. We’ll get back to you soon.');
+    note('#contactMsg', 'Thanks! Your message was sent. We’ll get back to you soon.', 'ok');
     e.target.reset();
   } catch (err) {
     console.warn('Contact form error:', err);
@@ -4832,7 +5098,7 @@ const AUTH_ERR = {
   'auth/network-request-failed': ['Couldn’t connect. Check your internet and try again.', '연결할 수 없어요. 인터넷 연결을 확인한 뒤 다시 시도해 주세요.']
 };
 const authError = err => { const m = AUTH_ERR[err && err.code]; return m ? tx(m[0], m[1]) : tx('Something went wrong. Please try again.', '문제가 발생했어요. 다시 시도해 주세요.'); };
-const noAuth = id => note(id, tx('Accounts only work on the live website, not in this preview.', '계정 기능은 미리보기가 아닌 실제 사이트에서만 작동해요.'));
+const noAuth = id => note(id, tx('Accounts only work on the live website, not in this preview.', '계정 기능은 미리보기가 아닌 실제 사이트에서만 작동해요.'), 'info');
 async function busy(form, fn) {
   const btns = form.querySelectorAll('button');
   btns.forEach(b => b.disabled = true);
@@ -4871,7 +5137,7 @@ function renderProfile() {
   $('#pf-pass').hidden = !(user.providerData || []).some(p => p.providerId === 'password');
   const favs = PETS.filter(p => FAVS.has(p.id));
   $('#favCount').textContent = LANG === 'ko' ? `${favs.length}마리` : `${favs.length} ${favs.length === 1 ? 'pet' : 'pets'}`;
-  $('#favGrid').innerHTML = favs.length ? favs.map(petCard).join('') : `<div class="fav-empty">${LANG === 'ko' ? '아직 저장한 반려동물이 없어요. 마음에 드는 아이의 ♡를 눌러 보세요.' : 'No saved pets yet. Tap the ♡ on any pet to save it here.'}<br><a class="pill-btn solid" href="#pets">${LANG === 'ko' ? '반려동물 둘러보기' : 'Browse pets'}</a></div>`;
+  $('#favGrid').innerHTML = favs.length ? favs.map(petCard).join('') : `<div class="fav-empty">${LANG === 'ko' ? '아직 저장한 반려동물이 없어요. 마음에 드는 아이의 ♡를 눌러 보세요.' : 'No saved pets yet. Tap the ♡ on any pet to save it here.'}<br><a class="pill-btn solid" href="pets">${LANG === 'ko' ? '반려동물 둘러보기' : 'Browse pets'}</a></div>`;
 }
 let authReady = false;
 if (auth) auth.onAuthStateChanged(user => {
@@ -4897,7 +5163,7 @@ $('#profileForm').addEventListener('submit', async e => {
 });
 $('#pf-pass').addEventListener('click', async () => {
   const user = auth && auth.currentUser; if (!user) return;
-  try { await auth.sendPasswordResetEmail(user.email); note('#profileMsg', tx(`We sent a link to ${user.email} to change your password.`, `${user.email}로 비밀번호 변경 링크를 보냈어요.`)); }
+  try { await auth.sendPasswordResetEmail(user.email); note('#profileMsg', tx(`We sent a link to ${user.email} to change your password.`, `${user.email}로 비밀번호 변경 링크를 보냈어요.`), 'ok'); }
   catch (err) { note('#profileMsg', authError(err)); }
 });
 document.addEventListener('click', async e => {
@@ -4935,7 +5201,7 @@ $('#forgot').addEventListener('click', async e => {
   const email = $('#l-email').value.trim();
   if (!email.includes('@')) return note('#loginMsg', tx('Type your email above, then click “Forgot your password?” again.', '위에 이메일을 입력한 뒤 “비밀번호를 잊으셨나요?”를 다시 눌러 주세요.'));
   if (!auth) return noAuth('#loginMsg');
-  try { await auth.sendPasswordResetEmail(email); note('#loginMsg', tx(`If an account exists for ${email}, we’ve sent a password reset link. Check your inbox and spam folder.`, `${email}로 가입된 계정이 있다면 비밀번호 재설정 링크를 보냈어요. 받은편지함과 스팸함을 확인해 주세요.`)); }
+  try { await auth.sendPasswordResetEmail(email); note('#loginMsg', tx(`If an account exists for ${email}, we’ve sent a password reset link. Check your inbox and spam folder.`, `${email}로 가입된 계정이 있다면 비밀번호 재설정 링크를 보냈어요. 받은편지함과 스팸함을 확인해 주세요.`), 'ok'); }
   catch (err) { note('#loginMsg', authError(err)); }
 });
 $('#s-agree').addEventListener('change', e => $('#signupBtn').disabled = !e.target.checked);
@@ -4965,7 +5231,9 @@ function setLang(lang) {
   LANG = lang;
   try { localStorage.setItem('pawgive-lang', lang); } catch (e) {}
   document.documentElement.lang = lang;
-  $('#lang span').textContent = lang === 'ko' ? '한국어' : 'ENG';
+  $('#lang span').textContent = lang === 'ko' ? 'KO' : 'EN';
+  document.querySelectorAll('[data-setlang]').forEach(b => { b.classList.toggle('on', b.dataset.setlang === lang); b.setAttribute('aria-pressed', b.dataset.setlang === lang); });
+  if (typeof currentRoute !== 'undefined') { const T = TITLES[currentRoute]; if (T) document.title = `${tx(...T)} | Pawgive`; }
   $('#lang').setAttribute('aria-label', lang === 'ko' ? 'Switch to English' : '한국어로 보기');
   if (typeof auth !== 'undefined' && auth) { auth.languageCode = lang; updateAccountUI(auth.currentUser); }
   renderTeam(); renderResources(); quizRelabel.forEach(f => f());
@@ -4974,49 +5242,75 @@ function setLang(lang) {
 }
 $('#lang').addEventListener('click', () => setLang(LANG === 'ko' ? 'en' : 'ko'));
 setLang(LANG);
-$('#menuBtn').addEventListener('click', e => {
-  const open = $('#mobileNav').classList.toggle('open'); e.currentTarget.setAttribute('aria-expanded', open);
-});
+/* Full-screen mobile menu */
+function openMenu() { $('#mobileNav').hidden = false; document.body.classList.add('no-scroll'); $('#menuBtn').setAttribute('aria-expanded', 'true'); $('#menuClose').focus(); }
+function closeMenu() { const m = $('#mobileNav'); if (m.hidden) return; m.hidden = true; document.body.classList.remove('no-scroll'); $('#menuBtn').setAttribute('aria-expanded', 'false'); }
+$('#menuBtn').addEventListener('click', openMenu);
+$('#menuClose').addEventListener('click', closeMenu);
+addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+addEventListener('resize', () => { if (innerWidth > 1200) closeMenu(); });
+document.querySelectorAll('[data-setlang]').forEach(b => b.addEventListener('click', () => setLang(b.dataset.setlang)));
 
 /* Footer helpers */
-$('#copyEmail').addEventListener('click', async e => {
-  const btn = e.currentTarget;
-  try { await navigator.clipboard.writeText(SITE.email); btn.textContent = 'Copied'; }
-  catch (err) { const r = document.createRange(); r.selectNodeContents($('#footEmail')); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); btn.textContent = 'Selected'; }
-  setTimeout(() => btn.textContent = 'Copy', 1800);
-});
+$('#footEmail').href = 'mailto:' + SITE.email;
 $('#toTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 /* Header height for centring login / sign up */
 function setHdr(){ document.documentElement.style.setProperty('--hdr', document.querySelector('header.top').offsetHeight + 'px'); }
 setHdr(); addEventListener('resize', setHdr);
 
-/* Router */
-const PAGES = ['home','about','pets','shelters','resources','quiz','contact','login','signup','profile'];
-function go(h) {
-  route(h);
-  try { history.replaceState(null, '', '#' + (h.startsWith('pet-') ? 'pets' : h)); } catch (e) {}
+/* Router — clean URLs on the live site (e.g. /pawgive/about); in previews pages switch in place */
+const PAGES = ['home','about','pets','shelters','resources','quiz','contact','login','signup','profile','privacy','terms','404'];
+const IS_PREVIEW = location.protocol === 'file:' || /claude|anthropic/i.test(location.hostname) || !window.PG_BASE;
+const BASE = window.PG_BASE || '/';
+const TITLES = { about: ['About', '소개'], pets: ['Pets', '반려동물'], shelters: ['Shelters', '보호소'], resources: ['Resources', '자료실'], quiz: ['Quiz', '퀴즈'], contact: ['Contact', '문의'], login: ['Login', '로그인'], signup: ['Sign Up', '회원가입'], profile: ['My profile', '내 프로필'], privacy: ['Privacy Policy', '개인정보처리방침'], terms: ['Terms of Service', '이용약관'], '404': ['Page not found', '페이지를 찾을 수 없어요'] };
+const pathFor = h => h === 'home' ? '' : h.startsWith('pet-') ? 'pets/' + h.slice(4) : h;
+const hrefFor = h => pathFor(h) || './';
+function nameFor(path) {
+  path = decodeURIComponent(path || '').replace(/[?#].*$/, '').replace(/^\.?\/+|\/+$/g, '').replace(/index\.html$/, '').replace(/\/+$/, '');
+  if (!path) return 'home';
+  const m = path.match(/^pets\/([\w-]+)$/);
+  return m ? 'pet-' + m[1] : path;
 }
+function currentName() {
+  if (IS_PREVIEW) return 'home';
+  const legacy = (location.hash || '').slice(1);          // old #about links still work
+  if (legacy && !legacy.includes('=')) return legacy;
+  const p = location.pathname;
+  return nameFor(p.startsWith(BASE) ? p.slice(BASE.length) : p);
+}
+function go(h) {
+  const page = route(h);
+  if (IS_PREVIEW) return;
+  try { history.pushState({ h }, '', BASE + pathFor(page === 'pet' ? h : page)); } catch (e) {}
+}
+addEventListener('popstate', () => route(currentName()));
 document.addEventListener('click', e => {
-  const a = e.target.closest('a[href^="#"]');
-  if (!a) return;
+  if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  const a = e.target.closest('a[href]');
+  if (!a || a.target === '_blank') return;
+  const href = a.getAttribute('href');
+  if (href === '#') { e.preventDefault(); return; }
+  if (/^(https?:|mailto:|tel:|data:|images\/|\/\/)/.test(href) || href.startsWith('#')) return;
   e.preventDefault();
-  const h = a.getAttribute('href').slice(1);
-  if (h) go(h);
+  go(nameFor(href));
 });
 let backTo = 'pets';
 function route(h) {
   h = h || 'home'; let page = h;
   if (h.startsWith('pet-')) {
-    page = 'pet'; renderDetail(h.slice(4));
-    // Remember where the visitor came from so "Back" returns there
-    const from = (document.querySelector('.page.active') || {}).id;
-    if (from === 'p-profile' || from === 'p-home' || from === 'p-pets') backTo = from.slice(2);
-    const labels = { pets: ['Back to all pets', '전체 반려동물로 돌아가기'], profile: ['Back to my profile', '내 프로필로 돌아가기'], home: ['Back to home', '홈으로 돌아가기'] };
-    $('#petBack').setAttribute('href', '#' + backTo);
-    $('#petBack span').textContent = tx(...labels[backTo]);
+    if (!PETS.some(p => p.id === h.slice(4))) page = '404';
+    else {
+      page = 'pet'; renderDetail(h.slice(4));
+      // Remember where the visitor came from so "Back" returns there
+      const from = (document.querySelector('.page.active') || {}).id;
+      if (from === 'p-profile' || from === 'p-home' || from === 'p-pets') backTo = from.slice(2);
+      const labels = { pets: ['Back to all pets', '전체 반려동물로 돌아가기'], profile: ['Back to my profile', '내 프로필로 돌아가기'], home: ['Back to home', '홈으로 돌아가기'] };
+      $('#petBack').setAttribute('href', hrefFor(backTo));
+      $('#petBack span').textContent = tx(...labels[backTo]);
+    }
   }
-  else if (!PAGES.includes(h)) page = 'home';
+  else if (!PAGES.includes(h)) page = '404';
   if (page === 'profile') {
     if (!auth) page = 'login';
     else if (!auth.currentUser) { if (authReady) page = 'login'; }
@@ -5024,9 +5318,25 @@ function route(h) {
   }
   if ((page === 'login' || page === 'signup') && auth && auth.currentUser) { page = 'profile'; renderProfile(); }
   document.querySelectorAll('.page').forEach(p => p.classList.toggle('active', p.id === 'p-' + page));
-  document.querySelectorAll('#nav a, .foot-cols a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + (page === 'pet' ? 'pets' : page)));
-  $('#mobileNav').classList.remove('open');
+  const navKey = hrefFor(page === 'pet' ? 'pets' : page);
+  document.querySelectorAll('#nav a, .foot-cols a, .mm-links a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === navKey));
+  // Page title
+  const p = page === 'pet' ? PETS.find(x => x.id === h.slice(4)) : null;
+  const t = p ? L(p, "name") : TITLES[page] ? tx(...TITLES[page]) : '';
+  document.title = t ? `${t} | Pawgive` : (LANG === 'ko' ? '포기브 Pawgive' : 'Pawgive | Find your companion');
+  // If we were redirected (e.g. profile → login), fix the address bar
+  if (!IS_PREVIEW && page !== 'pet' && page !== h && page !== '404') { try { history.replaceState({ h: page }, '', BASE + pathFor(page)); } catch (e) {} }
+  currentRoute = page === 'pet' ? h : page;
+  closeMenu();
   window.scrollTo(0, 0);
+  return page;
 }
-route((location.hash || '').slice(1));
+var currentRoute = 'home';
+(function init() {
+  const start = currentName();
+  const page = route(start);
+  if (!IS_PREVIEW && location.hash && !location.hash.includes('=')) { try { history.replaceState({ h: start }, '', BASE + pathFor(page === 'pet' ? start : page)); } catch (e) {} }
+})();
 </script>
+</body>
+</html>
