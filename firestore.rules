@@ -10,7 +10,6 @@ service cloud.firestore {
         && request.auth.token.email in ['pawgive@gmail.com', 'bubble.youthimpact@gmail.com'];
     }
     function listing(id) { return get(/databases/$(database)/documents/fosters/$(id)).data; }
-    function ownsListing(id) { return signedIn() && listing(id).ownerUid == request.auth.uid; }
     function validListing(d) {
       return d.name is string && d.name.size() > 0 && d.name.size() <= 40
         && d.story is string && d.story.size() <= 2000
