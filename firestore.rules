@@ -1,0 +1,75 @@
+rules_version = '2';
+// Pawgive — paste this whole file into Firebase console → Firestore Database → Rules, then Publish.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    // Pawgive admins: keep this list the same as ADMINS in index.html
+    function isAdmin() {
+      return signedIn() && request.auth.token.email_verified == true
+        && request.auth.token.email in ['pawgive@gmail.com', 'bubble.youthimpact@gmail.com'];
+    }
+    function listing(id) { return get(/databases/$(database)/documents/fosters/$(id)).data; }
+    function ownsListing(id) { return signedIn() && listing(id).ownerUid == request.auth.uid; }
+    function validListing(d) {
+      return d.name is string && d.name.size() > 0 && d.name.size() <= 40
+        && d.story is string && d.story.size() <= 2000
+        && d.care is string && d.care.size() <= 1000
+        && d.kind in ['rehome', 'temporary']
+        && d.thumb is string && d.thumb.size() <= 80000;
+    }
+
+    // Saved pets (favourites)
+    match /users/{uid} {
+      allow read, write: if signedIn() && request.auth.uid == uid;
+    }
+
+    // Foster listings: public once approved; owners see their own; admins see everything
+    match /fosters/{id} {
+      allow read: if resource.data.status == 'approved'
+        || (signedIn() && resource.data.ownerUid == request.auth.uid)
+        || isAdmin();
+      allow create: if signedIn()
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.status == 'pending'
+        && validListing(request.resource.data);
+      // Owners can edit (goes back to review) or mark as placed — they can never approve themselves
+      allow update: if isAdmin() || (signedIn()
+        && resource.data.ownerUid == request.auth.uid
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.status in ['pending', 'closed']
+        && validListing(request.resource.data));
+      allow delete: if isAdmin() || (signedIn() && resource.data.ownerUid == request.auth.uid);
+    }
+
+    // Photos follow the listing they belong to
+    match /fosterPhotos/{id} {
+      allow read: if isAdmin()
+        || (signedIn() && resource.data.ownerUid == request.auth.uid)
+        || listing(id).status == 'approved';
+      allow create: if signedIn() && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.photos is list && request.resource.data.photos.size() <= 1;
+      allow update: if signedIn() && resource.data.ownerUid == request.auth.uid
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.photos is list && request.resource.data.photos.size() <= 1;
+      allow delete: if isAdmin() || (signedIn() && resource.data.ownerUid == request.auth.uid);
+    }
+
+    // Contact details: logged-in members only, and only for approved listings
+    match /fosterContacts/{id} {
+      allow read: if signedIn() && (resource.data.ownerUid == request.auth.uid
+        || isAdmin() || listing(id).status == 'approved');
+      allow create: if signedIn() && request.resource.data.ownerUid == request.auth.uid;
+      allow update: if signedIn() && resource.data.ownerUid == request.auth.uid
+        && request.resource.data.ownerUid == request.auth.uid;
+      allow delete: if isAdmin() || (signedIn() && resource.data.ownerUid == request.auth.uid);
+    }
+
+    // Reports: any logged-in member can send one; only admins can read them
+    match /reports/{id} {
+      allow create: if signedIn() && request.resource.data.reporterUid == request.auth.uid
+        && request.resource.data.details is string && request.resource.data.details.size() <= 500;
+      allow read, delete: if isAdmin();
+    }
+  }
+}
