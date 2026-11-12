@@ -4668,7 +4668,8 @@ const RESOURCES = [
     "text": "Understanding and being prepared for the adoption process is important and can help you're adoption process to go smoother.",
     "text_ko": "입양 절차를 이해하고 미리 준비하면 입양 과정을 더 순조롭게 진행할 수 있습니다.",
     "image": "images/resources/a-few-things-to-note-about-the-pet-adoption-procedure.webp",
-    "url": "images/guides/a-few-things-to-note-about-the-pet-adoption-procedure.webp"
+    "url": "images/guides/a-few-things-to-note-about-the-pet-adoption-procedure.webp",
+    "url_ko": "images/guides/a-few-things-to-note-about-the-pet-adoption-procedure-ko.webp"
   },
   {
     "type": "Websites",
@@ -4722,7 +4723,8 @@ const RESOURCES = [
     "text": "Choosing to surrender your dog is a tough decision to make. That’s why it’s important to be mindful of the proper ways and options of surrendering your dog.",
     "text_ko": "강아지를 파양하는 것은 어려운 결정입니다. 그렇기 때문에 올바른 파양 방법과 선택지를 신중히 알아보는 것이 중요합니다.",
     "image": "images/resources/surrendering-your-dog-in-south-korea.webp",
-    "url": "images/guides/surrendering-your-dog-in-south-korea.webp"
+    "url": "images/guides/surrendering-your-dog-in-south-korea.webp",
+    "url_ko": "images/guides/surrendering-your-dog-in-south-korea-ko.webp"
   }
 ];
 
@@ -5459,7 +5461,7 @@ const shelterCard = sh => {
   const region = LANG === 'ko' ? sh.region_ko : sh.region;
   const rows = [
     sh.hours ? [tx('Hours', '운영 시간'), esc(L(sh, 'hours'))] : null,
-    sh.phone ? [tx('Phone', '전화'), `<a href="${esc(telHref(sh.phone))}">${esc(L(sh, 'phone'))}</a>`] : null,
+    sh.phone ? [tx('Phone', '전화'), `<a href="${esc(telHref(sh.phone))}">${esc(L(sh, 'phone')).replace(/, /g, ',<br>')}</a>`] : null,
     sh.email ? [tx('Email', '이메일'), `<a href="mailto:${esc(sh.email)}">${esc(sh.email)}</a>`] : null
   ].filter(Boolean);
   return `<article class="card shelter">
@@ -5508,7 +5510,7 @@ function renderResources() {
     return `<div class="res-sec">
       <div class="sec-head"><h2 class="h-md">${esc(sec.section)}</h2>${list.length > 3 ? `<button class="pill-btn show-more" type="button" aria-expanded="false">Show more</button>` : ""}</div>
       <div class="grid g3 res-grid">${list.map((r, i) => `
-        <a class="card res${i >= 3 ? ' extra' : ''}" href="${esc(r.url)}" target="_blank" rel="noopener"${i >= 3 ? ' hidden' : ''}>
+        <a class="card res${i >= 3 ? ' extra' : ''}" href="${esc(L(r, 'url'))}" target="_blank" rel="noopener"${i >= 3 ? ' hidden' : ''}>
           ${resImg(r)}
           <div class="body"><h3>${esc(L(r, 'title'))}</h3><p>${esc(L(r, 'text'))}</p>
           <span class="link-arrow">${esc(sec.linkText)} <svg><use href="#i-arrow"/></svg></span></div>
