@@ -719,11 +719,19 @@ html[lang=ko] .sh-info dt{letter-spacing:0;font-size:13.5px}
 .sh-note p{flex:1 1 100%;margin:6px 0 0;font-size:15.5px;line-height:1.6;color:var(--ink-2)}
 .sh-note a{text-decoration:underline;text-underline-offset:3px}
 .sh-ko{margin:3px 0 0;font-size:14.5px;color:var(--muted)}
+
+/* Surrender shelters stand out: warm border, tinted top, house-and-heart badge */
+.sh-surr{gap:6px;padding:5px 12px 5px 9px;line-height:1}
+.sh-surr svg{width:16px;height:16px;flex:none;display:block;transform:translateY(-1px)}
+html[lang=ko] .sh-surr svg{transform:translateY(-2px)}
+.shelter.surr{border:1.5px solid #F2C29E;background:linear-gradient(180deg,#FFF4EB 0,#fff 120px)}
+.shelter.surr:hover{border-color:#E2611B}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-paw" viewBox="0 0 32 32"><g fill="#E2611B" stroke="#fff" stroke-width="1.4"><ellipse cx="16" cy="21" rx="7.5" ry="6.5"/><ellipse cx="7" cy="13" rx="3" ry="3.8"/><ellipse cx="12.5" cy="7.5" rx="3" ry="3.8"/><ellipse cx="19.5" cy="7.5" rx="3" ry="3.8"/><ellipse cx="25" cy="13" rx="3" ry="3.8"/></g></symbol>
+  <symbol id="i-homeheart" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 17.6s-3.6-2.2-3.6-4.6a1.9 1.9 0 0 1 3.6-.9 1.9 1.9 0 0 1 3.6.9c0 2.4-3.6 4.6-3.6 4.6z" fill="currentColor"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g></symbol>
@@ -980,7 +988,7 @@ html[lang=ko] .sh-info dt{letter-spacing:0;font-size:13.5px}
   <h1 class="h-xl" style="margin-top:22px">Find shelters near you</h1>
   <p class="lead">Meet the wonderful animals waiting to find their forever families.</p>
   <div class="filters"><select id="s-region" aria-label="Region"></select><button class="f-saved" id="s-surr" type="button" aria-pressed="false">Takes surrenders</button><span class="f-count" id="s-count"></span></div>
-  <div class="sh-note"><span class="sh-surr yes">Accepts surrenders</span>
+  <div class="sh-note"><span class="sh-surr yes"><svg aria-hidden="true"><use href="#i-homeheart"/></svg>Accepts surrenders</span>
     <p class="lang-en"><b>Can’t keep your pet any longer?</b> Shelters marked <b>Accepts surrenders</b> take pets directly from owners (fees may apply). Since April 2023, anyone facing a hospital stay of 6+ months, military service, disaster damage or a move into a domestic-violence shelter can also ask their city, county or district office to take their pet under the national <a href="https://m.easylaw.go.kr/MOB/IssueQnaRetrieve.laf?issueqaSeq=320" target="_blank" rel="noopener">surrender scheme</a>.</p>
     <p class="lang-ko"><b>더 이상 반려동물을 키울 수 없나요?</b> <b>파양 인수</b> 표시가 있는 곳은 보호자에게서 직접 반려동물을 받아요(비용이 들 수 있어요). 2023년 4월부터는 6개월 이상 입원·요양, 병역, 재난 피해, 가정폭력 보호시설 입소 등의 사유가 있으면 시·군·구청에 <a href="https://m.easylaw.go.kr/MOB/IssueQnaRetrieve.laf?issueqaSeq=320" target="_blank" rel="noopener">사육포기 동물 인수</a>를 신청할 수도 있어요.</p></div>
   <div class="grid g3" id="shelterGrid" style="margin-top:clamp(20px,2.5vw,28px)"></div>
@@ -5464,8 +5472,8 @@ const shelterCard = sh => {
     sh.phone ? [tx('Phone', '전화'), `<a href="${esc(telHref(sh.phone))}">${esc(L(sh, 'phone')).replace(/, /g, ',<br>')}</a>`] : null,
     sh.email ? [tx('Email', '이메일'), `<a href="mailto:${esc(sh.email)}">${esc(sh.email)}</a>`] : null
   ].filter(Boolean);
-  return `<article class="card shelter">
-    <div class="sh-top"><span class="sh-tags">${region ? `<span class="sh-region">${ico('i-pin')}${esc(region)}</span>` : ''}${sh.surrender ? `<span class="sh-surr ${sh.surrender}" title="${esc(sh.surrender === 'yes' ? tx('Takes in pets from owners who can no longer keep them', '키울 수 없게 된 반려동물을 보호자에게서 받아요') : tx('Takes in pets in emergencies such as the owner’s death, detention or long hospital stay, through the district office', '보호자 사망·구금·장기입원 등 긴급한 경우 구청을 통해 받아요'))}">${sh.surrender === 'yes' ? tx('Accepts surrenders', '파양 인수') : tx('Emergency surrenders', '긴급 인수')}</span>` : ''}</span>
+  return `<article class="card shelter${sh.surrender ? ' surr' : ''}">
+    <div class="sh-top"><span class="sh-tags">${region ? `<span class="sh-region">${ico('i-pin')}${esc(region)}</span>` : ''}${sh.surrender ? `<span class="sh-surr yes" title="${esc(tx('Takes in pets from owners who can no longer keep them', '키울 수 없게 된 반려동물을 보호자에게서 받아요'))}"><svg aria-hidden="true"><use href="#i-homeheart"/></svg>${tx('Accepts surrenders', '파양 인수')}</span>` : ''}</span>
       ${sh.instagram ? `<a class="sh-ig" href="${esc(sh.instagram)}" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ig"><use href="#i-ig"/></svg></a>` : ''}</div>
     <h3>${esc(shelterName(sh))}</h3>${LANG !== 'ko' && sh.name_en ? `<p class="sh-ko" lang="ko">${esc(sh.name)}</p>` : ''}
     ${(sh.address || sh.address_ko) ? `<p class="sh-addr">${esc(L(sh, 'address'))}</p>` : ''}
