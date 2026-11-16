@@ -746,14 +746,14 @@ body{transition:opacity .15s}
 
 /* This week's companions: 2 spotlight cards */
 .sec-sub{margin:10px 0 0;font-size:17px;color:var(--ink-2)}
-.spot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-@media (max-width:900px){.spot-grid{grid-template-columns:1fr}}
+.spot-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+@media (max-width:980px){.spot-grid{grid-template-columns:1fr;max-width:620px;margin:0 auto}}
 .spot{display:flex;flex-direction:column;border:1.5px solid var(--line)}
 .spot .gal{padding:14px 14px 0}
 .spot .gal-thumbs button{width:56px;height:56px;border-radius:10px}
-.spot-body{display:flex;flex-direction:column;gap:14px;flex:1;padding:20px 26px 28px}
+.spot-body{display:flex;flex-direction:column;gap:14px;flex:1;padding:18px 22px 24px}
 .spot-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.spot h3{font-family:var(--body);font-size:clamp(24px,2.4vw,30px);font-weight:700;line-height:1.2}
+.spot h3{font-family:var(--body);font-size:clamp(22px,2vw,26px);font-weight:700;line-height:1.2}
 .spot .heart svg{width:28px;height:28px}
 .spot-where{display:flex;align-items:flex-start;gap:7px;margin:-6px 0 0;font-size:15.5px;color:var(--ink-2)}
 .spot-where svg{width:17px;height:17px;flex:none;margin-top:2px}
@@ -892,7 +892,7 @@ button.apply-link{border:0;background:none;padding:0;font:inherit;cursor:pointer
 
   <div class="home-sec">
     <span class="eyebrow">Meet a few</span>
-    <div class="sec-head"><div><h2 class="h-md">This week's companions</h2><p class="sec-sub">Two pets we're shining a light on this week.</p></div><a class="link-arrow" href="pets">See all pets <svg><use href="#i-arrow"/></svg></a></div>
+    <div class="sec-head"><div><h2 class="h-md">This week's companions</h2><p class="sec-sub">Three pets we're shining a light on this week.</p></div><a class="link-arrow" href="pets">See all pets <svg><use href="#i-arrow"/></svg></a></div>
     <div class="spot-grid" id="homePets"></div>
     <div class="center"><a class="ghost-btn" href="pets">View all pets <svg width="18" height="18"><use href="#i-arrow"/></svg></a></div>
   </div>
@@ -5861,7 +5861,7 @@ const KO = {
   "Review listings": "게시글 검토",
   "Accepts surrenders": "파양 인수",
   "Emergency surrenders": "긴급 인수",
-  "Two pets we're shining a light on this week.": "이번 주에 소개하는 두 친구예요.",
+  "Three pets we're shining a light on this week.": "이번 주에 소개하는 세 친구예요.",
   "Run a shelter? Apply to be featured": "보호소를 운영하시나요? 포기브에 소개 신청하기",
   "For shelters": "보호소 신청",
   "Get your shelter featured on Pawgive.": "포기브에 보호소를 소개해 보세요.",
@@ -6048,11 +6048,15 @@ document.addEventListener('click', e => {
   g.querySelectorAll('.gal-thumbs button').forEach(b => b.classList.toggle('on', b === t));
 });
 
-// This week's companions: the available dog and the available cat with the longest story.
-// Fixed (no shuffling) — it only changes if a pet is adopted or a longer story is added.
+// This week's companions: 3 available pets with the longest stories — the top dog, the top cat,
+// then the next longest of either. Fixed (no shuffling); it only changes if a pet is adopted or a longer story is added.
 const storyLen = p => Math.max((p.story || '').length, (p.story_ko || '').length);
 const longest = type => PETS.filter(p => p.status === 'Available' && p.type === type).sort((a, b) => storyLen(b) - storyLen(a))[0];
-const SPOTLIGHT = [longest('Dog'), longest('Cat')].filter(Boolean);
+const SPOTLIGHT = (() => {
+  const picks = [longest('Dog'), longest('Cat')].filter(Boolean);
+  const next = PETS.filter(p => p.status === 'Available' && !picks.includes(p)).sort((a, b) => storyLen(b) - storyLen(a))[0];
+  return next ? picks.concat(next) : picks;
+})();
 function spotCard(p) {
   const where = [petShelterName(p.shelter), L(p, 'region')].filter(Boolean).join(' · ');
   return `<article class="card spot">
