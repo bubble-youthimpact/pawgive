@@ -813,6 +813,16 @@ body{transition:opacity .15s}
 .fp-form fieldset:last-of-type{margin-bottom:22px}
 .fp-form fieldset:last-of-type > .field:last-child{margin-bottom:0}
 .fp-form .fp-agree{margin:0 0 20px}
+
+/* Contact page tabs */
+.ctabs{display:inline-flex;gap:4px;background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:5px;margin:0 0 clamp(36px,5vw,56px)}
+.ctabs button{border:0;background:none;border-radius:999px;padding:11px 24px;font:inherit;font-size:16px;font-weight:500;color:var(--ink);cursor:pointer;transition:background .15s,color .15s}
+.ctabs button:hover{background:var(--sage-soft)}
+.ctabs button[aria-selected="true"]{background:var(--ink);color:#fff}
+.ctab-panel[hidden]{display:none}
+.apply.ctab-panel{margin-top:0;padding-top:0;border-top:0}
+button.apply-link{border:0;background:none;padding:0;font:inherit;cursor:pointer;color:var(--ink)}
+@media (max-width:620px){.ctabs{display:flex}.ctabs button{flex:1;padding:11px 10px;font-size:15px}}
 </style>
 </head>
 <body>
@@ -1118,33 +1128,15 @@ body{transition:opacity .15s}
 
 <!-- CONTACT -->
 <section class="page" id="p-contact"><div class="wrap">
-  <div class="contact">
-    <div>
-      <span class="eyebrow">Get in touch</span>
-      <h1 class="h-xl" style="margin-top:22px">Let's talk.</h1>
-      <p class="lead">Whether you're inquiring about a specific pet, asking about fostering, or you run a shelter and want to join the network — we'd love to hear from you.</p>
-      <a class="link-arrow apply-link" href="contact" data-apply>Run a shelter? Apply to be featured <svg><use href="#i-arrow"/></svg></a>
-      <dl>
-        <dt>Email</dt><dd data-bind="email"></dd>
-        <dt>Instagram</dt><dd data-bind="instagram"></dd>
-      </dl>
-    </div>
-    <form class="form-card" id="contactForm" novalidate>
-      <div class="field"><label for="c-name">Name</label><input id="c-name" type="text" required></div>
-      <div class="field"><label for="c-email">Email</label><input id="c-email" type="email" required></div>
-      <div class="field"><label for="c-int">I'm interested in</label><input id="c-int" type="text"></div>
-      <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" required></textarea></div>
-      <input type="text" id="c-honey" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-      <button class="pill-btn solid wide-btn" id="c-send" type="submit" style="margin-top:28px">Send message <svg width="20" height="20"><use href="#i-send"/></svg></button>
-      <p class="form-msg" id="contactMsg" hidden></p>
-    </form>
+  <div class="ctabs" role="tablist" aria-label="Contact forms">
+    <button type="button" role="tab" id="ct-shelter" data-ctab="shelter" aria-controls="tab-shelter" aria-selected="true">For shelters</button>
+    <button type="button" role="tab" id="ct-general" data-ctab="general" aria-controls="tab-general" aria-selected="false" tabindex="-1">General inquiry</button>
   </div>
-
-  <!-- Shelter application: a separate form so shelters can apply to be featured -->
-  <div class="contact apply" id="apply">
+  <!-- Shelter application (shown first) -->
+  <div class="contact apply ctab-panel" id="tab-shelter" role="tabpanel" aria-labelledby="ct-shelter">
     <div>
-      <span class="eyebrow">For shelters</span>
-      <h2 class="h-lg">Get your shelter featured on Pawgive.</h2>
+      <span class="eyebrow">Partner shelters</span>
+      <h1 class="h-lg">Get your shelter featured on Pawgive.</h1>
       <p class="lead">Run a shelter, rescue group or adoption center in Korea? Apply below and we’ll add you to Pawgive, so more people can find your animals.</p>
       <ul class="apply-perks">
         <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>A listing on our Shelters page with your contact details</span></li>
@@ -1187,6 +1179,29 @@ body{transition:opacity .15s}
       <label class="fp-agree"><input type="checkbox" id="a-agree"><span>I can apply on behalf of this shelter, and I agree to Pawgive showing its details and animals on the website.</span></label>
       <button class="pill-btn solid wide-btn" id="a-send" type="submit">Send application <svg width="20" height="20"><use href="#i-send"/></svg></button>
       <p class="form-msg" id="applyMsg" hidden></p>
+    </form>
+  </div>
+
+  <!-- General inquiry -->
+  <div class="contact ctab-panel" id="tab-general" role="tabpanel" aria-labelledby="ct-general" hidden>
+    <div>
+      <span class="eyebrow">Get in touch</span>
+      <h1 class="h-xl" style="margin-top:22px">Let's talk.</h1>
+      <p class="lead">Whether you're inquiring about a specific pet, asking about fostering, or you run a shelter and want to join the network — we'd love to hear from you.</p>
+      <button class="link-arrow apply-link" type="button" data-ctab="shelter">Run a shelter? Apply to be featured <svg><use href="#i-arrow"/></svg></button>
+      <dl>
+        <dt>Email</dt><dd data-bind="email"></dd>
+        <dt>Instagram</dt><dd data-bind="instagram"></dd>
+      </dl>
+    </div>
+    <form class="form-card" id="contactForm" novalidate>
+      <div class="field"><label for="c-name">Name</label><input id="c-name" type="text" required></div>
+      <div class="field"><label for="c-email">Email</label><input id="c-email" type="email" required></div>
+      <div class="field"><label for="c-int">I'm interested in</label><input id="c-int" type="text"></div>
+      <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" required></textarea></div>
+      <input type="text" id="c-honey" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <button class="pill-btn solid wide-btn" id="c-send" type="submit" style="margin-top:28px">Send message <svg width="20" height="20"><use href="#i-send"/></svg></button>
+      <p class="form-msg" id="contactMsg" hidden></p>
     </form>
   </div>
 </div></section>
@@ -5482,6 +5497,8 @@ const KO = {
   "I can apply on behalf of this shelter, and I agree to Pawgive showing its details and animals on the website.": "이 보호소를 대표해 신청할 수 있으며, 포기브 웹사이트에 보호소 정보와 동물들이 소개되는 것에 동의합니다.",
   "Send application": "신청서 보내기",
   "Run a shelter?": "보호소를 운영하시나요?",
+  "General inquiry": "일반 문의",
+  "Partner shelters": "파트너 보호소",
   "Get your shelter and its animals featured on Pawgive.": "포기브에 보호소와 아이들을 소개해 보세요.",
   "Apply to be featured": "소개 신청하기",
   "Share": "공유하기",
@@ -5953,9 +5970,18 @@ function relabelApply() {
   const ph = { '#a-addr': ['Street address', '도로명 주소'], '#a-web': ['https://… or @instagram', 'https://… 또는 @인스타그램'], '#a-role': ['e.g. Manager, volunteer', '예: 센터장, 봉사자'], '#a-count': ['About how many?', '대략 몇 마리인가요?'], '#a-msg': ['How long you’ve been running, how adoption works, and anything else we should know.', '운영 기간, 입양 절차, 그 밖에 알려 주실 내용을 적어 주세요.'] };
   Object.entries(ph).forEach(([id, t]) => $(id).placeholder = tx(...t));
 }
+// Contact page tabs: "For shelters" first, "General inquiry" second
+function showCtab(name) {
+  document.querySelectorAll('.ctabs [data-ctab]').forEach(b => { const on = b.dataset.ctab === name; b.setAttribute('aria-selected', on); b.tabIndex = on ? 0 : -1; });
+  $('#tab-shelter').hidden = name !== 'shelter'; $('#tab-general').hidden = name !== 'general';
+}
 document.addEventListener('click', e => {
-  const a = e.target.closest('a[data-apply]'); if (!a) return;
-  setTimeout(() => { const el = $('#apply'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hdr')) || 80) - 16, behavior: 'smooth' }); }, 60);
+  const b = e.target.closest('[data-ctab]'); if (b) { showCtab(b.dataset.ctab); if (b.closest('.ctab-panel')) scrollTo({ top: 0, behavior: 'smooth' }); return; }
+  if (e.target.closest('a[data-apply]')) showCtab('shelter');   // "Apply to be featured" links from other pages
+});
+$('.ctabs').addEventListener('keydown', e => {
+  if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+  const next = $('.ctabs [aria-selected="false"]'); showCtab(next.dataset.ctab); next.focus();
 });
 $('#applyForm').addEventListener('submit', async e => {
   e.preventDefault();
