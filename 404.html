@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -9,6 +9,9 @@
   var seg = location.pathname.split('/')[1];
   window.PG_BASE = /\.github\.io$/.test(location.hostname) && seg ? '/' + seg + '/' : '/';
   document.write('<base href="' + window.PG_BASE + '">');
+  // Hide the page until the language (Korean by default) is applied; always show it after 1.5s just in case
+  document.documentElement.classList.add('pg-init');
+  setTimeout(function () { document.documentElement.classList.remove('pg-init'); }, 1500);
 })();
 </script>
 <title>Pawgive | Find your companion</title>
@@ -726,12 +729,81 @@ html[lang=ko] .sh-info dt{letter-spacing:0;font-size:13.5px}
 html[lang=ko] .sh-surr svg{transform:translateY(-2px)}
 .shelter.surr{border:1.5px solid #F2C29E;background:linear-gradient(180deg,#FFF4EB 0,#fff 120px)}
 .shelter.surr:hover{border-color:#E2611B}
+
+/* Language: hide the page for a moment until Korean/English is applied (no flash of the wrong language) */
+.pg-init body{opacity:0}
+body{transition:opacity .15s}
+
+/* Photo gallery (pet pages + spotlight) */
+.gal{display:flex;flex-direction:column;gap:10px}
+.gal-main .pet-img{position:relative}
+.gal-thumbs{display:flex;gap:10px;flex-wrap:wrap}
+.gal-thumbs button{width:84px;height:84px;border-radius:14px;overflow:hidden;border:2px solid transparent;padding:0;background:var(--ph);cursor:pointer;opacity:.75;transition:opacity .15s,border-color .15s}
+.gal-thumbs button:hover{opacity:1}
+.gal-thumbs button.on{border-color:var(--ink);opacity:1}
+.gal-thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:620px){.gal-thumbs button{width:68px;height:68px}}
+
+/* This week's companions: 2 spotlight cards */
+.sec-sub{margin:10px 0 0;font-size:17px;color:var(--ink-2)}
+.spot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+@media (max-width:900px){.spot-grid{grid-template-columns:1fr}}
+.spot{display:flex;flex-direction:column;border:1.5px solid var(--line)}
+.spot .gal{padding:14px 14px 0}
+.spot .gal-thumbs button{width:64px;height:64px;border-radius:12px}
+.spot-body{display:flex;flex-direction:column;gap:14px;flex:1;padding:20px 26px 28px}
+.spot-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.spot-tag{display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:#fff;border-radius:999px;padding:6px 13px 6px 10px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;line-height:1}
+.spot-tag svg{width:15px;height:15px;flex:none}
+.spot-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.spot h3{font-family:var(--body);font-size:clamp(24px,2.4vw,30px);font-weight:700;line-height:1.2}
+.spot .heart svg{width:28px;height:28px}
+.spot-where{display:flex;align-items:flex-start;gap:7px;margin:-6px 0 0;font-size:15.5px;color:var(--ink-2)}
+.spot-where svg{width:17px;height:17px;flex:none;margin-top:2px}
+.spot-facts{display:flex;flex-wrap:wrap;gap:8px}
+.spot-facts span{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--line);border-radius:999px;padding:7px 14px;font-size:14.5px;font-weight:600;color:var(--ink);line-height:1}
+.spot-facts svg{width:16px;height:16px;flex:none}
+.spot-story{background:var(--bg);border-radius:16px;padding:16px 20px 18px;border-left:4px solid var(--sage)}
+.spot-story h4{margin:0;font-family:var(--body);font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.spot-story p{margin:8px 0 0;font-size:16.5px;line-height:1.6;color:var(--ink);display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+.spot-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:4px}
+
+/* Share buttons + share box */
+.share-btn svg{width:18px;height:18px;flex:none}
+.head-acts{display:flex;align-items:center;gap:8px;flex:none}
+.icon-btn{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;padding:0;transition:background .15s,border-color .15s}
+.icon-btn:hover{background:var(--sage-soft);border-color:var(--ink)}
+.icon-btn svg{width:21px;height:21px}
+.toast{position:fixed;left:50%;bottom:28px;z-index:300;transform:translate(-50%,12px);opacity:0;display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;border-radius:999px;padding:12px 20px 12px 16px;font-size:15.5px;font-weight:500;box-shadow:0 10px 30px rgba(0,0,0,.18);transition:opacity .2s,transform .2s;max-width:calc(100% - 32px)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast svg{width:18px;height:18px;flex:none}
+.res-acts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.res-acts .share-btn{padding:10px 22px}
+
+/* Shelter application (contact page) */
+.apply-link{margin-top:22px}
+.apply{margin-top:clamp(70px,9vw,120px);padding-top:clamp(50px,7vw,90px);border-top:1px solid var(--line);scroll-margin-top:100px}
+.apply .h-lg{margin-top:20px;font-size:clamp(32px,4vw,46px)}
+.apply-perks{list-style:none;padding:0;margin:28px 0 0;display:flex;flex-direction:column;gap:14px}
+.apply-perks li{display:flex;gap:12px;align-items:flex-start;font-size:17px;color:var(--ink)}
+.apply-perks svg{width:22px;height:22px;flex:none;color:#fff;background:var(--ink);border-radius:50%;padding:4px;margin-top:1px}
+.apply-note{margin:26px 0 0;color:var(--ink-2);font-size:15.5px}
+.apply-form.fp-form{margin-top:0}
+.fp-label{margin:4px 0 12px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--ink-2)}
+@media (max-width:620px){.apply-form .fp-grid{grid-template-columns:1fr}}
+
+/* Shelters page: call to action for shelters */
+.sh-cta{margin-top:clamp(50px,7vw,80px);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;background:var(--sage-soft);border-radius:24px;padding:clamp(24px,4vw,40px)}
+.sh-cta h2{font-family:var(--body);font-size:clamp(22px,2.6vw,28px);font-weight:700;color:var(--ink)}
+.sh-cta p{margin:6px 0 0;color:var(--ink);font-size:16.5px}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-paw" viewBox="0 0 32 32"><g fill="#E2611B" stroke="#fff" stroke-width="1.4"><ellipse cx="16" cy="21" rx="7.5" ry="6.5"/><ellipse cx="7" cy="13" rx="3" ry="3.8"/><ellipse cx="12.5" cy="7.5" rx="3" ry="3.8"/><ellipse cx="19.5" cy="7.5" rx="3" ry="3.8"/><ellipse cx="25" cy="13" rx="3" ry="3.8"/></g></symbol>
   <symbol id="i-homeheart" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 17.6s-3.6-2.2-3.6-4.6a1.9 1.9 0 0 1 3.6-.9 1.9 1.9 0 0 1 3.6.9c0 2.4-3.6 4.6-3.6 4.6z" fill="currentColor"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 15V3.5M7.5 8 12 3.5 16.5 8M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g></symbol>
@@ -793,8 +865,8 @@ html[lang=ko] .sh-surr svg{transform:translateY(-2px)}
 
   <div class="home-sec">
     <span class="eyebrow">Meet a few</span>
-    <div class="sec-head"><h2 class="h-md">This week's companions</h2><a class="link-arrow" href="pets">See all pets <svg><use href="#i-arrow"/></svg></a></div>
-    <div class="grid g4" id="homePets"></div>
+    <div class="sec-head"><div><h2 class="h-md">This week's companions</h2><p class="sec-sub">Two pets we're shining a light on this week.</p></div><a class="link-arrow" href="pets">See all pets <svg><use href="#i-arrow"/></svg></a></div>
+    <div class="spot-grid" id="homePets"></div>
     <div class="center"><a class="ghost-btn" href="pets">View all pets <svg width="18" height="18"><use href="#i-arrow"/></svg></a></div>
   </div>
 
@@ -993,6 +1065,7 @@ html[lang=ko] .sh-surr svg{transform:translateY(-2px)}
     <p class="lang-ko"><b>더 이상 반려동물을 키울 수 없나요?</b> <b>파양 인수</b> 표시가 있는 곳은 보호자에게서 직접 반려동물을 받아요(비용이 들 수 있어요). 2023년 4월부터는 6개월 이상 입원·요양, 병역, 재난 피해, 가정폭력 보호시설 입소 등의 사유가 있으면 시·군·구청에 <a href="https://m.easylaw.go.kr/MOB/IssueQnaRetrieve.laf?issueqaSeq=320" target="_blank" rel="noopener">사육포기 동물 인수</a>를 신청할 수도 있어요.</p></div>
   <div class="grid g3" id="shelterGrid" style="margin-top:clamp(20px,2.5vw,28px)"></div>
   <div class="center"><button class="pill-btn" id="shelterMore" type="button" hidden>Show more</button></div>
+  <div class="sh-cta"><div><h2>Run a shelter?</h2><p>Get your shelter and its animals featured on Pawgive.</p></div><a class="pill-btn solid" href="contact" data-apply>Apply to be featured <svg width="18" height="18"><use href="#i-arrow"/></svg></a></div>
 </div></section>
 
 <!-- RESOURCES -->
@@ -1031,6 +1104,7 @@ html[lang=ko] .sh-surr svg{transform:translateY(-2px)}
       <span class="eyebrow">Get in touch</span>
       <h1 class="h-xl" style="margin-top:22px">Let's talk.</h1>
       <p class="lead">Whether you're inquiring about a specific pet, asking about fostering, or you run a shelter and want to join the network — we'd love to hear from you.</p>
+      <a class="link-arrow apply-link" href="contact" data-apply>Run a shelter? Apply to be featured <svg><use href="#i-arrow"/></svg></a>
       <dl>
         <dt>Email</dt><dd data-bind="email"></dd>
         <dt>Instagram</dt><dd data-bind="instagram"></dd>
@@ -1044,6 +1118,56 @@ html[lang=ko] .sh-surr svg{transform:translateY(-2px)}
       <input type="text" id="c-honey" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button class="pill-btn solid wide-btn" id="c-send" type="submit" style="margin-top:28px">Send message <svg width="20" height="20"><use href="#i-send"/></svg></button>
       <p class="form-msg" id="contactMsg" hidden></p>
+    </form>
+  </div>
+
+  <!-- Shelter application: a separate form so shelters can apply to be featured -->
+  <div class="contact apply" id="apply">
+    <div>
+      <span class="eyebrow">For shelters</span>
+      <h2 class="h-lg">Get your shelter featured on Pawgive.</h2>
+      <p class="lead">Run a shelter, rescue group or adoption center in Korea? Apply below and we’ll add you to Pawgive, so more people can find your animals.</p>
+      <ul class="apply-perks">
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>A listing on our Shelters page with your contact details</span></li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Your adoptable animals on our Pets page</span></li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Links to your website and Instagram</span></li>
+      </ul>
+      <p class="apply-note">We review every application and reply by email.</p>
+    </div>
+    <form class="form-card fp-form apply-form" id="applyForm" novalidate>
+      <fieldset>
+        <legend>About your shelter</legend>
+        <div class="fp-grid">
+          <div class="field"><label for="a-name">Shelter or group name<i>*</i></label><input id="a-name" type="text" maxlength="80"></div>
+          <div class="field"><label for="a-type">Type<i>*</i></label>
+            <select id="a-type"><option value="">Choose…</option><option value="Public shelter">Public (city/county) shelter</option><option value="Private shelter">Private shelter</option><option value="Rescue group">Rescue group</option><option value="Adoption center">Adoption center</option><option value="Other">Other</option></select></div>
+          <div class="field"><label for="a-region">Region<i>*</i></label><select id="a-region"></select></div>
+          <div class="field"><label for="a-count">Animals in your care</label><input id="a-count" type="number" min="0" max="5000" inputmode="numeric"></div>
+        </div>
+        <div class="field"><label for="a-addr">Address</label><input id="a-addr" type="text" maxlength="160"></div>
+        <div class="field"><label for="a-web">Website or Instagram</label><input id="a-web" type="text" maxlength="160"></div>
+        <p class="fp-label">What do you offer?</p>
+        <div class="fp-checks" role="group" aria-label="What do you offer?">
+          <label><input type="checkbox" value="Adoption" checked><span>Adoption</span></label>
+          <label><input type="checkbox" value="Taking in surrendered pets"><span>Taking in surrendered pets</span></label>
+          <label><input type="checkbox" value="Fostering"><span>Fostering</span></label>
+          <label><input type="checkbox" value="Volunteering"><span>Volunteering</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Contact person</legend>
+        <div class="fp-grid">
+          <div class="field"><label for="a-person">Name<i>*</i></label><input id="a-person" type="text" maxlength="60"></div>
+          <div class="field"><label for="a-role">Role</label><input id="a-role" type="text" maxlength="60"></div>
+          <div class="field"><label for="a-email">Email<i>*</i></label><input id="a-email" type="email" maxlength="80"></div>
+          <div class="field"><label for="a-phone">Phone</label><input id="a-phone" type="tel" maxlength="30"></div>
+        </div>
+        <div class="field"><label for="a-msg">Tell us about your shelter<i>*</i></label><textarea id="a-msg" maxlength="2000" class="short"></textarea></div>
+      </fieldset>
+      <input type="text" id="a-honey" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <label class="fp-agree"><input type="checkbox" id="a-agree"><span>I can apply on behalf of this shelter, and I agree to Pawgive showing its details and animals on the website.</span></label>
+      <button class="pill-btn solid wide-btn" id="a-send" type="submit">Send application <svg width="20" height="20"><use href="#i-send"/></svg></button>
+      <p class="form-msg" id="applyMsg" hidden></p>
     </form>
   </div>
 </div></section>
@@ -1331,6 +1455,8 @@ html[lang=ko] .sh-surr svg{transform:translateY(-2px)}
   </div>
 </footer>
 
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
 <div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-label="Guide">
   <button class="viewer-close" id="viewerClose" type="button">Close ✕</button>
   <img id="viewerImg" src="" alt="">
@@ -1425,6 +1551,7 @@ const PETS = [
     "type": "Dog",
     "status": "Available",
     "image": "images/pets/p8.webp",
+    "photos": ["images/pets/p8-2.webp"],
     "story": "",
     "story_ko": "",
     "born": "2022",
@@ -1465,6 +1592,7 @@ const PETS = [
     "type": "Dog",
     "status": "Available",
     "image": "images/pets/p17.webp",
+    "photos": ["images/pets/p17-2.webp"],
     "story": "Doesn't have an identified microchip, and eyes need to be checked. Sharp tempered at times.",
     "story_ko": "안구가 빨개 확인 필요, 내장칩 없음, 앙칼스러움",
     "born": "2021",
@@ -1525,6 +1653,7 @@ const PETS = [
     "type": "Cat",
     "status": "Available",
     "image": "images/pets/p20.webp",
+    "photos": ["images/pets/p20-2.webp"],
     "story": "A sweet, affectionate dark ginger cat.",
     "story_ko": "진한색 애교 치즈냥",
     "born": "2026",
@@ -1563,7 +1692,7 @@ const PETS = [
     "name": "왕눈이 (Wang-noon)",
     "name_ko": "왕눈이 (Wang-noon)",
     "type": "Dog",
-    "status": "Available",
+    "status": "Not available",
     "image": "images/pets/p23.webp",
     "story": "Gentle but a bit timid.",
     "story_ko": "온순함, 겁 있음",
@@ -2585,6 +2714,7 @@ const PETS = [
     "type": "Dog",
     "status": "Available",
     "image": "images/pets/p76.webp",
+    "photos": ["images/pets/p76-2.webp"],
     "story": "One of seven siblings, with a small face and long legs. Still shy in new places.",
     "story_ko": "7마리 남매들, 작은얼굴 긴다리, 아직은 낯설어서 소심",
     "born": "2026",
@@ -2605,6 +2735,7 @@ const PETS = [
     "type": "Dog",
     "status": "Available",
     "image": "images/pets/p77.webp",
+    "photos": ["images/pets/p77-2.webp"],
     "story": "One of seven siblings, with a small face and long legs. Still shy in new places.",
     "story_ko": "7마리 남매들, 작은얼굴 긴다리, 아직은 낯설어서 소심",
     "born": "2026",
@@ -2625,6 +2756,7 @@ const PETS = [
     "type": "Dog",
     "status": "Available",
     "image": "images/pets/p78.webp",
+    "photos": ["images/pets/p78-2.webp"],
     "story": "One of seven siblings, with a small face and long legs. Still shy in new places.",
     "story_ko": "7마리 남매들, 작은얼굴 긴다리, 아직은 낯설어서 소심",
     "born": "2026",
@@ -2645,6 +2777,7 @@ const PETS = [
     "type": "Dog",
     "status": "Available",
     "image": "images/pets/p79.webp",
+    "photos": ["images/pets/p79-2.webp"],
     "story": "One of seven siblings, with a small face and long legs. Still shy in new places.",
     "story_ko": "7마리 남매들, 작은얼굴 긴다리, 아직은 낯설어서 소심",
     "born": "2026",
@@ -2665,6 +2798,7 @@ const PETS = [
     "type": "Dog",
     "status": "Available",
     "image": "images/pets/p80.webp",
+    "photos": ["images/pets/p80-2.webp"],
     "story": "One of seven siblings, with a small face and long legs. Still shy in new places.",
     "story_ko": "7마리 남매들, 작은얼굴 긴다리, 아직은 낯설어서 소심",
     "born": "2026",
@@ -2705,6 +2839,7 @@ const PETS = [
     "type": "Dog",
     "status": "Available",
     "image": "images/pets/p82.webp",
+    "photos": ["images/pets/p82-2.webp"],
     "story": "One of seven siblings, with a small face and long legs. Still shy in new places.",
     "story_ko": "7마리 남매들, 작은얼굴 긴다리, 아직은 낯설어서 소심",
     "born": "2026",
@@ -2865,6 +3000,7 @@ const PETS = [
     "type": "Dog",
     "status": "Available",
     "image": "images/pets/p90.webp",
+    "photos": ["images/pets/p90-2.webp"],
     "story": "Rescued from the same place as notices 509–515. Gentle.",
     "story_ko": "공고번호 509~515와 같은 장소에서 구조된 아이, 순함",
     "born": "2026",
@@ -2885,6 +3021,7 @@ const PETS = [
     "type": "Dog",
     "status": "Available",
     "image": "images/pets/p91.webp",
+    "photos": ["images/pets/p91-2.webp"],
     "story": "Thought to be a littermate of notices 506 and 507. Has a short bobtail and is gentle.",
     "story_ko": "공고번호 506,507과 동배 추정, 동경이같은 짧은꼬리, 순함",
     "born": "2026",
@@ -2905,6 +3042,7 @@ const PETS = [
     "type": "Dog",
     "status": "Available",
     "image": "images/pets/p92.webp",
+    "photos": ["images/pets/p92-2.webp"],
     "story": "Has a wound on the face. Still adjusting, but gentle.",
     "story_ko": "얼굴에 상처, 아직 낯설지만 순함",
     "born": "2024",
@@ -2985,6 +3123,7 @@ const PETS = [
     "type": "Dog",
     "status": "Available",
     "image": "images/pets/p96.webp",
+    "photos": ["images/pets/p96-2.webp"],
     "story": "Thought to be about 4 years old. Looks very young, a little timid, but loves people and is very affectionate.",
     "story_ko": "4세? 추정 , 초절정 동안 멍멍이 , 겁은 약간있지만 사람좋아하고 애교 많음!",
     "born": "2022",
@@ -3045,6 +3184,7 @@ const PETS = [
     "type": "Dog",
     "status": "Available",
     "image": "images/pets/p99.webp",
+    "photos": ["images/pets/p99-2.webp"],
     "story": "About 5 months old. Found and rescued in a nearby neighborhood.",
     "story_ko": "생후 5개월 추정, 인근 동네에서 발견하여 구조",
     "born": "2026",
@@ -3165,6 +3305,7 @@ const PETS = [
     "type": "Dog",
     "status": "Available",
     "image": "images/pets/p105.webp",
+    "photos": ["images/pets/p105-2.webp"],
     "story": "About 6 months old. Found and rescued in a nearby village.",
     "story_ko": "생후 6개월령 추정, 인근 마을에서 발견하여포획 구조",
     "born": "2026",
@@ -5290,10 +5431,46 @@ const KO = {
   "My foster listings": "내 임시보호 게시글",
   "Review listings": "게시글 검토",
   "Accepts surrenders": "파양 인수",
-  "Emergency surrenders": "긴급 인수"
+  "Emergency surrenders": "긴급 인수",
+  "Two pets we're shining a light on this week.": "이번 주에 소개하는 두 친구예요.",
+  "Run a shelter? Apply to be featured": "보호소를 운영하시나요? 포기브에 소개 신청하기",
+  "For shelters": "보호소 신청",
+  "Get your shelter featured on Pawgive.": "포기브에 보호소를 소개해 보세요.",
+  "Run a shelter, rescue group or adoption center in Korea? Apply below and we’ll add you to Pawgive, so more people can find your animals.": "국내에서 보호소, 구조 단체 또는 입양센터를 운영하고 계신가요? 아래에서 신청해 주시면 포기브에 소개해 더 많은 분들이 아이들을 만날 수 있도록 도울게요.",
+  "A listing on our Shelters page with your contact details": "보호소 페이지에 연락처와 함께 소개",
+  "Your adoptable animals on our Pets page": "반려동물 페이지에 입양 가능한 아이들 소개",
+  "Links to your website and Instagram": "웹사이트와 인스타그램 링크 연결",
+  "We review every application and reply by email.": "모든 신청서를 검토한 뒤 이메일로 답변드려요.",
+  "About your shelter": "보호소 정보",
+  "Shelter or group name": "보호소·단체 이름",
+  "Type": "유형",
+  "Public (city/county) shelter": "지자체 동물보호센터",
+  "Private shelter": "민간 보호소",
+  "Rescue group": "구조 단체",
+  "Adoption center": "입양센터",
+  "Region": "지역",
+  "Animals in your care": "보호 중인 동물 수",
+  "Address": "주소",
+  "Website or Instagram": "웹사이트 또는 인스타그램",
+  "What do you offer?": "어떤 활동을 하나요?",
+  "Adoption": "입양",
+  "Taking in surrendered pets": "파양 동물 인수",
+  "Fostering": "임시보호",
+  "Volunteering": "봉사활동",
+  "Contact person": "담당자",
+  "Role": "직책",
+  "Tell us about your shelter": "보호소를 소개해 주세요",
+  "I can apply on behalf of this shelter, and I agree to Pawgive showing its details and animals on the website.": "이 보호소를 대표해 신청할 수 있으며, 포기브 웹사이트에 보호소 정보와 동물들이 소개되는 것에 동의합니다.",
+  "Send application": "신청서 보내기",
+  "Run a shelter?": "보호소를 운영하시나요?",
+  "Get your shelter and its animals featured on Pawgive.": "포기브에 보호소와 아이들을 소개해 보세요.",
+  "Apply to be featured": "소개 신청하기",
+  "Share": "공유하기",
+  "More": "더보기"
 };
-let LANG = 'en';
-try { if (localStorage.getItem('pawgive-lang') === 'ko') LANG = 'ko'; } catch (e) {}
+// Korean first; English only if the visitor picked it before
+let LANG = 'ko';
+try { if (localStorage.getItem('pawgive-lang') === 'en') LANG = 'en'; } catch (e) {}
 const L = (obj, key) => (LANG === 'ko' && obj[key + '_ko']) ? obj[key + '_ko'] : obj[key];
 const SKIP = new Set(['SCRIPT', 'STYLE', 'svg', 'use']);
 function trNode(n) {
@@ -5422,16 +5599,56 @@ function renderPets() {
   more.hidden = list.length <= petShown;
   more.textContent = LANG === 'ko' ? `더 보기 (${list.length - petShown}마리 더)` : `Show more (${list.length - petShown} more)`;
 }
-// This week's companions: 4 random available pets, picked fresh on every page load
-const HOME_PETS = (() => {
-  const pool = PETS.filter(p => p.status === 'Available');
-  for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
-  return pool.slice(0, 4);
-})();
-function renderHomePets() {
-  $('#homePets').innerHTML = HOME_PETS.map(petCard).join("");
+// Photos for a pet: the main image first, then any extra photos
+const petPhotos = p => [p.image, ...(p.photos || [])].filter(Boolean);
+function petGallery(p, mainStyle = 'border-radius:24px') {
+  const ph = petPhotos(p);
+  return `<div class="gal">
+    <div class="gal-main">${petImg(p, mainStyle)}</div>
+    ${ph.length > 1 ? `<div class="gal-thumbs">${ph.map((src, i) => `<button type="button" data-gsrc="${esc(src)}" class="${i ? '' : 'on'}" aria-label="${tx('Photo', '사진')} ${i + 1}"><img src="${esc(src)}" alt="" loading="lazy"></button>`).join('')}</div>` : ''}
+  </div>`;
 }
-renderHomePets();
+document.addEventListener('click', e => {
+  const t = e.target.closest('.gal-thumbs [data-gsrc]'); if (!t) return;
+  const g = t.closest('.gal'), im = g.querySelector('.gal-main img');
+  if (im) im.src = t.dataset.gsrc;
+  g.querySelectorAll('.gal-thumbs button').forEach(b => b.classList.toggle('on', b === t));
+});
+
+// This week's companions: 2 spotlight pets with more than one photo. The pair changes every Monday (Korea time).
+const SPOTLIGHT = (() => {
+  const byId = (a, b) => a.id.localeCompare(b.id, undefined, { numeric: true });
+  let pool = PETS.filter(p => p.status === 'Available' && p.photos && p.photos.length).sort(byId);
+  if (pool.length < 2) pool = PETS.filter(p => p.status === 'Available').sort(byId);
+  if (!pool.length) return [];
+  const week = Math.floor((Date.now() + 9 * 36e5 - 4 * 864e5) / 6048e5); // weeks since Monday 5 Jan 1970, in KST
+  const start = week % pool.length;
+  const first = pool[start], rest = pool.slice(start + 1).concat(pool.slice(0, start));
+  // Pick a second pet that isn't from the same litter or shelter, so the two feel different
+  const second = rest.find(p => p.shelter !== first.shelter && p.type !== first.type) || rest.find(p => p.shelter !== first.shelter) || rest.find(p => p.story !== first.story) || rest[0];
+  return [first, second].filter(Boolean);
+})();
+function spotCard(p) {
+  const where = [petShelterName(p.shelter), L(p, 'region')].filter(Boolean).join(' · ');
+  return `<article class="card spot">
+    ${petGallery(p, 'aspect-ratio:4/3;border-radius:18px')}
+    <div class="spot-body">
+      <div class="spot-top"><span class="spot-tag">${ico('i-paw')}${tx('Spotlight', '이번 주 주인공')}</span><span class="status"><i class="dot ${statusCls(p.status)}"></i>${esc(p.status)}</span></div>
+      <div class="spot-head"><h3>${esc(petName(p))}</h3>
+        <button class="heart${FAVS.has(p.id) ? ' on' : ''}" type="button" data-fav="${p.id}" aria-pressed="${FAVS.has(p.id)}" aria-label="${tx('Save to favourites', '관심 반려동물 저장')}">${ico('i-heart')}</button></div>
+      ${where ? `<p class="spot-where">${ico('i-pin')}<span>${esc(where)}</span></p>` : ''}
+      <div class="spot-facts"><span>${ico('i-cal')}${esc(petBorn(p))}</span><span>${ico('i-sex')}${esc(petSex(p))}</span>${petSize(p) ? `<span>${ico('i-ruler')}${esc(petSize(p))}</span>` : ''}<span>${ico('i-paw')}${esc(petBreed(p))}</span></div>
+      <div class="spot-story"><h4>${tx('Featured story', '이 친구의 이야기')}</h4><p>${esc(petStory(p) || tx('This pet is waiting for a family. Visit the shelter to learn more.', '가족을 기다리고 있어요. 보호소에서 더 알아보세요.'))}</p></div>
+      <div class="spot-acts">
+        <a class="pill-btn solid" href="pets/${p.id}">${tx('See full profile', '프로필 보기')} <svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+        ${shareBtn('pet-' + p.id, petName(p))}
+      </div>
+    </div>
+  </article>`;
+}
+function renderHomePets() {
+  $('#homePets').innerHTML = SPOTLIGHT.map(spotCard).join("");
+}
 document.addEventListener('click', e => {
   const c = e.target.closest('.pet-card[data-id]'); if (c && !e.target.closest('[data-fav]')) go('pet-' + c.dataset.id);
 });
@@ -5446,10 +5663,10 @@ function renderDetail(id) {
   const p = PETS.find(x => x.id === id) || PETS[0];
   currentPet = p.id;
   $('#petDetail').innerHTML = `
-    <div>${petImg(p, "border-radius:24px")}</div>
+    <div>${petGallery(p)}</div>
     <div>
       <span class="status"><i class="dot ${statusCls(p.status)}"></i>${esc(p.status)}</span>
-      <div class="head"><h1>${esc(petName(p))}</h1><button class="heart${FAVS.has(p.id) ? ' on' : ''}" type="button" data-fav="${p.id}" aria-pressed="${FAVS.has(p.id)}" aria-label="${LANG === 'ko' ? '관심 반려동물 저장' : 'Save to favourites'}">${ico('i-heart')}</button></div>
+      <div class="head"><h1>${esc(petName(p))}</h1><div class="head-acts">${shareBtn('pet-' + p.id, petName(p), true)}<button class="heart${FAVS.has(p.id) ? ' on' : ''}" type="button" data-fav="${p.id}" aria-pressed="${FAVS.has(p.id)}" aria-label="${LANG === 'ko' ? '관심 반려동물 저장' : 'Save to favourites'}">${ico('i-heart')}</button></div></div>
       <div class="facts"><span>${ico('i-cal')}${esc(petBorn(p))}</span><span>${ico('i-sex')}${esc(petSex(p))}</span><span>${ico('i-ruler')}${esc(petSize(p))}</span></div>
       <h2>Breed</h2><p class="txt">${esc(petBreed(p))}</p>
       <h2>Story</h2><p class="txt">${esc(petStory(p))}</p>
@@ -5565,7 +5782,7 @@ function mountQuiz(rootId) {
     </div>
     <div class="qcard results" hidden>
       <h3>Quiz Complete! 🎉</h3><div class="score"></div><p class="msg"></p>
-      <button class="restart" type="button">Retake Quiz</button>
+      <div class="res-acts"><button class="restart" type="button">Retake Quiz</button><button class="share-btn pill-btn" type="button" data-share="quiz" data-kind="quiz"><svg><use href="#i-share"/></svg><span>Share</span></button></div>
     </div>`;
   const card = root.querySelector('.js-card'), results = root.querySelector('.results');
   const bar = root.querySelector('.bar'), counter = root.querySelector('.counter'), q = root.querySelector('.q');
@@ -5600,6 +5817,7 @@ function mountQuiz(rootId) {
     if (i < questions.length) return load();
     card.hidden = true; results.hidden = false;
     results.querySelector('.score').textContent = `${score} / ${questions.length}`;
+    results.querySelector('.share-btn').dataset.score = `${score}/${questions.length}`;
     showMsg();
   });
   function showMsg() {
@@ -5624,6 +5842,48 @@ const quizRelabel = [mountQuiz('quiz-basic'), mountQuiz('quiz-trivia')];
 
 /* Forms (demo only — connect to your backend later) */
 function note(id, text, kind = 'error') { const el = $(id); el.textContent = text; el.hidden = false; el.classList.remove('error', 'ok', 'info'); el.classList.add(kind); }
+/* ===================== SHARING =====================
+   Phones open the system share sheet (KakaoTalk, Messages, Instagram…). Computers get a small share box. */
+const LIVE_URL = 'https://bubble-youthimpact.github.io/pawgive/';   // change when the custom domain is ready
+const shareUrl = h => (window.PG_BASE ? location.origin + BASE : LIVE_URL) + pathFor(h);
+function shareBtn(h, title, iconOnly) {
+  const lbl = tx('Share', '공유하기');
+  return iconOnly
+    ? `<button type="button" class="icon-btn share-btn" data-share="${esc(h)}" data-title="${esc(title)}" aria-label="${lbl}" title="${lbl}">${ico('i-share')}</button>`
+    : `<button type="button" class="pill-btn share-btn" data-share="${esc(h)}" data-title="${esc(title)}">${ico('i-share')}<span>${lbl}</span></button>`;
+}
+function shareInfo(b) {
+  const h = b.dataset.share, url = shareUrl(h), name = b.dataset.title || '';
+  if (b.dataset.kind === 'quiz') {
+    const quiz = b.closest('.quiz-block')?.querySelector('h2')?.textContent.trim() || tx('Pawgive quiz', '포기브 퀴즈');
+    return { url, title: quiz, text: b.dataset.score ? tx(`I got ${b.dataset.score} on the ${quiz} at Pawgive. Can you beat me?`, `포기브 ${quiz}에서 ${b.dataset.score}점을 받았어요. 도전해 보세요!`) : tx(`Try the ${quiz} at Pawgive`, `포기브 ${quiz}에 도전해 보세요`) };
+  }
+  if (h.startsWith('pet-') || h.startsWith('fl-')) return { url, title: name, text: tx(`Meet ${name} — looking for a loving home on Pawgive.`, `포기브에서 가족을 기다리는 ${name}을 만나 보세요.`) };
+  return { url, title: 'Pawgive', text: tx('Pawgive — find your companion', '포기브 — 나의 반려동물을 찾아보세요') };
+}
+// Phones: the system share sheet. Computers: copy the link and show a short "Link copied" note.
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-share]'); if (!b) return;
+  e.preventDefault(); e.stopPropagation();
+  const d = shareInfo(b);
+  if (navigator.share && matchMedia('(pointer: coarse)').matches) {
+    try { await navigator.share(d); return; } catch (err) { if (err && err.name === 'AbortError') return; }
+  }
+  let ok = true;
+  try { await navigator.clipboard.writeText(d.url); }
+  catch (err) {
+    const t = document.createElement('textarea'); t.value = d.url; t.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(t); t.select(); try { ok = document.execCommand('copy'); } catch (e2) { ok = false; } t.remove();
+  }
+  toast(ok ? tx('Link copied', '링크를 복사했어요') : d.url);
+});
+let toastTimer;
+function toast(msg) {
+  const t = $('#toast'); t.innerHTML = `${ico('i-check')}<span>${esc(msg)}</span>`; t.hidden = false;
+  requestAnimationFrame(() => t.classList.add('show'));
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.hidden = true, 250); }, 2200);
+}
+
 /* Contact form → FormSubmit (formsubmit.co) → your inbox.
    To change where messages go, change CONTACT_TO. */
 const CONTACT_TO = 'bubble.youthimpact@gmail.com';
@@ -5659,6 +5919,56 @@ $('#contactForm').addEventListener('submit', async e => {
   } catch (err) {
     console.warn('Contact form error:', err);
     note('#contactMsg', 'Sorry, your message couldn’t be sent. Please try again, or email us directly.');
+  } finally { btn.disabled = false; }
+});
+// Korean regions, used by the shelter application and the foster forms
+const REGIONS = [['Seoul', '서울'], ['Busan', '부산'], ['Daegu', '대구'], ['Incheon', '인천'], ['Gwangju', '광주'], ['Daejeon', '대전'], ['Ulsan', '울산'], ['Sejong', '세종'], ['Gyeonggi', '경기'], ['Gangwon', '강원'], ['Chungbuk', '충북'], ['Chungnam', '충남'], ['Jeonbuk', '전북'], ['Jeonnam', '전남'], ['Gyeongbuk', '경북'], ['Gyeongnam', '경남'], ['Jeju', '제주']];
+/* Shelter application → FormSubmit → the same inbox, with its own subject line */
+$('#a-region').innerHTML = '<option value="">Choose…</option>' + REGIONS.map(([k]) => `<option value="${k}">${k}</option>`).join('');
+function relabelApply() {
+  $('#a-region').querySelectorAll('option').forEach(o => { if (o.value) o.textContent = tx(o.value, (REGIONS.find(r => r[0] === o.value) || [])[1]); });
+  const ph = { '#a-addr': ['Street address', '도로명 주소'], '#a-web': ['https://… or @instagram', 'https://… 또는 @인스타그램'], '#a-role': ['e.g. Manager, volunteer', '예: 센터장, 봉사자'], '#a-count': ['About how many?', '대략 몇 마리인가요?'], '#a-msg': ['How long you’ve been running, how adoption works, and anything else we should know.', '운영 기간, 입양 절차, 그 밖에 알려 주실 내용을 적어 주세요.'] };
+  Object.entries(ph).forEach(([id, t]) => $(id).placeholder = tx(...t));
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[data-apply]'); if (!a) return;
+  setTimeout(() => { const el = $('#apply'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hdr')) || 80) - 16, behavior: 'smooth' }); }, 60);
+});
+$('#applyForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const v = id => $(id).value.trim();
+  if (!v('#a-name') || !v('#a-type') || !v('#a-region') || !v('#a-person') || !v('#a-email').includes('@') || !v('#a-msg'))
+    return note('#applyMsg', tx('Please fill in the shelter name, type, region, your name, a valid email and a short introduction.', '보호소 이름, 유형, 지역, 담당자 이름, 올바른 이메일과 간단한 소개를 입력해 주세요.'));
+  if (!$('#a-agree').checked) return note('#applyMsg', tx('Please tick the box to confirm.', '확인란에 체크해 주세요.'));
+  if ($('#a-honey').value) return;
+  const btn = $('#a-send'); btn.disabled = true;
+  note('#applyMsg', tx('Sending…', '보내는 중…'), 'info');
+  try {
+    const offers = [...document.querySelectorAll('#applyForm .fp-checks input:checked')].map(i => i.value).join(', ');
+    const res = await fetch('https://formsubmit.co/ajax/' + CONTACT_TO, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        'shelter name': v('#a-name'), type: v('#a-type'), region: v('#a-region'), 'animals in care': v('#a-count'),
+        address: v('#a-addr'), 'website / instagram': v('#a-web'), offers: offers || '—',
+        'contact person': v('#a-person'), role: v('#a-role'), email: v('#a-email'), phone: v('#a-phone'),
+        about: v('#a-msg'), 'site language': LANG,
+        _replyto: v('#a-email'),
+        _subject: 'New shelter application: ' + v('#a-name'),
+        _template: 'table', _captcha: 'false'
+      })
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || String(data.success) === 'false') {
+      console.warn('FormSubmit:', res.status, data);
+      if (/activat/i.test(data.message || '')) return note('#applyMsg', tx('This form is waiting to be activated. Please check the Pawgive inbox for the activation email.', '문의 양식이 아직 활성화되지 않았어요. 포기브 메일함에서 활성화 이메일을 확인해 주세요.'), 'info');
+      throw new Error(data.message || 'failed');
+    }
+    note('#applyMsg', tx('Thank you! Your application was sent. We’ll review it and reply by email.', '감사합니다! 신청서가 전송되었어요. 검토 후 이메일로 답변드릴게요.'), 'ok');
+    e.target.reset();
+  } catch (err) {
+    console.warn('Shelter application error:', err);
+    note('#applyMsg', tx('Sorry, your application couldn’t be sent. Please try again, or email us directly.', '죄송해요, 신청서를 보내지 못했어요. 다시 시도하거나 이메일로 직접 연락해 주세요.'));
   } finally { btn.disabled = false; }
 });
 /* ===================== ACCOUNTS (Firebase Authentication) =====================
@@ -5835,7 +6145,6 @@ document.querySelectorAll('.google-btn').forEach(btn => btn.addEventListener('cl
    Admins (who can approve listings) — keep this list the same as in the Firestore rules. */
 const ADMINS = ['pawgive@gmail.com', 'bubble.youthimpact@gmail.com'];
 const isAdmin = () => { const u = auth && auth.currentUser; return !!(u && u.emailVerified && ADMINS.includes((u.email || '').toLowerCase())); };
-const REGIONS = [['Seoul', '서울'], ['Busan', '부산'], ['Daegu', '대구'], ['Incheon', '인천'], ['Gwangju', '광주'], ['Daejeon', '대전'], ['Ulsan', '울산'], ['Sejong', '세종'], ['Gyeonggi', '경기'], ['Gangwon', '강원'], ['Chungbuk', '충북'], ['Chungnam', '충남'], ['Jeonbuk', '전북'], ['Jeonnam', '전남'], ['Gyeongbuk', '경북'], ['Gyeongnam', '경남'], ['Jeju', '제주']];
 const FO_KIND = { rehome: ['Needs a new home', '새 가족 찾아요'], temporary: ['Needs a temporary foster', '임시보호처 찾아요'] };
 const FO_LOOK = { either: ['A foster home or adopter', '임시보호처 또는 입양 가족'], foster: ['A foster home', '임시보호처'], adopter: ['An adopter', '입양 가족'] };
 const FO_DUR = { u1: ['Under 1 month', '1개월 미만'], '1-3': ['1–3 months', '1–3개월'], '3-6': ['3–6 months', '3–6개월'], '6+': ['6 months or more', '6개월 이상'] };
@@ -5929,7 +6238,7 @@ async function renderListing(id) {
     return;
   }
   document.title = `${f.name} | Pawgive`;
-  flView = { f, photos: f.sample ? f.photos : (f.thumb ? [f.thumb] : []), contact: f.sample ? f.contact : null, contactLoaded: !!f.sample };
+  flView = { id, f, photos: f.sample ? f.photos : (f.thumb ? [f.thumb] : []), contact: f.sample ? f.contact : null, contactLoaded: !!f.sample };
   drawListing();
   if (f.sample) return;
   try { const p = await db.collection('fosterPhotos').doc(id).get(); if (p.exists && (p.data().photos || []).length) flView.photos = p.data().photos; } catch (e) {}
@@ -5964,7 +6273,7 @@ function drawListing() {
     <div>
       ${stateNote}
       <span class="fo-badge ${esc(f.kind)}">${esc(T2(FO_KIND, f.kind))}</span>
-      <div class="head"><h1>${esc(f.name)}</h1></div>
+      <div class="head"><h1>${esc(f.name)}</h1>${f.status === 'approved' || f.sample ? `<div class="head-acts">${shareBtn('fl-' + flView.id, f.name, true)}</div>` : ''}</div>
       <div class="facts"><span>${ico('i-cal')}${esc(T2(FO_AGE, f.age))}</span><span>${ico('i-sex')}${esc(T2(FO_SEX, f.sex))}</span>${sizeTxt ? `<span>${ico('i-ruler')}${esc(sizeTxt)}</span>` : ''}${where ? `<span>${ico('i-pin')}${esc(where)}</span>` : ''}</div>
       <dl class="fl-info">
         <div><dt>${tx('Species', '종')}</dt><dd>${esc(T2(FO_SPECIES, f.species))}</dd></div>
@@ -6265,8 +6574,9 @@ function setLang(lang) {
   if (typeof auth !== 'undefined' && auth) { auth.languageCode = lang; updateAccountUI(auth.currentUser); }
   renderTeam(); renderResources(); quizRelabel.forEach(f => f());
   renderPets(); renderHomePets(); renderShelters(); renderHomeShelters(); if (auth && auth.currentUser) renderProfile(); if (currentPet && $('#p-pet').classList.contains('active')) renderDetail(currentPet);
-  fosterRelang();
+  fosterRelang(); relabelApply();
   trTree(document.body);
+  document.documentElement.classList.remove('pg-init');
 }
 $('#lang').addEventListener('click', () => setLang(LANG === 'ko' ? 'en' : 'ko'));
 setLang(LANG);
