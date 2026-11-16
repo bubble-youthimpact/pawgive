@@ -750,30 +750,31 @@ body{transition:opacity .15s}
 @media (max-width:900px){.spot-grid{grid-template-columns:1fr}}
 .spot{display:flex;flex-direction:column;border:1.5px solid var(--line)}
 .spot .gal{padding:14px 14px 0}
-.spot .gal-thumbs button{width:64px;height:64px;border-radius:12px}
+.spot .gal-thumbs button{width:56px;height:56px;border-radius:10px}
 .spot-body{display:flex;flex-direction:column;gap:14px;flex:1;padding:20px 26px 28px}
-.spot-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.spot-tag{display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:#fff;border-radius:999px;padding:6px 13px 6px 10px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;line-height:1}
-.spot-tag svg{width:15px;height:15px;flex:none}
 .spot-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .spot h3{font-family:var(--body);font-size:clamp(24px,2.4vw,30px);font-weight:700;line-height:1.2}
 .spot .heart svg{width:28px;height:28px}
 .spot-where{display:flex;align-items:flex-start;gap:7px;margin:-6px 0 0;font-size:15.5px;color:var(--ink-2)}
 .spot-where svg{width:17px;height:17px;flex:none;margin-top:2px}
 .spot-facts{display:flex;flex-wrap:wrap;gap:8px}
-.spot-facts span{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--line);border-radius:999px;padding:7px 14px;font-size:14.5px;font-weight:600;color:var(--ink);line-height:1}
+.spot-facts span{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14px;font-weight:600;color:var(--ink);line-height:1}
 .spot-facts svg{width:16px;height:16px;flex:none}
 .spot-story{background:var(--bg);border-radius:16px;padding:16px 20px 18px;border-left:4px solid var(--sage)}
 .spot-story h4{margin:0;font-family:var(--body);font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
-.spot-story p{margin:8px 0 0;font-size:16.5px;line-height:1.6;color:var(--ink);display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+.spot-story p{margin:8px 0 0;font-size:16.5px;line-height:1.6;color:var(--ink)}
 .spot-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:4px}
+.spot-acts .pill-btn{padding:10px 20px;font-size:15.5px}
 
 /* Share buttons + share box */
 .share-btn svg{width:18px;height:18px;flex:none}
 .head-acts{display:flex;align-items:center;gap:8px;flex:none}
-.icon-btn{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;padding:0;transition:background .15s,border-color .15s}
-.icon-btn:hover{background:var(--sage-soft);border-color:var(--ink)}
-.icon-btn svg{width:21px;height:21px}
+.icon-btn{border:0;background:none;color:var(--ink);display:grid;place-items:center;cursor:pointer;padding:4px;transition:opacity .15s}
+.icon-btn:hover{opacity:.65}
+.icon-btn svg{width:28px;height:28px}
+.head-acts{gap:6px}
+.head-acts .heart,.head-acts .icon-btn,.spot-head .heart{width:42px;height:42px;padding:0;display:grid;place-items:center;flex:none}
+.head-acts svg,.spot-head .heart svg{display:block;width:28px;height:28px}
 .toast{position:fixed;left:50%;bottom:28px;z-index:300;transform:translate(-50%,12px);opacity:0;display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;border-radius:999px;padding:12px 20px 12px 16px;font-size:15.5px;font-weight:500;box-shadow:0 10px 30px rgba(0,0,0,.18);transition:opacity .2s,transform .2s;max-width:calc(100% - 32px)}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .toast svg{width:18px;height:18px;flex:none}
@@ -796,6 +797,20 @@ body{transition:opacity .15s}
 .sh-cta{margin-top:clamp(50px,7vw,80px);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;background:var(--sage-soft);border-radius:24px;padding:clamp(24px,4vw,40px)}
 .sh-cta h2{font-family:var(--body);font-size:clamp(22px,2.6vw,28px);font-weight:700;color:var(--ink)}
 .sh-cta p{margin:6px 0 0;color:var(--ink);font-size:16.5px}
+
+/* Resources: share button on each card */
+.res-item{position:relative;display:flex;flex-direction:column}
+.res-item[hidden]{display:none}
+.res-item > .res{flex:1}
+.res-share{position:absolute;top:12px;right:12px;width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.94);color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.12);transition:background .15s}
+.res-share:hover{background:#fff}
+.res-share svg{width:20px;height:20px}
+/* Quiz share */
+.quiz-share{margin-top:22px;padding:9px 20px;font-size:15.5px}
+/* Forms: tighter gap above the agreement checkbox and the button */
+.fp-form fieldset:last-of-type{margin-bottom:22px}
+.fp-form fieldset:last-of-type > .field:last-child{margin-bottom:0}
+.fp-form .fp-agree{margin:0 0 20px}
 </style>
 </head>
 <body>
@@ -1083,6 +1098,7 @@ body{transition:opacity .15s}
       <span class="eyebrow">Quiz</span>
       <h2 class="h-xl">Basic Quiz</h2>
       <p>How well do you know your dog care basics? Take this quick 8-question quiz to test what you've learned from our resource collection.</p>
+      <button class="pill-btn share-btn quiz-share" type="button" data-share="quiz" data-kind="quiz"><svg><use href="#i-share"/></svg><span>Share this quiz</span></button>
     </div>
     <div class="pq" id="quiz-basic"></div>
   </div>
@@ -1092,6 +1108,7 @@ body{transition:opacity .15s}
       <span class="eyebrow">Trivia</span>
       <h2 class="h-xl">Trivia Quiz</h2>
       <p>How much do you really know about dogs? From the oldest breed to the fastest runner, this 12-question trivia quiz covers surprising facts about how dogs see, smell, and even sweat. See how many you can get right!</p>
+      <button class="pill-btn share-btn quiz-share" type="button" data-share="quiz" data-kind="quiz"><svg><use href="#i-share"/></svg><span>Share this quiz</span></button>
     </div>
     <div class="pq" id="quiz-trivia"></div>
   </div>
@@ -1914,7 +1931,7 @@ const PETS = [
     "type": "Cat",
     "status": "Available",
     "image": "images/pets/p36.webp",
-    "story": "Aeng-du came to the shelter when her owner's health declined. Quiet, but very affectionate, and purrs when petted.",
+    "story": "Aeng-du came to Guro Daengnyang House together with Rungji after her owner’s health declined and they could no longer stay at home. She can be quiet and calm, but she truly loves people and is a real sweetheart! When you stroke her, she shows her affection with a happy purring song ❤️ Aeng-du loves human warmth and is happiest by your side. We hope this lovable girl meets a family to spend the rest of her life with and starts a happy new chapter ❤️",
     "story_ko": "앵두는 보호자의 건강 악화로 인하여 가정에서 더 이상 함께 할 수 없어 룽지와 함께 구로댕냥이네로 오게 되었습니다. 조용하고 얌전한 모습도 있지만, 사실 사람을 정말 좋아하는 애교쟁이예요! 쓰다듬어 주면 기분 좋은 골골송을 들려주며 애정을 표현한답니다 ❤️ 사람의 온기를 좋아하고 곁에 있는 것을 행복해하는 사랑스러운 앵두. 애교 가득한 앵두가 평생 함께할 소중한 가족을 만나 행복한 묘생을 시작하길 바랍니다 ❤️",
     "born": "2026",
     "sex": "Female",
@@ -2214,7 +2231,7 @@ const PETS = [
     "type": "Cat",
     "status": "Available",
     "image": "images/pets/p51.webp",
-    "story": "Soobok was rescued as a kitten during a TNR operation and now lives in foster care. The smallest of the litter but brave, and melts in your arms when held.",
+    "story": "While preparing a TNR (trap-neuter-return) operation, rescuers found young kittens at the site. Because they were so little, they were rescued to keep them safe, and Soobok now lives with a warm foster family. He is the smallest of his siblings but the bravest of all. He likes to act tough, which is adorable — but the moment you hold him, he relaxes completely and trusts you with everything. He is still practising getting close to people, but if you wait for him warmly, he will open his heart little by little. Soobok is waiting for a family who will respect his pace and open his heart with love for the rest of his life.",
     "story_ko": "TNR을 신청한 후 포획을 준비하던 중, 현장에서 어린 새끼 고양이들이 발견되었습니다. 아직 어린 아이들이었던 만큼 안전하게 보호하기 위해 구조하게 되었고, 현재는 따뜻한 임시보호처에서 지내고 있습니다. 수복이는 형제들 중 가장 작지만, 누구보다 씩씩한 아이입니다. 작은 몸으로 씩씩하게 지내는 수복이는 강한 척하는 모습이 귀엽지만, 막상 품에 안아주면 힘을 쏙 빼고 모든 것을 맡겨버리는 사랑스러운 아기랍니다. 아직은 사람과 친해지는 연습을 하고 있지만, 따뜻하게 기다려 주면 조금씩 마음을 열어갈 아이예요. 씩씩한 모습 뒤에 숨겨진 순수하고 귀여운 매력을 가진 수복이. 이제는 따뜻한 가정에서 마음껏 사랑받으며 행복한 묘생을 살아갈 수 있기를 바랍니다. 수복이의 속도를 존중해 주고, 평생 함께하며 사랑으로 마음을 열어주실 가족을 기다리고 있습니다.",
     "born": "2026",
     "sex": "Male",
@@ -5466,6 +5483,8 @@ const KO = {
   "Get your shelter and its animals featured on Pawgive.": "포기브에 보호소와 아이들을 소개해 보세요.",
   "Apply to be featured": "소개 신청하기",
   "Share": "공유하기",
+  "Share this quiz": "이 퀴즈 공유하기",
+  "Share my score": "내 점수 공유하기",
   "More": "더보기"
 };
 // Korean first; English only if the visitor picked it before
@@ -5615,25 +5634,15 @@ document.addEventListener('click', e => {
   g.querySelectorAll('.gal-thumbs button').forEach(b => b.classList.toggle('on', b === t));
 });
 
-// This week's companions: 2 spotlight pets with more than one photo. The pair changes every Monday (Korea time).
-const SPOTLIGHT = (() => {
-  const byId = (a, b) => a.id.localeCompare(b.id, undefined, { numeric: true });
-  let pool = PETS.filter(p => p.status === 'Available' && p.photos && p.photos.length).sort(byId);
-  if (pool.length < 2) pool = PETS.filter(p => p.status === 'Available').sort(byId);
-  if (!pool.length) return [];
-  const week = Math.floor((Date.now() + 9 * 36e5 - 4 * 864e5) / 6048e5); // weeks since Monday 5 Jan 1970, in KST
-  const start = week % pool.length;
-  const first = pool[start], rest = pool.slice(start + 1).concat(pool.slice(0, start));
-  // Pick a second pet that isn't from the same litter or shelter, so the two feel different
-  const second = rest.find(p => p.shelter !== first.shelter && p.type !== first.type) || rest.find(p => p.shelter !== first.shelter) || rest.find(p => p.story !== first.story) || rest[0];
-  return [first, second].filter(Boolean);
-})();
+// This week's companions: 2 hand-picked pets with long stories (fixed — change the ids here to feature others)
+const SPOTLIGHT_IDS = ['p36', 'p51'];
+const SPOTLIGHT = SPOTLIGHT_IDS.map(id => PETS.find(p => p.id === id)).filter(Boolean);
 function spotCard(p) {
   const where = [petShelterName(p.shelter), L(p, 'region')].filter(Boolean).join(' · ');
   return `<article class="card spot">
     ${petGallery(p, 'aspect-ratio:4/3;border-radius:18px')}
     <div class="spot-body">
-      <div class="spot-top"><span class="spot-tag">${ico('i-paw')}${tx('Spotlight', '이번 주 주인공')}</span><span class="status"><i class="dot ${statusCls(p.status)}"></i>${esc(p.status)}</span></div>
+      <span class="status"><i class="dot ${statusCls(p.status)}"></i>${esc(p.status)}</span>
       <div class="spot-head"><h3>${esc(petName(p))}</h3>
         <button class="heart${FAVS.has(p.id) ? ' on' : ''}" type="button" data-fav="${p.id}" aria-pressed="${FAVS.has(p.id)}" aria-label="${tx('Save to favourites', '관심 반려동물 저장')}">${ico('i-heart')}</button></div>
       ${where ? `<p class="spot-where">${ico('i-pin')}<span>${esc(where)}</span></p>` : ''}
@@ -5735,11 +5744,14 @@ function renderResources() {
     return `<div class="res-sec">
       <div class="sec-head"><h2 class="h-md">${esc(sec.section)}</h2>${list.length > 3 ? `<button class="pill-btn show-more" type="button" aria-expanded="false">Show more</button>` : ""}</div>
       <div class="grid g3 res-grid">${list.map((r, i) => `
-        <a class="card res${i >= 3 ? ' extra' : ''}" href="${esc(L(r, 'url'))}" target="_blank" rel="noopener"${i >= 3 ? ' hidden' : ''}>
+        <div class="res-item${i >= 3 ? ' extra' : ''}"${i >= 3 ? ' hidden' : ''}>
+        <a class="card res" href="${esc(L(r, 'url'))}" target="_blank" rel="noopener">
           ${resImg(r)}
           <div class="body"><h3>${esc(L(r, 'title'))}</h3><p>${esc(L(r, 'text'))}</p>
           <span class="link-arrow">${esc(sec.linkText)} <svg><use href="#i-arrow"/></svg></span></div>
-        </a>`).join("")}</div>
+        </a>
+        <button type="button" class="res-share" data-share="resources" data-kind="res" data-url="${esc(L(r, 'url'))}" data-title="${esc(L(r, 'title'))}" aria-label="${tx('Share', '공유하기')}" title="${tx('Share', '공유하기')}">${ico('i-share')}</button>
+        </div>`).join("")}</div>
     </div>`;
   }).join("");
 }
@@ -5747,7 +5759,7 @@ renderResources();
 $('#resSections').addEventListener('click', e => {
   const btn = e.target.closest('.show-more'); if (!btn) return;
   const open = btn.getAttribute('aria-expanded') !== 'true';
-  btn.closest('.res-sec').querySelectorAll('.res.extra').forEach(c => c.hidden = !open);
+  btn.closest('.res-sec').querySelectorAll('.res-item.extra').forEach(c => c.hidden = !open);
   btn.setAttribute('aria-expanded', open);
   btn.textContent = open ? 'Show less' : 'Show more';
 });
@@ -5782,7 +5794,7 @@ function mountQuiz(rootId) {
     </div>
     <div class="qcard results" hidden>
       <h3>Quiz Complete! 🎉</h3><div class="score"></div><p class="msg"></p>
-      <div class="res-acts"><button class="restart" type="button">Retake Quiz</button><button class="share-btn pill-btn" type="button" data-share="quiz" data-kind="quiz"><svg><use href="#i-share"/></svg><span>Share</span></button></div>
+      <div class="res-acts"><button class="restart" type="button">Retake Quiz</button><button class="share-btn pill-btn" type="button" data-share="quiz" data-kind="quiz"><svg><use href="#i-share"/></svg><span>Share my score</span></button></div>
     </div>`;
   const card = root.querySelector('.js-card'), results = root.querySelector('.results');
   const bar = root.querySelector('.bar'), counter = root.querySelector('.counter'), q = root.querySelector('.q');
@@ -5857,6 +5869,10 @@ function shareInfo(b) {
   if (b.dataset.kind === 'quiz') {
     const quiz = b.closest('.quiz-block')?.querySelector('h2')?.textContent.trim() || tx('Pawgive quiz', '포기브 퀴즈');
     return { url, title: quiz, text: b.dataset.score ? tx(`I got ${b.dataset.score} on the ${quiz} at Pawgive. Can you beat me?`, `포기브 ${quiz}에서 ${b.dataset.score}점을 받았어요. 도전해 보세요!`) : tx(`Try the ${quiz} at Pawgive`, `포기브 ${quiz}에 도전해 보세요`) };
+  }
+  if (b.dataset.kind === 'res') {
+    const u = b.dataset.url || '';
+    return { url: /^https?:/.test(u) ? u : (window.PG_BASE ? location.origin + BASE : LIVE_URL) + u, title: name, text: tx(`${name} — a helpful pet guide shared from Pawgive`, `${name} — 포기브에서 공유한 반려동물 자료`) };
   }
   if (h.startsWith('pet-') || h.startsWith('fl-')) return { url, title: name, text: tx(`Meet ${name} — looking for a loving home on Pawgive.`, `포기브에서 가족을 기다리는 ${name}을 만나 보세요.`) };
   return { url, title: 'Pawgive', text: tx('Pawgive — find your companion', '포기브 — 나의 반려동물을 찾아보세요') };
