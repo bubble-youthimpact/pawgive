@@ -961,8 +961,8 @@ button.apply-link{border:0;background:none;padding:0;font:inherit;cursor:pointer
 .prod-ico{width:58px;height:58px;border-radius:18px;background:var(--surface);display:grid;place-items:center;color:var(--ink);box-shadow:0 2px 10px rgba(30,66,24,.07)}
 .prod-ico svg{width:28px;height:28px}
 .prod-kind{margin-top:auto;font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);opacity:.85}
-.prod h3{margin:10px 0 0;font-family:var(--body);font-size:clamp(19px,1.7vw,22px);font-weight:700;line-height:1.3;color:var(--ink);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.prod p{margin:10px 0 0;font-size:15px;line-height:1.55;color:var(--ink-2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.prod h3{margin:10px 0 0;padding-bottom:.12em;font-family:var(--body);font-size:clamp(19px,1.7vw,22px);font-weight:700;line-height:1.35;color:var(--ink);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.prod p{margin:6px 0 0;padding-bottom:.1em;font-size:15px;line-height:1.55;color:var(--ink-2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .prod-go{display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-weight:600;font-size:15.5px}
 .prod-go svg{width:18px;height:18px;transition:transform .15s}
 .prod:hover .prod-go svg{transform:translateX(3px)}
@@ -980,6 +980,7 @@ button.apply-link{border:0;background:none;padding:0;font:inherit;cursor:pointer
 .ptag{background:rgba(255,255,255,.75);color:var(--ink);border-radius:999px;padding:4px 11px;font-size:13px;font-weight:600;line-height:1.3}
 .ptag.ess{background:var(--ink);color:#fff}
 .prod-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px}
+.prod-price:empty{display:none}
 .prod-price{font-size:19px;color:var(--ink);font-variant-numeric:tabular-nums}
 .prod-foot .prod-go{margin-top:0}
 div.prod{cursor:default}
@@ -6831,22 +6832,11 @@ const PCATS = [
   { id: 'guides', icon: 'i-book', t: ['Shopping guides', '쇼핑 가이드'] }
 ];
 const PTAGS = { essential: ['Essential', '필수'], dog: ['Dogs', '강아지'], cat: ['Cats', '고양이'], puppy: ['Puppies', '퍼피'] };
-// SAMPLE PRODUCTS — replace with real ones. Fields: cat, name, desc ([English, Korean]), tags, price, url (link to the store; leave '' for none), sample (true shows a "Sample" label)
+// PRODUCTS — Fields: cat (category id above), name / desc ([English, Korean]), tags, price (optional, e.g. '₩19,900'), url (store link), sample (true shows a "Sample" label)
 const PRODUCTS = [
-  { cat: 'food', name: ['Adult dog dry food', '성견용 건식 사료'], desc: ['Complete daily nutrition with a good balance of protein, vitamins and minerals.', '단백질, 비타민, 미네랄이 균형 잡힌 매일 먹는 완전 사료예요.'], tags: ['dog', 'essential'], price: '₩32,000', url: '', sample: true },
-  { cat: 'food', name: ['Kitten wet food pack', '키튼용 습식 사료 세트'], desc: ['Soft, easy-to-eat meals for growing kittens.', '성장기 아기 고양이를 위한 부드러운 습식 사료예요.'], tags: ['cat'], price: '₩18,000', url: '', sample: true },
-  { cat: 'food', name: ['Training treats', '훈련용 간식'], desc: ['Small, low-calorie rewards — perfect for practising commands.', '작고 칼로리가 낮아 훈련할 때 보상으로 주기 좋아요.'], tags: ['dog', 'puppy'], price: '₩9,000', url: '', sample: true },
-  { cat: 'toys', name: ['Rope tug toy', '로프 터그 장난감'], desc: ['A sturdy cotton rope for tug-of-war and fetch.', '당기기 놀이와 공 던지기에 좋은 튼튼한 면 로프예요.'], tags: ['dog'], price: '₩8,000', url: '', sample: true },
-  { cat: 'toys', name: ['Feather wand toy', '깃털 낚싯대 장난감'], desc: ['Interactive play that keeps indoor cats active.', '실내 고양이가 활발하게 움직이도록 도와주는 놀이 장난감이에요.'], tags: ['cat'], price: '₩7,000', url: '', sample: true },
-  { cat: 'toys', name: ['Puzzle feeder', '노즈워크 퍼즐 급식기'], desc: ['Slows down fast eaters and keeps busy minds entertained.', '급하게 먹는 습관을 줄이고 머리를 쓰며 놀 수 있어요.'], tags: ['dog', 'cat'], price: '₩15,000', url: '', sample: true },
-  { cat: 'comfort', name: ['Washable pet bed', '세탁 가능한 방석'], desc: ['A soft bolster bed with a removable, machine-washable cover.', '커버를 분리해 세탁할 수 있는 푹신한 방석이에요.'], tags: ['dog', 'cat', 'essential'], price: '₩39,000', url: '', sample: true },
-  { cat: 'comfort', name: ['Calming blanket', '안정감 담요'], desc: ['A cosy blanket that helps nervous or rescued pets settle in.', '불안해하는 아이나 유기동물이 새 집에 적응하도록 도와줘요.'], tags: ['dog', 'cat'], price: '₩19,000', url: '', sample: true },
-  { cat: 'walk', name: ['Harness & leash set', '하네스 & 리드줄 세트'], desc: ['An adjustable harness that doesn’t press on the throat.', '목에 부담을 주지 않는 사이즈 조절 하네스예요.'], tags: ['dog', 'essential'], price: '₩22,000', url: '', sample: true },
-  { cat: 'walk', name: ['Soft travel carrier', '기내용 소프트 이동장'], desc: ['A lightweight carrier for cabin travel — check your airline’s size limits.', '기내 탑승용 가벼운 이동장이에요. 항공사 크기 기준을 꼭 확인하세요.'], tags: ['dog', 'cat'], price: '₩45,000', url: '', sample: true },
-  { cat: 'groom', name: ['Slicker brush', '슬리커 브러시'], desc: ['Removes loose fur and tangles for a healthy coat.', '빠진 털과 엉킨 털을 정리해 건강한 털을 유지해요.'], tags: ['dog', 'cat'], price: '₩11,000', url: '', sample: true },
-  { cat: 'groom', name: ['Nail clippers', '발톱깎이'], desc: ['Safe clippers with a guard to stop you cutting too short.', '너무 짧게 자르지 않도록 가드가 달린 안전한 발톱깎이예요.'], tags: ['dog', 'cat', 'essential'], price: '₩9,000', url: '', sample: true },
-  { cat: 'groom', name: ['Toothbrush & toothpaste set', '칫솔 & 치약 세트'], desc: ['Pet-safe toothpaste and a soft brush for daily dental care.', '반려동물 전용 치약과 부드러운 칫솔로 매일 양치해 주세요.'], tags: ['dog', 'cat'], price: '₩8,000', url: '', sample: true },
-  { cat: 'groom', name: ['Litter box & scoop', '화장실 & 모래삽'], desc: ['A roomy, easy-to-clean litter box with a scoop.', '넓고 청소하기 쉬운 고양이 화장실과 모래삽이에요.'], tags: ['cat', 'essential'], price: '₩25,000', url: '', sample: true }
+  { cat: 'walk', name: ['Greenship flushable dog poop bags', '그린쉽 변기 쏙 물에녹는 배변봉투'], desc: ['Poop bags that dissolve in water, so you can flush the waste and the bag straight down the toilet after a walk.', '물에 녹는 배변봉투라 산책 후 배변을 봉투째 변기에 바로 버릴 수 있어요.'], tags: ['dog'], price: '', url: 'https://www.coupang.com/vp/products/6921606306?vendorItemId=86637928781&itemId=19529451269&landingType=SDP' },
+  { cat: 'groom', name: ['Magnetic pee pad holder', '강아지 마킹방지 배변패드 고정 자석 홀더'], desc: ['Holds pee pads flat with magnets, so they don’t slide or bunch up and your dog doesn’t miss the pad.', '자석으로 배변패드를 고정해 패드가 밀리거나 구겨지지 않아, 강아지가 패드 밖에 실수하는 것을 줄여 줘요.'], tags: ['dog'], price: '', url: 'https://www.coupang.com/vp/products/9500512173?vendorItemId=95255863532&itemId=28303121437&landingType=SDP' },
+  { cat: 'groom', name: ['Pethroom Zero Odor Spray', '페스룸 제로 오도어 스프레이'], desc: ['An unscented deodorizing spray (300ml) for pet smells around litter boxes, pee pads and toys. Don’t spray it directly on your pet.', '배변 공간, 배변패드, 장난감 주변의 반려동물 냄새를 없애 주는 무향 탈취 스프레이(300ml)예요. 반려동물에게 직접 뿌리지 마세요.'], tags: ['dog', 'cat'], price: '', url: 'https://pethroom.com/product/detail.html?product_no=25&cate_no=109&display_group=1' }
 ];
 let prodCat = '';
 const host = u => { try { return new URL(u).hostname.replace(/^www\.|^m\./, ''); } catch (e) { return ''; } };
@@ -6879,12 +6869,17 @@ function guideTile(r, i) {
 function renderProducts() {
   const counts = id => id === 'guides' ? RESOURCES.filter(r => r.tab === 'products').length : PRODUCTS.filter(p => p.cat === id).length;
   $('#resProducts').innerHTML = `<p class="rtab-intro">${tx('Supplies we recommend for a new pet, plus guides to help you shop.', '새 반려동물을 위한 추천 용품과 쇼핑에 도움이 되는 가이드를 모았어요.')}</p>
-    <div class="gchips" role="group" aria-label="${tx('Product categories', '용품 카테고리')}">${[['', ['All', '전체']], ...PCATS.map(c => [c.id, c.t])].map(([id, t]) =>
+    <div class="gchips" role="group" aria-label="${tx('Product categories', '용품 카테고리')}">${[['', ['All', '전체']], ...PCATS.filter(c => counts(c.id)).map(c => [c.id, c.t])].map(([id, t]) =>
       `<button type="button" class="gchip${prodCat === id ? ' on' : ''}" data-pcat="${id}" aria-pressed="${prodCat === id}">${tx(...t)}${id ? ` <span class="gchip-n">${counts(id)}</span>` : ''}</button>`).join('')}</div>
-    ${PCATS.filter(c => !prodCat || c.id === prodCat).map(c => {
-      const tiles = c.id === 'guides' ? RESOURCES.filter(r => r.tab === 'products').map(guideTile) : PRODUCTS.filter(p => p.cat === c.id).map(productTile);
-      return tiles.length ? `<div class="g-group"><h2 class="g-label">${tx(...c.t)}</h2><div class="prod-grid">${tiles.join('')}</div></div>` : '';
-    }).join('')}`;
+    ${(() => {
+      // "All": every product in one grid, then the shopping guides. A category: just that category.
+      const group = (label, tiles) => tiles.length ? `<div class="g-group"><h2 class="g-label">${label}</h2><div class="prod-grid">${tiles.join('')}</div></div>` : '';
+      const guides = () => group(tx('Shopping guides', '쇼핑 가이드'), RESOURCES.filter(r => r.tab === 'products').map(guideTile));
+      if (!prodCat) return group(tx('Products', '용품'), PRODUCTS.map(productTile)) + guides();
+      if (prodCat === 'guides') return guides();
+      const c = PCATS.find(x => x.id === prodCat);
+      return group(tx(...c.t), PRODUCTS.filter(p => p.cat === prodCat).map(productTile));
+    })()}`;
 }
 $('#resProducts').addEventListener('click', e => { const b = e.target.closest('[data-pcat]'); if (!b) return; prodCat = b.dataset.pcat; renderProducts(); });
 renderResources();
