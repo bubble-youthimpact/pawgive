@@ -823,6 +823,166 @@ body{transition:opacity .15s}
 .apply.ctab-panel{margin-top:0;padding-top:0;border-top:0}
 button.apply-link{border:0;background:none;padding:0;font:inherit;cursor:pointer;color:var(--ink)}
 @media (max-width:620px){.ctabs{display:flex}.ctabs button{flex:1;padding:11px 10px;font-size:15px}}
+
+/* FAQ (homepage) */
+.faq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(30px,5vw,70px);align-items:start}
+.faq-head .h-md{margin-top:18px}
+.faq-head .sec-sub a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.faq-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 4px;cursor:pointer;font-size:18px;font-weight:600;color:var(--ink)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary svg{width:22px;height:22px;flex:none;transition:transform .2s}
+.faq-item[open] summary svg{transform:rotate(45deg)}
+.faq-a{padding:0 44px 22px 4px;color:var(--text);font-size:16.5px;line-height:1.65}
+.faq-a p{margin:0}
+@media (max-width:820px){.faq{grid-template-columns:1fr}.faq-item summary{font-size:17px}}
+
+/* Resources tabs */
+.rtabs{display:flex;gap:6px;margin-top:clamp(36px,5vw,56px);border-bottom:1.5px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.rtabs::-webkit-scrollbar{display:none}
+.rtabs button{display:inline-flex;align-items:center;gap:9px;flex:none;border:0;background:none;padding:14px 18px;margin-bottom:-1.5px;border-bottom:2.5px solid transparent;font:inherit;font-size:17px;font-weight:500;color:var(--ink-2);cursor:pointer;line-height:1}
+.rtabs button svg{width:21px;height:21px;flex:none}
+.rtabs button:hover{color:var(--ink)}
+.rtabs button[aria-selected="true"]{color:var(--ink);font-weight:600;border-bottom-color:var(--ink)}
+.rtab-panel[hidden]{display:none}
+.rtab-panel .res-sec:first-child{margin-top:clamp(34px,5vw,50px)}
+.rtab-intro{margin:0 0 26px;color:var(--ink-2);font-size:17px}
+@media (max-width:620px){.rtabs button{padding:13px 12px;font-size:15.5px;gap:7px}.rtabs button svg{width:19px;height:19px}}
+
+/* Guide list */
+.gchips{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(30px,4vw,44px)}
+.gchip{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:11px 20px;font:inherit;font-size:16px;cursor:pointer;line-height:1.1;transition:background .15s,border-color .15s}
+.gchip:hover{border-color:var(--ink)}
+.gchip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.g-group{margin-top:clamp(34px,4vw,46px)}
+.g-label{margin:0 0 16px;font-family:var(--body);font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.g-row{display:flex;align-items:center;gap:22px;padding:24px 26px;background:var(--surface);border:1.5px solid var(--line);border-radius:22px;margin-bottom:14px;transition:border-color .15s,transform .15s;text-decoration:none;color:inherit}
+.g-row:hover{border-color:var(--ink);transform:translateY(-2px)}
+.g-ico{position:relative;width:64px;height:64px;flex:none;border-radius:18px;background:var(--sage-soft);color:var(--ink);display:grid;place-items:center}
+.g-ico svg{width:30px;height:30px}
+.g-ico b{position:absolute;top:-8px;right:-8px;min-width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;font-size:13.5px;display:grid;place-items:center;border:2.5px solid var(--surface)}
+.g-txt{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}
+.g-meta{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.g-done{display:inline-flex;align-items:center;gap:3px;font-style:normal;color:#2F7A3A}
+.g-done svg{width:14px;height:14px}
+.g-title{font-size:20px;font-weight:700;color:var(--ink);line-height:1.3}
+.g-desc{font-size:15.5px;color:var(--text);line-height:1.55}
+.g-open{flex:none;padding:11px 20px;font-size:15.5px}
+@media (max-width:720px){.g-row{align-items:flex-start;gap:16px;padding:20px 18px}.g-open{display:none}.g-ico{width:52px;height:52px;border-radius:15px}.g-ico svg{width:25px;height:25px}.g-title{font-size:18px}}
+
+/* Guide page */
+.gd-wrap{max-width:820px}
+.gd-head .g-ico.big{width:72px;height:72px;border-radius:20px}
+.gd-head .g-ico.big svg{width:34px;height:34px}
+.gd-head .g-meta{margin:22px 0 0}
+.gd-head h1{margin:12px 0 0;font-size:clamp(32px,5vw,50px);line-height:1.12;color:var(--ink)}
+.gd-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.gd-acts .pill-btn{padding:10px 20px;font-size:15.5px;gap:8px}
+.gd-acts .pill-btn > svg{width:18px;height:18px}
+.gd-progress{display:flex;align-items:center;gap:16px;margin:clamp(36px,5vw,52px) 0 18px;font-size:15px;font-weight:600;color:var(--ink-2)}
+.gd-bar{flex:1;height:8px;border-radius:999px;background:var(--ph);overflow:hidden}
+.gd-bar i{display:block;height:100%;background:var(--ink);border-radius:999px;transition:width .3s}
+.gd-steps{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px}
+.gd-step{display:flex;gap:18px;background:var(--surface);border:1.5px solid var(--line);border-radius:22px;padding:24px 26px;transition:border-color .2s,background .2s}
+.gd-step.done{background:#F4F8F2;border-color:var(--sage)}
+.gd-num{width:38px;height:38px;flex:none;border-radius:50%;background:var(--sage-soft);color:var(--ink);display:grid;place-items:center;font-weight:700;font-size:16px}
+.gd-step.done .gd-num{background:var(--ink);color:#fff}
+.gd-num svg{width:19px;height:19px}
+.gd-step-body{flex:1;min-width:0}
+.gd-step h2{margin:5px 0 0;font-family:var(--body);font-size:20px;font-weight:700;color:var(--ink);line-height:1.3}
+.gd-step p{margin:10px 0 0;font-size:16.5px;line-height:1.65;color:var(--text)}
+.gd-step ul{margin:12px 0 0;padding-left:20px;font-size:16.5px;line-height:1.65}
+.gd-step ul li+li{margin-top:4px}
+.gd-note{color:var(--ink-2)!important;font-size:15px!important}
+.gd-read{display:inline-flex;align-items:center;gap:7px;margin-top:16px;border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 16px 8px 12px;font:inherit;font-size:14.5px;font-weight:600;color:var(--ink);cursor:pointer}
+.gd-read svg{width:17px;height:17px}
+.gd-read:hover{border-color:var(--ink)}
+.gd-step.done .gd-read{background:var(--ink);border-color:var(--ink);color:#fff}
+@media (max-width:620px){.gd-step{padding:20px 18px;gap:14px}.gd-num{width:34px;height:34px}.gd-step h2{font-size:18px}}
+.gd-tool{margin-top:clamp(36px,5vw,52px);background:var(--sage-soft);border-radius:26px;padding:clamp(24px,4vw,36px)}
+.gd-tool-tag{display:inline-block;background:var(--ink);color:#fff;border-radius:999px;padding:5px 12px;font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.gd-tool-head h2{margin:14px 0 0;font-family:var(--body);font-size:clamp(22px,3vw,28px);font-weight:700;color:var(--ink)}
+.gd-tool-head p{margin:8px 0 0;color:var(--ink-2);font-size:16px}
+.gd-checks{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+.gd-check{display:flex;align-items:center;gap:14px;background:var(--surface);border-radius:16px;padding:15px 18px;cursor:pointer;font-size:16.5px;color:var(--text);line-height:1.45}
+.gd-check input{position:absolute;opacity:0;width:1px;height:1px}
+.gd-check .box{width:26px;height:26px;flex:none;border-radius:8px;border:2px solid var(--line);display:grid;place-items:center;color:transparent;background:#fff;transition:background .15s,border-color .15s}
+.gd-check .box svg{width:17px;height:17px}
+.gd-check input:checked + .box{background:var(--ink);border-color:var(--ink);color:#fff}
+.gd-check input:focus-visible + .box{outline:3px solid var(--orange);outline-offset:2px}
+.gd-result{margin-top:20px;background:var(--surface);border-radius:18px;padding:18px 22px;display:flex;gap:16px;align-items:center}
+.gd-result b{font-size:24px;color:var(--ink);flex:none}
+.gd-result p{margin:0;font-size:16.5px;line-height:1.55;color:var(--ink)}
+.gd-tool-acts{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:18px}
+.gd-tool-acts .pill-btn{padding:10px 20px;font-size:15.5px;background:var(--surface)}
+.gd-reset{border:0;background:none;font:inherit;font-size:15px;color:var(--ink-2);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:8px}
+.gd-weights{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.gd-weights label{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:var(--ink-2)}
+.gd-weights input{border:1.5px solid var(--line);border-radius:14px;padding:13px 16px;font:inherit;font-size:18px;background:#fff;color:var(--text);width:100%}
+.gd-weights input:focus{outline:none;border-color:var(--ink)}
+.gw-empty{margin:18px 0 0;color:var(--ink-2)}
+.gw-total{margin:20px 0 10px;font-size:16px;color:var(--ink-2)}
+.gw-total b{font-size:22px;color:var(--ink);margin-left:6px}
+.gw-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.gw-list li{display:flex;align-items:center;gap:12px;background:var(--surface);border-radius:14px;padding:13px 16px;font-size:16px}
+.gw-ic{width:26px;height:26px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:700;font-size:18px;line-height:1}
+.gw-ic svg{width:16px;height:16px}
+.gw-list .ok .gw-ic{background:#2F7A3A;color:#fff}
+.gw-list .no .gw-ic{background:#F6E1DA;color:#A33A1B}
+.gw-name{font-weight:600;color:var(--ink)}
+.gw-lim{color:var(--ink-2);font-size:14px}
+.gw-say{margin-left:auto;font-weight:600;font-size:15px;text-align:right}
+.gw-list .ok .gw-say{color:#2F7A3A}
+.gw-list .no .gw-say{color:#A33A1B}
+.gd-tool .gd-note{margin:16px 0 0;font-size:14px!important;line-height:1.55}
+.gdd-q{margin:22px 0 0;font-size:18px;font-weight:600;color:var(--ink)}
+.gdd-opts{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+@media (max-width:620px){.gd-weights{grid-template-columns:1fr 1fr}.gw-list li{flex-wrap:wrap;gap:4px 10px}.gw-say{margin-left:38px;width:100%;text-align:left}}
+.gd-pn{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:clamp(40px,6vw,60px)}
+.gd-pn-a{display:flex;flex-direction:column;gap:8px;border:1.5px solid var(--line);border-radius:20px;padding:18px 22px;background:var(--surface);text-decoration:none;color:inherit;transition:border-color .15s}
+.gd-pn-a:hover{border-color:var(--ink)}
+.gd-pn-a span{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.gd-pn-a span svg{width:16px;height:16px}
+.gd-pn-a b{font-size:17px;color:var(--ink);line-height:1.35}
+.gd-pn-a.nx{text-align:right;align-items:flex-end}
+@media (max-width:620px){.gd-pn{grid-template-columns:1fr}.gd-pn-a.nx{text-align:left;align-items:flex-start}}
+
+/* Products tab: square tiles, no thumbnails */
+.prod-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:900px){.prod-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.prod-grid{grid-template-columns:1fr}}
+.prod-item{position:relative;aspect-ratio:1/1;border-radius:26px;transition:transform .15s}
+.prod-item:hover{transform:translateY(-3px)}
+.prod-item.c0{background:var(--sage-soft)}
+.prod-item.c1{background:#F4E7D7}
+.prod-item.c2{background:#E9EDE3}
+.prod{display:flex;flex-direction:column;height:100%;padding:clamp(22px,2.6vw,30px);text-decoration:none;color:var(--ink)}
+.prod-ico{width:58px;height:58px;border-radius:18px;background:var(--surface);display:grid;place-items:center;color:var(--ink);box-shadow:0 2px 10px rgba(30,66,24,.07)}
+.prod-ico svg{width:28px;height:28px}
+.prod-kind{margin-top:auto;font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);opacity:.85}
+.prod h3{margin:10px 0 0;font-family:var(--body);font-size:clamp(19px,1.7vw,22px);font-weight:700;line-height:1.3;color:var(--ink);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.prod p{margin:10px 0 0;font-size:15px;line-height:1.55;color:var(--ink-2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.prod-go{display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-weight:600;font-size:15.5px}
+.prod-go svg{width:18px;height:18px;transition:transform .15s}
+.prod:hover .prod-go svg{transform:translateX(3px)}
+.prod-item .res-share{top:18px;right:18px;background:rgba(255,255,255,.75);box-shadow:none}
+@media (max-width:560px){.prod-item{aspect-ratio:auto;min-height:300px}}
+
+/* Products: categories, labels, sample products */
+#resProducts .gchips{margin-top:0}
+#resProducts .rtab-intro{margin-top:clamp(30px,4vw,44px)}
+#resProducts .g-group:first-of-type{margin-top:clamp(28px,4vw,40px)}
+.gchip-n{display:inline-block;margin-left:4px;opacity:.6;font-size:.9em}
+.prod-top{display:flex;justify-content:space-between;align-items:flex-start}
+.prod-sample{background:rgba(255,255,255,.8);color:var(--ink-2);border:1px dashed rgba(30,66,24,.35);border-radius:999px;padding:4px 10px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.prod-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.ptag{background:rgba(255,255,255,.75);color:var(--ink);border-radius:999px;padding:4px 11px;font-size:13px;font-weight:600;line-height:1.3}
+.ptag.ess{background:var(--ink);color:#fff}
+.prod-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px}
+.prod-price{font-size:19px;color:var(--ink);font-variant-numeric:tabular-nums}
+.prod-foot .prod-go{margin-top:0}
+div.prod{cursor:default}
 </style>
 </head>
 <body>
@@ -831,6 +991,18 @@ button.apply-link{border:0;background:none;padding:0;font:inherit;cursor:pointer
   <symbol id="i-homeheart" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 17.6s-3.6-2.2-3.6-4.6a1.9 1.9 0 0 1 3.6-.9 1.9 1.9 0 0 1 3.6.9c0 2.4-3.6 4.6-3.6 4.6z" fill="currentColor"/></symbol>
   <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 15V3.5M7.5 8 12 3.5 16.5 8M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6.5C10 5 7.5 4.5 4 4.5v13c3.5 0 6 .5 8 2 2-1.5 4.5-2 8-2v-13c-3.5 0-6 .5-8 2zM12 6.5v13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8zM9 8V6.5a3 3 0 0 1 6 0V8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><path d="M9 4.5h6v2.5H9zM9 5.5H7a1.5 1.5 0 0 0-1.5 1.5v12A1.5 1.5 0 0 0 7 20.5h10a1.5 1.5 0 0 0 1.5-1.5V7A1.5 1.5 0 0 0 17 5.5h-2M9 13.5l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M10.5 13.5 4 11l1.5-1.5 7 .5 4-4a2 2 0 0 1 3 3l-4 4 .5 7L14.5 21 12 14.5 9 17.5v2L7.5 21l-1-3.5L3 16.5 4.5 15h2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.5 5 6v5.5c0 4.5 3 7.8 7 9 4-1.2 7-4.5 7-9V6l-7-2.5zM9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M10.5 9.3v5.4l4.5-2.7z" fill="currentColor"/></symbol>
+  <symbol id="i-bowl" viewBox="0 0 24 24"><path d="M3.5 11h17a8.5 8.5 0 0 1-17 0zM8 7.5c0-1.2 1-1.5 1-2.7M12 7.5c0-1.2 1-1.5 1-2.7M16 7.5c0-1.2 1-1.5 1-2.7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M4.5 8.5c4 1 11 1 15 0M4.5 15.5c4-1 11-1 15 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18.5v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 15.5h18M6.5 10.5V8a1.5 1.5 0 0 1 1.5-1.5h3a1.5 1.5 0 0 1 1.5 1.5v2.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-brush" viewBox="0 0 24 24"><path d="M4 9.5h16v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM7 9.5V5.5M10 9.5V5.5M14 9.5V5.5M17 9.5V5.5M10.5 14.5v5a1.5 1.5 0 0 0 3 0v-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g></symbol>
@@ -886,6 +1058,12 @@ button.apply-link{border:0;background:none;padding:0;font:inherit;cursor:pointer
       <h1 class="hero-title" style="margin-top:22px">Whether you’re here to adopt or surrender, we can help you with both.</h1>
       <p>Pawgive connects you with shelters, people, and most importantly; pets. We also provide manuals for the crucial steps and processes for adoption, surrendering, and taking care of your pet.</p>
       <div class="btn-row"><a class="pill-btn solid" href="pets">Meet the pets</a><a class="pill-btn" href="shelters">Visit a shelter</a></div>
+      <!-- Counts are filled in from the site's own data (pets, shelters, guides + resources) -->
+      <div class="stats" id="homeStats">
+        <div><b id="st-pets">0</b><span>Pet profiles</span></div>
+        <div><b id="st-shelters">0</b><span>Partner shelters</span></div>
+        <div><b id="st-res">0</b><span>Guides &amp; resources</span></div>
+      </div>
     </div>
     <img class="hero-img" src="images/hero.webp" alt="A smiling dog and a tabby cat sitting side by side">
   </div>
@@ -911,6 +1089,29 @@ button.apply-link{border:0;background:none;padding:0;font:inherit;cursor:pointer
     <span class="eyebrow">Our partners</span>
     <div class="sec-head"><h2 class="h-md">Shelters in the network</h2><a class="link-arrow" href="shelters">See all shelters <svg><use href="#i-arrow"/></svg></a></div>
     <div class="grid g3" id="homeShelters"></div>
+  </div>
+
+  <!-- FAQ: sample questions — replace the questions and answers with your own -->
+  <div class="home-sec faq">
+    <div class="faq-head">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="h-md">Frequently asked questions</h2>
+      <p class="sec-sub">Can’t find your answer? <a href="contact">Send us a message</a>.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item"><summary><span>Is Pawgive a shelter?</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
+        <div class="faq-a"><p>No. Pawgive is a student-run website that brings together pets and shelters from across Korea, so it’s easier to find a pet to adopt. Adoptions are arranged directly with each shelter.</p></div></details>
+      <details class="faq-item"><summary><span>How do I adopt a pet I found on Pawgive?</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
+        <div class="faq-a"><p>Open the pet’s profile and tap “Visit shelter”. Each shelter has its own adoption steps, so contact them to ask about visiting and applying.</p></div></details>
+      <details class="faq-item"><summary><span>Does it cost anything to use Pawgive?</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
+        <div class="faq-a"><p>Using Pawgive is free. Some shelters may ask for an adoption fee or a donation — check with the shelter for details.</p></div></details>
+      <details class="faq-item"><summary><span>Can foreigners adopt a pet in Korea?</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
+        <div class="faq-a"><p>Yes, but requirements vary by shelter. Read our guide on adopting as a foreigner before you contact a shelter.</p></div></details>
+      <details class="faq-item"><summary><span>What should I do if I can’t keep my pet anymore?</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
+        <div class="faq-a"><p>Never leave a pet outside. Our surrender guides explain your options, and the Shelters page shows which shelters accept surrendered pets.</p></div></details>
+      <details class="faq-item"><summary><span>How can my shelter be featured on Pawgive?</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
+        <div class="faq-a"><p>Fill in the shelter application on our Contact page. We review every application and reply by email.</p></div></details>
+    </div>
   </div>
 
   <div class="home-sec cta">
@@ -1100,7 +1301,23 @@ button.apply-link{border:0;background:none;padding:0;font:inherit;cursor:pointer
   <span class="eyebrow">Resources</span>
   <h1 class="h-xl" style="margin-top:22px">Resources to help you</h1>
   <p class="lead">Collection of resources to help you on your journey with your furry friend.</p>
-  <div id="resSections"></div>
+  <div class="rtabs" role="tablist" aria-label="Resources">
+    <button type="button" role="tab" id="rt-guides" data-rtab="guides" aria-controls="rtab-guides" aria-selected="true"><svg aria-hidden="true"><use href="#i-book"/></svg><span>Guides</span></button>
+    <button type="button" role="tab" id="rt-products" data-rtab="products" aria-controls="rtab-products" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-bag"/></svg><span>Products</span></button>
+    <button type="button" role="tab" id="rt-links" data-rtab="links" aria-controls="rtab-links" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-earth"/></svg><span>Websites &amp; Videos</span></button>
+  </div>
+  <div class="rtab-panel" id="rtab-guides" role="tabpanel" aria-labelledby="rt-guides">
+    <div class="gchips" id="gChips" role="group" aria-label="Guide topics"></div>
+    <div id="gList"></div>
+  </div>
+  <div class="rtab-panel" id="rtab-products" role="tabpanel" aria-labelledby="rt-products" hidden><div id="resProducts"></div></div>
+  <div class="rtab-panel" id="rtab-links" role="tabpanel" aria-labelledby="rt-links" hidden><div id="resSections"></div></div>
+</div></section>
+
+<!-- GUIDE (one page per guide: guides/<slug>) -->
+<section class="page" id="p-guide"><div class="wrap gd-wrap">
+  <a class="back" id="gdBack" href="resources"><svg width="20" height="20"><use href="#i-back"/></svg><span>All guides</span></a>
+  <div id="guideBody"></div>
 </div></section>
 
 <!-- QUIZ -->
@@ -5080,8 +5297,8 @@ const SHELTERS = [
 
 // RESOURCES — title/text in English, title_ko/text_ko in Korean. type: "Guides" | "Websites" | "Videos"
 // Newest first. Each section shows 3 cards; "Show more" reveals the rest.
+// Resources page tabs: Guides (interactive guide pages) · Products · Websites & Videos
 const RESOURCE_SECTIONS = [
-  { section: "Guides",   linkText: "Read more" },
   { section: "Websites", linkText: "Visit now" },
   { section: "Videos",   linkText: "Watch now" }
 ];
@@ -5151,6 +5368,7 @@ const RESOURCES = [
   },
   {
     "type": "Websites",
+    "tab": "products",
     "title": "Top 5 Most Harmful Toys for Dogs & 9 Safe Alternatives",
     "title_ko": "강아지에게 가장 해로운 장난감 5가지와 안전한 대안 9가지",
     "text": "The top 5 most harmful dog toys and what you should be giving them instead.",
@@ -5160,6 +5378,7 @@ const RESOURCES = [
   },
   {
     "type": "Websites",
+    "tab": "products",
     "title": "How to Pick the Best and Safest Dog Toys",
     "title_ko": "가장 좋고 안전한 강아지 장난감 고르는 법",
     "text": "Toys are essential to keeping your dog happy and healthy. Get tips on the best and safest toys for your dog.",
@@ -5187,6 +5406,7 @@ const RESOURCES = [
   },
   {
     "type": "Websites",
+    "tab": "products",
     "title": "New Puppy Checklist",
     "title_ko": "새 강아지 준비물 체크리스트",
     "text": "If you’re scratching your head about what to get, don’t worry – we’ve got you covered! We’ve put together a quick and easy checklist that makes things a little easier.",
@@ -5196,6 +5416,7 @@ const RESOURCES = [
   },
   {
     "type": "Websites",
+    "tab": "products",
     "title": "Essential equipment for your puppy or dog",
     "title_ko": "강아지를 위한 필수 용품",
     "text": "You will need to buy a variety of different equipment and accessories before you are ready to bring your puppy home. This is a list of all the basic items you'll need to ensure the new addition to your family feels comfortable and welcome.",
@@ -5205,6 +5426,7 @@ const RESOURCES = [
   },
   {
     "type": "Websites",
+    "tab": "products",
     "title": "Dog Shopping List",
     "title_ko": "강아지 쇼핑 리스트",
     "text": "Bringing home a new family member? With all the fun and excitement a new dog brings, it is easy to fall short in being fully prepared. Here is a list of basic items that will help make your dog’s transition period go as smoothly as possible.",
@@ -5278,6 +5500,7 @@ const RESOURCES = [
   },
   {
     "type": "Videos",
+    "tab": "products",
     "title": "7 Essential Puppy Adoption Supplies & Costs",
     "title_ko": "강아지 입양 준비물 필수 7가지 & 비용",
     "text": "A video guide breaking down all the necessary items and supplies you need to prepare before bringing a puppy home.",
@@ -5861,6 +6084,26 @@ const KO = {
   "Review listings": "게시글 검토",
   "Accepts surrenders": "파양 인수",
   "Emergency surrenders": "긴급 인수",
+  "Frequently asked questions": "자주 묻는 질문",
+  "Can’t find your answer?": "원하는 답을 찾지 못하셨나요?",
+  "Send us a message": "문의하기",
+  "Is Pawgive a shelter?": "포기브는 보호소인가요?",
+  "No. Pawgive is a student-run website that brings together pets and shelters from across Korea, so it’s easier to find a pet to adopt. Adoptions are arranged directly with each shelter.": "아니요. 포기브는 학생들이 운영하는 웹사이트로, 전국의 반려동물과 보호소 정보를 한곳에 모아 입양할 아이를 더 쉽게 찾을 수 있도록 돕습니다. 입양은 각 보호소와 직접 진행합니다.",
+  "How do I adopt a pet I found on Pawgive?": "포기브에서 본 아이를 입양하려면 어떻게 하나요?",
+  "Open the pet’s profile and tap “Visit shelter”. Each shelter has its own adoption steps, so contact them to ask about visiting and applying.": "반려동물 프로필에서 ‘보호소 방문하기’를 눌러 주세요. 보호소마다 입양 절차가 다르니, 방문과 신청 방법은 보호소에 직접 문의해 주세요.",
+  "Does it cost anything to use Pawgive?": "포기브 이용에 비용이 드나요?",
+  "Using Pawgive is free. Some shelters may ask for an adoption fee or a donation — check with the shelter for details.": "포기브는 무료로 이용할 수 있어요. 일부 보호소는 입양비나 후원금을 받을 수 있으니, 자세한 내용은 보호소에 확인해 주세요.",
+  "Can foreigners adopt a pet in Korea?": "외국인도 한국에서 입양할 수 있나요?",
+  "Yes, but requirements vary by shelter. Read our guide on adopting as a foreigner before you contact a shelter.": "네, 가능합니다. 다만 보호소마다 조건이 다르니, 보호소에 연락하기 전에 외국인 입양 가이드를 먼저 읽어 보세요.",
+  "What should I do if I can’t keep my pet anymore?": "더 이상 반려동물을 키울 수 없다면 어떻게 해야 하나요?",
+  "Never leave a pet outside. Our surrender guides explain your options, and the Shelters page shows which shelters accept surrendered pets.": "절대 반려동물을 밖에 두고 가지 마세요. 파양 가이드에서 선택지를 확인할 수 있고, 보호소 페이지에서 파양을 받아 주는 보호소를 찾을 수 있어요.",
+  "How can my shelter be featured on Pawgive?": "우리 보호소를 포기브에 소개하려면 어떻게 하나요?",
+  "Fill in the shelter application on our Contact page. We review every application and reply by email.": "문의 페이지에서 보호소 신청서를 작성해 주세요. 모든 신청서를 검토한 뒤 이메일로 답변드려요.",
+  "Products": "용품",
+  "Websites & Videos": "웹사이트 & 영상",
+  "All guides": "전체 가이드",
+  "Pet profiles": "반려동물 프로필",
+  "Guides & resources": "가이드·자료",
   "Three pets we're shining a light on this week.": "이번 주에 소개하는 세 친구예요.",
   "Run a shelter? Apply to be featured": "보호소를 운영하시나요? 포기브에 소개 신청하기",
   "For shelters": "보호소 신청",
@@ -6157,25 +6400,28 @@ renderShelters(); renderHomeShelters();
 const resImg = r => r.image
   ? `<div class="res-img"><img src="${esc(r.image)}" alt="" loading="lazy" onerror="this.parentNode.classList.add('ph');this.remove()"></div>`
   : `<div class="res-img ph"><svg><use href="#i-img"/></svg></div>`;
-function renderResources() {
-  $('#resSections').innerHTML = RESOURCE_SECTIONS.map(sec => {
-    const list = RESOURCES.filter(r => r.type === sec.section);
-    if (!list.length) return '';
-    return `<div class="res-sec">
-      <div class="sec-head"><h2 class="h-md">${esc(sec.section)}</h2>${list.length > 3 ? `<button class="pill-btn show-more" type="button" aria-expanded="false">Show more</button>` : ""}</div>
-      <div class="grid g3 res-grid">${list.map((r, i) => `
+const resCard = (r, i, linkText) => `
         <div class="res-item${i >= 3 ? ' extra' : ''}"${i >= 3 ? ' hidden' : ''}>
         <a class="card res" href="${esc(L(r, 'url'))}" target="_blank" rel="noopener">
           ${resImg(r)}
           <div class="body"><h3>${esc(L(r, 'title'))}</h3><p>${esc(L(r, 'text'))}</p>
-          <span class="link-arrow">${esc(sec.linkText)} <svg><use href="#i-arrow"/></svg></span></div>
+          <span class="link-arrow">${esc(linkText)} <svg><use href="#i-arrow"/></svg></span></div>
         </a>
         <button type="button" class="res-share" data-share="resources" data-kind="res" data-url="${esc(L(r, 'url'))}" data-title="${esc(L(r, 'title'))}" aria-label="${tx('Share', '공유하기')}" title="${tx('Share', '공유하기')}">${ico('i-share')}</button>
-        </div>`).join("")}</div>
+        </div>`;
+function renderResources() {
+  $('#resSections').innerHTML = RESOURCE_SECTIONS.map(sec => {
+    const list = RESOURCES.filter(r => r.type === sec.section && r.tab !== 'products');
+    if (!list.length) return '';
+    return `<div class="res-sec">
+      <div class="sec-head"><h2 class="h-md">${esc(sec.section)}</h2>${list.length > 3 ? `<button class="pill-btn show-more" type="button" aria-expanded="false">Show more</button>` : ""}</div>
+      <div class="grid g3 res-grid">${list.map((r, i) => resCard(r, i, sec.linkText)).join("")}</div>
     </div>`;
   }).join("");
+  const prods = RESOURCES.filter(r => r.tab === 'products');
+  renderProducts();
+  renderGuideList();
 }
-renderResources();
 $('#resSections').addEventListener('click', e => {
   const btn = e.target.closest('.show-more'); if (!btn) return;
   const open = btn.getAttribute('aria-expanded') !== 'true';
@@ -6183,6 +6429,454 @@ $('#resSections').addEventListener('click', e => {
   btn.setAttribute('aria-expanded', open);
   btn.textContent = open ? 'Show less' : 'Show more';
 });
+
+/* ===================== GUIDES =====================
+   Interactive versions of our guide images. Each guide has its own page at guides/<slug>.
+   t: [English, Korean]. The original image (and its Korean version, if there is one) is shown at the bottom of each page. */
+const GUIDE_CATS = [
+  { id: 'before', t: ['Before you adopt', '입양 전에'] },
+  { id: 'home', t: ['Bringing your pet home', '반려동물을 집에 데려온 후'] },
+  { id: 'care', t: ['Everyday care', '일상 돌봄'] },
+  { id: 'surrender', t: ['If you can’t keep your pet', '더 이상 키울 수 없을 때'] }
+];
+const GUIDES = [
+  {
+    slug: 'adoption-procedure', cat: 'before', icon: 'i-clip', kind: ['Self-check', '자가 점검'], who: ['All pets', '모든 반려동물'], min: 4,
+    title: ['A few things to note about the pet adoption procedure', '반려동물 입양 절차에서 알아두면 좋은 점'],
+    intro: ['Every shelter does things a little differently. Knowing the usual steps — and checking that you’re ready — makes adoption go much more smoothly.', '보호소마다 입양 절차가 조금씩 다릅니다. 일반적인 과정을 알고, 내가 준비되었는지 미리 확인하면 입양이 훨씬 순조로워집니다.'],
+    img: 'images/guides/a-few-things-to-note-about-the-pet-adoption-procedure.webp', img_ko: 'images/guides/a-few-things-to-note-about-the-pet-adoption-procedure-ko.webp',
+    steps: [
+      [['Contact the shelter first', '먼저 보호소에 연락하기'], ['Animal shelters each have their own slightly different procedures and conditions for adopting. Contact the shelter and find out their steps in detail.', '보호소마다 입양 절차와 조건이 조금씩 다릅니다. 자세한 절차는 해당 보호소에 연락해서 알아두는 것이 좋습니다.']],
+      [['Book a visit', '방문 일정 잡기'], ['After you contact the shelter, they will most likely set a time for you to visit.', '보호소와 전화 상담을 하면, 대부분 보호소 방문 일정을 잡게 됩니다.']],
+      [['Your chosen pet may have other applicants', '원하는 아이에게 다른 입양 희망자가 있을 수 있어요'], ['Even if you have a specific pet in mind, it may be harder to adopt them if other people are hoping to adopt the same pet.', '입양을 희망하는 아이가 있어도, 다른 입양 희망자가 있다면 그 아이를 입양하기 어려울 수 있습니다.']],
+      [['Courses or registration may be required', '입양 교육이나 등록이 필요할 수 있어요'], ['Some shelters ask you to complete an adoption preparation course or registration first. Getting these ready early makes the process much smoother.', '일부 보호소는 입양 교육·돌봄 교육을 받아야만 입양할 수 있습니다. 미리 확인하고 준비하면 입양 과정이 훨씬 수월해집니다.']],
+      [['Minors need a guardian', '미성년자는 보호자와 함께'], ['Anyone under 19 needs a parent or legal guardian with them during the adoption process.', '미성년자는 반드시 법적 보호자와 함께 입양 절차를 진행해야 합니다.']],
+      [['Returning a pet is hard', '다시 파양하기는 어려워요'], ['Surrendering a pet after adopting can be very difficult, so think carefully before you adopt.', '입양 후 다시 파양하는 것은 어렵기 때문에 신중하게 결정하는 것이 중요합니다.']],
+      [['Shelters may ask about your situation', '보호소가 상황을 확인할 수 있어요'], ['Some shelters check your age, household and financial situation during the process.', '일부 보호소는 입양 희망자의 연령, 가구 형태, 경제 상황 등을 확인하기도 합니다.']],
+      [['Ask yourself if you’re ready', '스스로에게 물어보세요'], ['Before adopting, think honestly about whether you can care for an animal and take responsibility for it for its whole life.', '입양하기 전에 반려동물을 끝까지 책임지고 돌볼 수 있는지 스스로에게 솔직하게 물어보세요.']]
+    ],
+    tool: {
+      type: 'check', title: ['Am I ready to adopt?', '나는 입양할 준비가 되었을까요?'], sub: ['Tick everything that’s true for you.', '나에게 해당하는 항목을 모두 체크해 보세요.'],
+      items: [
+        ['I can care for a pet every day for its whole life (often 10–15+ years)', '반려동물의 평생(보통 10~15년 이상) 매일 돌볼 수 있어요'],
+        ['Everyone I live with agrees to adopting', '함께 사는 가족 모두가 입양에 동의해요'],
+        ['I can afford food, vet visits and emergencies', '사료, 병원비, 응급 상황 비용을 감당할 수 있어요'],
+        ['My home (and landlord) allows pets', '집(그리고 집주인)이 반려동물을 허락해요'],
+        ['I’m happy to take an adoption course if the shelter asks', '보호소가 요청하면 입양 교육을 받을 수 있어요'],
+        ['I’m 19 or older, or adopting with my guardian', '만 19세 이상이거나, 보호자와 함께 입양해요'],
+        ['I understand that returning a pet after adoption is difficult', '입양 후 파양이 어렵다는 것을 이해해요']
+      ],
+      results: [
+        [7, ['You’re well prepared. Contact a shelter and ask about their next steps!', '준비가 잘 되어 있어요! 보호소에 연락해 다음 절차를 문의해 보세요.']],
+        [5, ['Almost there. Sort out the unticked items before you apply.', '거의 다 왔어요. 체크하지 못한 항목을 해결한 뒤 신청해 보세요.']],
+        [0, ['Take a little more time. Fostering can be a great way to see if a pet fits your life.', '조금 더 준비가 필요해요. 임시보호로 먼저 함께 지내 보는 것도 좋은 방법이에요.']]
+      ],
+      cta: ['foster', ['Learn about fostering', '임시보호 알아보기']]
+    }
+  },
+  {
+    slug: 'adopting-as-a-foreigner', cat: 'before', icon: 'i-globe', kind: ['Checklist', '체크리스트'], who: ['All pets', '모든 반려동물'], min: 3,
+    title: ['Adopting pets as a foreigner in South Korea', '외국인으로서 한국에서 반려동물 입양하기'],
+    intro: ['The adoption process for foreigners varies a little by shelter, but a few things are helpful to know beforehand.', '외국인의 입양 절차는 보호소마다 조금씩 다르지만, 미리 알아두면 도움이 되는 몇 가지가 있습니다.'],
+    img: 'images/guides/adopting-pets-as-a-foreigner-in-south-korea.webp',
+    steps: [
+      [['Identification', '신분증'], ['Identification is required for every adoption in Korea. For foreigners, this means your passport, as well as your Residence Card and Domestic Residence Report Card.', '한국에서는 모든 입양 절차에 신분증이 필요합니다. 외국인의 경우 여권과 외국인등록증, 국내거소신고증이 해당됩니다.']],
+      [['Different requirements', '보호소마다 다른 조건'], ['Requirements vary by shelter, and some may limit who can adopt. For example, many shelters require adopters to be at least 25.', '조건은 보호소마다 다르며, 입양 자격을 제한하는 조건이 있을 수 있습니다. 예를 들어 많은 보호소가 만 25세 이상만 입양할 수 있도록 하고 있습니다.']],
+      [['Documents are in Korean', '서류는 한국어로 되어 있어요'], ['By law, you have to fill in an adoption request form and an adoption completion form. Both only have official versions in Korean.', '법에 따라 입양 신청서와 입양 완료 서류를 작성해야 하며, 두 서류 모두 공식 양식은 한국어로만 되어 있습니다.']],
+      [['Courses may be in Korean too', '입양 교육도 한국어일 수 있어요'], ['Some shelters ask first-time adopters to complete a course, which is mostly in Korean. Shelters must also explain the pet’s details to you by law, so a language barrier can make this harder.', '일부 보호소는 처음 입양하는 분들에게 교육 이수를 요구하는데, 대부분 한국어로 진행됩니다. 또한 보호소는 법에 따라 동물에 대한 자세한 정보를 안내해야 하므로, 언어 장벽이 있으면 이 과정이 어려울 수 있습니다.']],
+      [['Find an English-friendly shelter', '외국인 입양 경험이 있는 보호소 찾기'], ['Look for a local shelter that has experience with foreign adopters and can speak English. It makes the process easier for you and for the shelter.', '외국인 입양 경험이 있고 영어로 소통할 수 있는 보호소를 찾으면 보호소와 나 모두에게 입양 과정이 더 쉬워집니다.']]
+    ],
+    tool: {
+      type: 'check', title: ['Before you visit the shelter', '보호소 방문 전 체크리스트'], sub: ['Get these ready and ask the shelter about the rest.', '아래 항목을 준비하고, 나머지는 보호소에 문의해 보세요.'],
+      items: [
+        ['Passport', '여권'],
+        ['Residence Card (외국인등록증)', '외국인등록증'],
+        ['Domestic Residence Report Card (국내거소신고증), if you have one', '국내거소신고증 (해당하는 경우)'],
+        ['Asked the shelter about their minimum age (often 25)', '보호소의 최소 입양 연령 확인 (보통 만 25세)'],
+        ['Asked if someone can explain things in English', '영어 안내가 가능한지 문의'],
+        ['Asked if an adoption course is needed, and in which language', '입양 교육이 필요한지, 어떤 언어로 진행되는지 문의'],
+        ['Found someone who can help with the Korean forms', '한국어 서류 작성을 도와줄 사람 찾기']
+      ],
+      results: [
+        [7, ['You’re all set for your visit. Good luck!', '방문 준비가 모두 끝났어요. 좋은 만남이 되길 바라요!']],
+        [3, ['Good progress. Finish the rest before your visit.', '잘하고 있어요. 방문 전에 남은 항목을 마무리해 보세요.']],
+        [0, ['Start with your ID documents, then contact the shelter.', '신분증부터 준비한 뒤 보호소에 연락해 보세요.']]
+      ],
+      cta: ['shelters', ['Find a shelter', '보호소 찾기']]
+    }
+  },
+  {
+    slug: 'helping-an-abandoned-dog-recover', cat: 'home', icon: 'i-homeheart', kind: ['Tips', '팁'], who: ['Dogs', '강아지'], min: 2,
+    title: ['How do I help an abandoned dog recover?', '유기견의 회복을 어떻게 도울 수 있을까요?'],
+    intro: ['A dog that has been abandoned may need time to feel safe again. Here’s what to look out for, and how you can help.', '버려진 경험이 있는 강아지는 다시 안전하다고 느끼기까지 시간이 필요할 수 있어요. 살펴봐야 할 점과 도울 수 있는 방법을 알아보세요.'],
+    img: 'images/guides/how-do-i-help-an-abandoned-dog-recover.webp',
+    steps: [
+      [['What abandoned dogs may struggle with', '유기견이 겪을 수 있는 어려움'], null, [
+        ['Trust issues with people because of past experiences', '과거 경험으로 인한 사람에 대한 불신'],
+        ['Behaviour problems caused by trauma or abuse', '트라우마나 학대로 인한 문제 행동'],
+        ['Anxiety and fear, especially in new places and with new people', '특히 새로운 환경과 사람에 대한 불안과 두려움'],
+        ['Depression, with little interest in activities', '활동에 흥미를 잃는 우울감'],
+        ['Separation anxiety — becoming very anxious and distressed when left alone', '분리불안 — 혼자 남겨졌을 때 극도로 불안해하고 괴로워함']
+      ]],
+      [['Create a safe, steady home', '안전하고 일정한 환경 만들기'], ['Keep a secure and consistent routine, and avoid overwhelming them with lots of new people or experiences at once.', '안정적이고 일관된 환경을 만들어 주고, 한꺼번에 너무 많은 새로운 사람이나 경험으로 부담을 주지 마세요.']],
+      [['Be patient', '기다려 주기'], ['Wait and be patient, and never force your dog to bond with you.', '인내심을 갖고 기다려 주세요. 억지로 유대감을 쌓으려 하지 마세요.']],
+      [['Build their confidence', '자신감 키워 주기'], ['Care for them gently and give them time to heal and bond with you at their own pace.', '다정하게 돌봐 주며, 강아지가 자기 속도에 맞춰 회복하고 마음을 열 수 있도록 도와주세요.']]
+    ],
+    tool: {
+      type: 'check', title: ['What have you noticed?', '어떤 모습을 보이나요?'], sub: ['Tick any signs you see in your dog.', '강아지에게서 보이는 모습을 체크해 보세요.'],
+      items: [
+        ['Hides or backs away from people', '사람을 피하거나 숨어요'],
+        ['Seems scared in new places', '낯선 곳에서 무서워해요'],
+        ['Isn’t interested in walks or play', '산책이나 놀이에 흥미가 없어요'],
+        ['Cries, barks or chews things when left alone', '혼자 있을 때 울거나 짖거나 물건을 물어뜯어요'],
+        ['Reacts strongly to certain movements or sounds', '특정 움직임이나 소리에 크게 반응해요']
+      ],
+      low: true,
+      results: [
+        [3, ['Your dog may be finding things hard. Keep the routine calm and steady, and consider talking to a vet or trainer who works with rescue dogs.', '강아지가 많이 힘들어하고 있을 수 있어요. 차분하고 일정한 생활을 유지하고, 유기견 경험이 있는 수의사나 훈련사와 상담해 보세요.']],
+        [1, ['This is common in rescue dogs. Give them space, keep things predictable and let them come to you.', '유기견에게 흔한 모습이에요. 충분한 공간을 주고, 예측 가능한 생활을 유지하며 강아지가 먼저 다가올 때까지 기다려 주세요.']],
+        [0, ['Great! Keep giving your dog a calm, consistent home.', '좋아요! 지금처럼 차분하고 일관된 환경을 계속 만들어 주세요.']]
+      ]
+    }
+  },
+  {
+    slug: 'happy-and-healthy-dog', cat: 'care', icon: 'i-heart', kind: ['Daily checklist', '데일리 체크리스트'], who: ['Dogs', '강아지'], min: 3,
+    title: ['Help make your dog happy and healthy', '강아지를 행복하고 건강하게'],
+    intro: ['Five important things your dog needs to be happy — and an easy way to check you’re covering them.', '강아지가 행복하기 위해 꼭 필요한 5가지와, 잘 챙기고 있는지 쉽게 확인하는 방법을 소개합니다.'],
+    img: 'images/guides/help-make-your-dog-happy-and-healthy.webp',
+    steps: [
+      [['Regular exercise', '규칙적인 운동'], ['Exercise is important for your dog’s mental and physical health. Make time for it at least once or twice a day — take them for walks and play with them regularly.', '운동은 강아지의 몸과 마음 건강에 중요합니다. 하루에 최소 한두 번은 운동 시간을 갖고, 꾸준히 산책하고 함께 놀아 주세요.']],
+      [['Positive touch', '긍정적인 스킨십'], ['Notice where your dog likes to be petted. Touch and affection help you bond, get them used to being handled, and make grooming and vet visits less stressful.', '강아지가 어디를 쓰다듬어 주는 걸 좋아하는지 살펴보세요. 스킨십과 애정 표현은 유대감을 높이고, 손길에 익숙해지게 해 미용과 병원 진료를 덜 힘들게 해 줍니다.']],
+      [['Socialization', '사회화'], ['Socialization means getting your dog used to different experiences so they stay calm in unfamiliar situations. Take them on walks, let them meet new people and dogs, and help them get used to short times apart from you.', '사회화란 강아지가 다양한 경험에 익숙해져 낯선 상황에서도 침착할 수 있도록 하는 것입니다. 산책을 하며 새로운 사람과 강아지를 만나게 하고, 잠시 떨어져 있는 연습도 시켜 주세요.']],
+      [['A balanced, quality diet', '균형 잡힌 좋은 식단'], ['Make sure your dog gets the right nutrients, with a good balance of carbohydrates, protein, vitamins, minerals and fats.', '탄수화물, 단백질, 비타민, 미네랄, 지방이 균형 잡힌 식단으로 필요한 영양소를 챙겨 주세요.']],
+      [['Basic hygiene care', '기본 위생 관리'], ['Learn how to groom your dog: brush their coat, clean and brush their teeth, and clip their nails. If you can’t, a dog groomer can help.', '털 빗질, 양치, 발톱 깎기 등 기본 그루밍 방법을 배워 보세요. 어렵다면 반려견 미용사의 도움을 받으세요.']]
+    ],
+    tool: {
+      type: 'check', title: ['Today’s care checklist', '오늘의 돌봄 체크리스트'], sub: ['How did your dog do today?', '오늘 강아지를 얼마나 챙겼나요?'],
+      items: [
+        ['At least one walk or play session', '산책이나 놀이 1회 이상'],
+        ['Some cuddles or gentle petting', '스킨십이나 부드럽게 쓰다듬어 주기'],
+        ['Something new to see, smell or meet', '새로운 것을 보고, 냄새 맡고, 만나기'],
+        ['Healthy, balanced meals and fresh water', '균형 잡힌 식사와 신선한 물'],
+        ['A quick brush, teeth or paw check', '빗질, 양치 또는 발 상태 확인']
+      ],
+      results: [
+        [5, ['Perfect day! Your dog is lucky to have you.', '완벽한 하루예요! 강아지가 정말 행복하겠어요.']],
+        [3, ['Good day! Try to fit in the rest tomorrow.', '좋은 하루예요! 나머지는 내일 챙겨 봐요.']],
+        [0, ['Every little bit helps — start with a short walk.', '작은 것부터 시작해요. 짧은 산책부터 해 볼까요?']]
+      ]
+    }
+  },
+  {
+    slug: 'flying-with-pets', cat: 'care', icon: 'i-plane', kind: ['Calculator', '계산기'], who: ['All pets', '모든 반려동물'], min: 3,
+    title: ['Travelling on airplanes with pets in Korea', '반려동물과 비행기 타기'],
+    intro: ['Which Korean airlines allow pets, how cabin and cargo travel work, and a quick check of whether your pet can fly in the cabin.', '반려동물 탑승이 가능한 국내 항공사, 기내·화물칸 운송 방법, 그리고 우리 아이가 기내에 탈 수 있는지 간단히 확인해 보세요.'],
+    img: 'images/guides/travelling-on-airplanes.webp',
+    steps: [
+      [['Airlines that allow pets', '반려동물 탑승 가능 항공사'], null, [
+        ['Korean Air — cabin limit 7 kg', '대한항공 — 기내 7kg 이하'],
+        ['Asiana Airlines — cabin limit 7 kg', '아시아나항공 — 기내 7kg 이하'],
+        ['T’way — cabin limit 9 kg', '티웨이항공 — 기내 9kg 이하'],
+        ['Jeju Air — cabin limit 9 kg', '제주항공 — 기내 9kg 이하']
+      ], ['Limits may be different on international flights.', '국제선은 기준이 다를 수 있어요.']],
+      [['Taking pets in the cabin', '기내에 반려동물 데려가기'], ['The weight limit on airline websites usually means your pet and the carrier together, so use a lightweight but sturdy bag. Bags also have height and width limits, listed on each airline’s website. Some airlines don’t allow sedatives or calming medicine for pets.', '항공사 홈페이지에 안내된 무게 제한은 보통 반려동물과 이동장을 합친 무게입니다. 가볍지만 튼튼한 가방을 사용하세요. 가방의 높이와 너비 제한도 각 항공사 홈페이지에서 확인할 수 있으며, 일부 항공사는 진정제 사용을 허용하지 않습니다.']],
+      [['Taking pets as cargo', '화물칸으로 운송하기'], ['On many Korean airlines, pets above a certain size can’t fly in the cabin, so cargo is the only option. You’ll need a hard, sturdy carrier that’s also comfortable for your pet. There can be safety concerns, so check each airline’s rules carefully.', '많은 국내 항공사는 일정 크기 이상의 반려동물을 기내에 태울 수 없어 화물칸 운송만 가능합니다. 단단하고 튼튼하면서도 편안한 이동장이 필요하며, 안전 문제가 있을 수 있으니 항공사별 규정을 꼼꼼히 확인하세요.']]
+    ],
+    tool: { type: 'weight' }
+  },
+  {
+    slug: 'surrendering-in-korea', cat: 'surrender', icon: 'i-paw', kind: ['Step-by-step', '단계별 안내'], who: ['Dogs', '강아지'], min: 4,
+    title: ['Surrendering your dog in South Korea', '한국에서 강아지 파양하기'],
+    intro: ['Choosing to surrender your dog is a tough decision, so it’s important to know the proper ways and options. Leaving your dog in a public place is neither safe nor ethical.', '강아지를 파양하는 것은 어려운 결정입니다. 그럴수록 올바른 파양 방법과 선택지를 아는 것이 중요합니다. 강아지를 공공장소에 버리는 것은 안전하지도, 윤리적으로 옳지도 않습니다.'],
+    img: 'images/guides/surrendering-your-dog-in-south-korea.webp', img_ko: 'images/guides/surrendering-your-dog-in-south-korea-ko.webp',
+    steps: [
+      [['Government shelters can’t take surrendered dogs', '지자체 보호소는 파양 신청을 받을 수 없어요'], ['Under the rules for government-run shelters, only dogs found in public without an owner (or left in a box) count as abandoned and can enter a shelter — so you can’t surrender your dog there. But there are other options.', '동물보호센터 운영지침에 따르면, 지자체 보호소는 소유자 없이 방황하거나 버려진 개만 ‘유기견’으로 인정해 보호합니다. 그래서 소유자가 있는 강아지는 입소 신청을 할 수 없습니다. 하지만 다른 선택지도 있습니다.']],
+      [['Private shelters and rescues', '민간 동물보호시설'], ['Many private shelters accept surrendered dogs. Some are no-kill shelters, so your dog stays in their care without the risk of euthanasia. Almost all of them charge a fee.', '많은 민간 보호시설에서 파양·입소 신청을 받습니다. 일부는 안락사 없는 보호소로, 입소 후 안락사 위험 없이 보호받을 수 있습니다. 다만 거의 모든 곳이 비용을 받습니다.']],
+      [['Where to apply', '파양·입소 신청하는 곳'], ['Several places in Korea take in surrendered dogs, such as the Korea Animal Shelter Association and Dog Maru. You can also check our Shelters page for shelters marked “Accepts surrenders”.', '한국동물보호소협회, 도그마루 등 파양·입소가 가능한 시설이 있습니다. 포기브 보호소 페이지에서 ‘파양 인수’ 표시가 있는 곳도 확인해 보세요.']],
+      [['Have you thought of other options?', '다른 방법도 생각해 보셨나요?'], ['Behaviour problems are the most common reason dogs are surrendered (around 27.8%). If that’s your situation, a specialist may help you work through it. You could also look for an adopter among your family, friends or neighbours.', '농림축산식품부 조사에 따르면 강아지가 파양되는 가장 흔한 이유는 문제 행동입니다(약 27.8%). 비슷한 이유라면 전문가와 상담해 개선해 보는 것도 고려해 보세요. 가족, 친구, 이웃 중에서 입양할 분을 찾아보는 것도 방법입니다.']]
+    ],
+    tool: { type: 'decide' }
+  },
+  {
+    slug: 'surrendering-safely', cat: 'surrender', icon: 'i-shield', kind: ['Checklist', '체크리스트'], who: ['Dogs', '강아지'], min: 3,
+    title: ['Surrendering your dog to a safe organization', '안전한 기관에 강아지 파양하기'],
+    intro: ['Pet shops disguised as “no-kill shelters” are unregulated in Korea. Make sure you surrender your dog to an organization you can trust.', '‘안락사 없는 보호소’로 위장한 펫숍은 한국에서 규제를 받지 않습니다. 반드시 신뢰할 수 있는 기관에 파양하세요.'],
+    img: 'images/guides/surrendering-your-dog-to-a-safe-organization.webp',
+    steps: [
+      [['Why should I be careful?', '왜 조심해야 하나요?'], ['A new kind of pet shop advertises itself as a shelter that takes in surrendered pets. They take advantage of the fact that government shelters don’t accept dogs from owners. Because they’re paid to take pets in rather than buying them to sell, they don’t count as sales businesses — so the laws for those businesses don’t apply, and ethical practices can’t be guaranteed.', '파양 동물을 받아 주는 보호소처럼 광고하는 신종 펫숍이 늘고 있습니다. 지자체 보호소가 소유자의 강아지를 받지 않는 점을 이용하는 것입니다. 이런 업체는 동물을 사서 파는 것이 아니라 돈을 받고 데려가기 때문에 판매업으로 분류되지 않아, 판매업에 적용되는 법의 규제를 받지 않습니다. 그래서 윤리적인 운영을 보장할 수 없습니다.']],
+      [['What has happened at these places?', '어떤 일들이 있었나요?'], ['There have been several cases of unethical practices inside these “shelters” in Korea — crowded cages, unsanitary conditions, and even dogs being sent to slaughterhouses. Because they aren’t regulated, it’s entirely up to each business to act ethically.', '이런 ‘보호소’ 안에서 비윤리적인 일들이 여러 차례 있었습니다. 비좁은 철장, 비위생적인 환경, 심지어 도살장으로 보내진 사례도 있습니다. 규제를 받지 않기 때문에 윤리적인 운영은 전적으로 업체에 달려 있습니다.']],
+      [['How do I avoid them?', '어떻게 피할 수 있나요?'], ['If possible, avoid shelters altogether and find someone you know and trust to take your dog. If that isn’t possible, compare options online, read reviews, look at photos of the facilities, contact the shelter, and take the extra step to make sure your dog is going somewhere safe.', '가능하다면 보호소보다는 믿을 수 있는 지인에게 강아지를 맡기세요. 어렵다면 온라인에서 여러 곳을 비교하고, 후기와 시설 사진을 확인하고, 직접 연락해 보는 등 강아지가 안전한 곳으로 가는지 한 번 더 확인하세요.']]
+    ],
+    tool: {
+      type: 'check', title: ['Before you hand over your dog', '강아지를 맡기기 전 체크리스트'], sub: ['Check off each step for the place you’re considering.', '고려 중인 곳에 대해 하나씩 확인해 보세요.'],
+      items: [
+        ['Asked family, friends and people I trust first', '가족, 친구 등 믿을 수 있는 사람에게 먼저 물어봤어요'],
+        ['Compared a few organizations online', '온라인에서 여러 기관을 비교했어요'],
+        ['Read reviews from other owners', '다른 보호자들의 후기를 읽었어요'],
+        ['Looked at recent photos of the facilities', '시설의 최근 사진을 확인했어요'],
+        ['Called or messaged them with my questions', '전화나 메시지로 궁금한 점을 문의했어요'],
+        ['Visited in person, or asked to see where my dog will stay', '직접 방문했거나, 강아지가 지낼 곳을 보여 달라고 요청했어요']
+      ],
+      results: [
+        [6, ['You’ve done your homework. You can feel more confident about where your dog is going.', '꼼꼼하게 확인했어요. 강아지가 갈 곳에 대해 더 안심할 수 있어요.']],
+        [3, ['Keep going — a visit or a call can reveal a lot.', '조금만 더 확인해 보세요. 방문이나 통화로 많은 것을 알 수 있어요.']],
+        [0, ['Take your time. Start by asking people you trust.', '서두르지 마세요. 먼저 믿을 수 있는 사람들에게 물어보세요.']]
+      ],
+      cta: ['shelters', ['See shelters that accept surrenders', '파양 인수 보호소 보기'], 'surr']
+    }
+  }
+];
+const AIRLINES = [['Korean Air', '대한항공', 7], ['Asiana Airlines', '아시아나항공', 7], ['T’way', '티웨이항공', 9], ['Jeju Air', '제주항공', 9]];
+
+const guideBySlug = slug => GUIDES.find(g => g.slug === slug);
+const guideNo = g => GUIDES.indexOf(g) + 1;
+const gmeta = g => `${tx(...g.kind)} · ${tx(...g.who)} · ${LANG === 'ko' ? g.min + '분' : g.min + ' min'}`;
+let guideCat = '';
+// Saved progress (read steps + ticked boxes) — per visitor, in this browser only
+const gStore = {
+  get(slug) { try { return JSON.parse(localStorage.getItem('pawgive-guide-' + slug)) || {}; } catch (e) { return {}; } },
+  set(slug, v) { try { localStorage.setItem('pawgive-guide-' + slug, JSON.stringify(v)); } catch (e) {} }
+};
+const gState = {};
+const stateFor = slug => gState[slug] || (gState[slug] = Object.assign({ read: [], checks: [] }, gStore.get(slug)));
+
+function renderGuideList() {
+  $('#gChips').innerHTML = [['', ['All guides', '전체 가이드']], ...GUIDE_CATS.map(c => [c.id, c.t])]
+    .map(([id, t]) => `<button type="button" class="gchip${guideCat === id ? ' on' : ''}" data-gcat="${id}" aria-pressed="${guideCat === id}">${tx(...t)}</button>`).join('');
+  $('#gList').innerHTML = GUIDE_CATS.filter(c => !guideCat || c.id === guideCat).map(c => {
+    const list = GUIDES.filter(g => g.cat === c.id);
+    if (!list.length) return '';
+    return `<div class="g-group"><h2 class="g-label">${tx(...c.t)}</h2>${list.map(g => {
+      const st = stateFor(g.slug), done = st.read.length >= g.steps.length;
+      return `<a class="g-row" href="guides/${g.slug}">
+        <span class="g-ico">${ico(g.icon)}<b>${guideNo(g)}</b></span>
+        <span class="g-txt"><span class="g-meta">${gmeta(g)}${done ? ` · <i class="g-done">${ico('i-check')}${tx('Read', '읽음')}</i>` : ''}</span>
+          <span class="g-title">${esc(tx(...g.title))}</span><span class="g-desc">${esc(tx(...g.intro))}</span></span>
+        <span class="pill-btn g-open">${tx('Open guide', '가이드 보기')} <svg width="18" height="18"><use href="#i-arrow"/></svg></span>
+      </a>`;
+    }).join('')}</div>`;
+  }).join('');
+}
+$('#gChips').addEventListener('click', e => { const b = e.target.closest('[data-gcat]'); if (!b) return; guideCat = b.dataset.gcat; renderGuideList(); });
+
+// Resources tabs
+let resTab = 'guides';
+function showRtab(name) {
+  resTab = name;
+  document.querySelectorAll('.rtabs [data-rtab]').forEach(b => { const on = b.dataset.rtab === name; b.setAttribute('aria-selected', on); b.tabIndex = on ? 0 : -1; });
+  ['guides', 'products', 'links'].forEach(n => $('#rtab-' + n).hidden = n !== name);
+}
+$('.rtabs').addEventListener('click', e => { const b = e.target.closest('[data-rtab]'); if (b) showRtab(b.dataset.rtab); });
+$('.rtabs').addEventListener('keydown', e => {
+  if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+  const tabs = [...document.querySelectorAll('.rtabs [data-rtab]')], i = tabs.findIndex(b => b.dataset.rtab === resTab);
+  const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length]; showRtab(next.dataset.rtab); next.focus();
+});
+
+// ----- One guide page -----
+let gView = null;
+function stepHtml(g, step, i, st) {
+  const [h, p, list, note] = step, done = st.read.includes(i);
+  return `<li class="gd-step${done ? ' done' : ''}">
+    <span class="gd-num">${done ? ico('i-check') : i + 1}</span>
+    <div class="gd-step-body">
+      <h2>${esc(tx(...h))}</h2>
+      ${p ? `<p>${esc(tx(...p))}</p>` : ''}
+      ${list ? `<ul>${list.map(x => `<li>${esc(tx(...x))}</li>`).join('')}</ul>` : ''}
+      ${note ? `<p class="gd-note">${esc(tx(...note))}</p>` : ''}
+      <button type="button" class="gd-read" data-read="${i}" aria-pressed="${done}">${ico('i-check')}<span>${done ? tx('Read', '읽음') : tx('Mark as read', '읽음으로 표시')}</span></button>
+    </div>
+  </li>`;
+}
+function progressHtml(g, st) {
+  const n = st.read.length, t = g.steps.length;
+  return `<div class="gd-bar"><i style="width:${Math.round(n / t * 100)}%"></i></div>
+    <span>${n >= t ? tx('All done — nice work!', '모두 읽었어요. 잘했어요!') : LANG === 'ko' ? `${t}단계 중 ${n}단계 읽음` : `${n} of ${t} steps read`}</span>`;
+}
+function toolHtml(g, st) {
+  const tool = g.tool;
+  if (tool.type === 'check') {
+    const n = st.checks.length, res = tool.results.find(r => n >= r[0]);
+    const cta = tool.cta ? `<a class="pill-btn" href="${tool.cta[0]}"${tool.cta[2] ? ' data-surr' : ''}>${tx(...tool.cta[1])} <svg width="18" height="18"><use href="#i-arrow"/></svg></a>` : '';
+    return `<div class="gd-tool-head"><span class="gd-tool-tag">${tx('Try it', '직접 해 보기')}</span><h2>${esc(tx(...tool.title))}</h2><p>${esc(tx(...tool.sub))}</p></div>
+      <div class="gd-checks">${tool.items.map((it, i) => `<label class="gd-check"><input type="checkbox" data-check="${i}"${st.checks.includes(i) ? ' checked' : ''}><span class="box">${ico('i-check')}</span><span>${esc(tx(...it))}</span></label>`).join('')}</div>
+      <div class="gd-result"><b>${n} / ${tool.items.length}</b><p>${esc(tx(...res[1]))}</p></div>
+      <div class="gd-tool-acts">${cta}<button type="button" class="gd-reset">${tx('Clear', '초기화')}</button></div>`;
+  }
+  if (tool.type === 'weight') {
+    return `<div class="gd-tool-head"><span class="gd-tool-tag">${tx('Try it', '직접 해 보기')}</span><h2>${tx('Can my pet fly in the cabin?', '우리 아이, 기내에 탈 수 있을까요?')}</h2><p>${tx('Enter your pet’s weight and the carrier’s weight. Most airlines count them together.', '반려동물과 이동장 무게를 입력하세요. 대부분의 항공사는 두 무게를 합산해요.')}</p></div>
+      <div class="gd-weights">
+        <label>${tx('Pet (kg)', '반려동물 (kg)')}<input type="number" id="gwPet" min="0" max="80" step="0.1" inputmode="decimal" value="${st.pet || ''}"></label>
+        <label>${tx('Carrier (kg)', '이동장 (kg)')}<input type="number" id="gwBag" min="0" max="20" step="0.1" inputmode="decimal" value="${st.bag || ''}"></label>
+      </div>
+      <div id="gwOut"></div>
+      <p class="gd-note">${tx('Based on cabin limits in our guide for domestic flights. Rules change and can differ for international flights, so always confirm with the airline before you book.', '가이드에 정리된 국내선 기내 기준이에요. 규정은 바뀔 수 있고 국제선은 다를 수 있으니, 예약 전 반드시 항공사에 확인하세요.')}</p>`;
+  }
+  if (tool.type === 'decide') {
+    return `<div class="gd-tool-head"><span class="gd-tool-tag">${tx('Try it', '직접 해 보기')}</span><h2>${tx('Find the right option for you', '나에게 맞는 방법 찾기')}</h2><p>${tx('Answer two quick questions.', '두 가지 질문에 답해 보세요.')}</p></div><div id="gdDecide"></div>`;
+  }
+  return '';
+}
+function drawWeight() {
+  const out = $('#gwOut'); if (!out) return;
+  const pet = parseFloat($('#gwPet').value) || 0, bag = parseFloat($('#gwBag').value) || 0, total = Math.round((pet + bag) * 10) / 10;
+  const st = stateFor(gView.slug); st.pet = $('#gwPet').value; st.bag = $('#gwBag').value; gStore.set(gView.slug, st);
+  if (!pet) { out.innerHTML = `<p class="gw-empty">${tx('Enter a weight to see which airlines fit.', '무게를 입력하면 탑승 가능한 항공사를 보여 드려요.')}</p>`; return; }
+  out.innerHTML = `<p class="gw-total">${tx('Total', '합계')} <b>${total} kg</b></p><ul class="gw-list">${AIRLINES.map(([en, ko, lim]) => {
+    const ok = total <= lim;
+    return `<li class="${ok ? 'ok' : 'no'}"><span class="gw-ic">${ok ? ico('i-check') : '×'}</span><span class="gw-name">${LANG === 'ko' ? ko : en}</span><span class="gw-lim">${tx('limit', '기준')} ${lim} kg</span>
+      <span class="gw-say">${ok ? tx('Cabin OK', '기내 가능') : tx(`${Math.round((total - lim) * 10) / 10} kg over — cargo`, `${Math.round((total - lim) * 10) / 10}kg 초과 — 화물칸`)}</span></li>`;
+  }).join('')}</ul>`;
+}
+const DECIDE = {
+  q1: { q: ['Why are you thinking of surrendering your dog?', '파양을 고민하는 이유가 무엇인가요?'], a: [
+    [['Behaviour problems', '문제 행동'], 'behave'],
+    [['Moving, health, money or time', '이사, 건강, 경제적 사정, 시간 부족'], 'q2'],
+    [['Something else', '기타'], 'q2']] },
+  q2: { q: ['Do you know someone you trust who could adopt your dog?', '강아지를 입양할 만한 믿을 수 있는 지인이 있나요?'], a: [
+    [['Yes, or maybe', '네, 또는 있을 수도 있어요'], 'known'],
+    [['No', '아니요'], 'shelter']] },
+  behave: { r: ['Behaviour problems are the most common reason dogs are surrendered — and often they can be improved. Talk to a vet or a professional trainer before deciding.', '문제 행동은 가장 흔한 파양 이유이지만, 개선할 수 있는 경우가 많아요. 결정하기 전에 수의사나 전문 훈련사와 상담해 보세요.'],
+    links: [['resources', ['Browse training resources', '훈련 자료 보기'], 'links'], ['q2', ['I’ve already tried this', '이미 시도해 봤어요']]] },
+  known: { r: ['Rehoming to someone you know is often the safest option for your dog. You can also post your dog on our Foster page to find a new family.', '아는 사람에게 보내는 것이 강아지에게 가장 안전한 방법인 경우가 많아요. 포기브 임시보호 페이지에 글을 올려 새 가족을 찾을 수도 있어요.'],
+    links: [['foster/new', ['Post on the Foster page', '임시보호 글 올리기']]] },
+  shelter: { r: ['Look for a private shelter that accepts surrenders, and check it carefully first — most charge a fee. Never leave your dog in a public place.', '파양을 받아 주는 민간 보호소를 찾아보고, 먼저 꼼꼼히 확인하세요. 대부분 비용이 들어요. 절대 공공장소에 강아지를 두고 가지 마세요.'],
+    links: [['shelters', ['See shelters that accept surrenders', '파양 인수 보호소 보기'], 'surr'], ['guides/surrendering-safely', ['How to choose a safe place', '안전한 곳 고르는 법']]] }
+};
+function drawDecide(node) {
+  const box = $('#gdDecide'); if (!box) return;
+  const n = DECIDE[node || 'q1'];
+  if (n.q) box.innerHTML = `<p class="gdd-q">${esc(tx(...n.q))}</p><div class="gdd-opts">${n.a.map(([t, to]) => `<button type="button" class="gchip" data-dnext="${to}">${tx(...t)}</button>`).join('')}</div>`;
+  else box.innerHTML = `<div class="gd-result"><p>${esc(tx(...n.r))}</p></div><div class="gd-tool-acts">${n.links.map(([to, t, flag]) =>
+      DECIDE[to] ? `<button type="button" class="pill-btn" data-dnext="${to}">${tx(...t)}</button>`
+        : `<a class="pill-btn" href="${to}"${flag === 'surr' ? ' data-surr' : flag ? ` data-rtab-go="${flag}"` : ''}>${tx(...t)} <svg width="18" height="18"><use href="#i-arrow"/></svg></a>`).join('')}<button type="button" class="gd-reset" data-dnext="q1">${tx('Start over', '처음부터')}</button></div>`;
+}
+function renderGuide(slug) {
+  const g = guideBySlug(slug); gView = g;
+  const st = stateFor(slug), i = GUIDES.indexOf(g), prev = GUIDES[i - 1], next = GUIDES[i + 1];
+  const cat = GUIDE_CATS.find(c => c.id === g.cat);
+  $('#guideBody').innerHTML = `
+    <header class="gd-head">
+      <span class="g-ico big">${ico(g.icon)}</span>
+      <p class="g-meta">${tx(...cat.t)} · ${gmeta(g)}</p>
+      <h1>${esc(tx(...g.title))}</h1>
+      <p class="lead">${esc(tx(...g.intro))}</p>
+      <div class="gd-acts">${shareBtn('guide-' + slug, tx(...g.title))}<button type="button" class="pill-btn" data-gdview>${ico('i-img')}<span>${tx('View original guide', '원본 가이드 보기')}</span></button></div>
+    </header>
+    <div class="gd-progress" id="gdProg">${progressHtml(g, st)}</div>
+    <ol class="gd-steps" id="gdSteps">${g.steps.map((sp, k) => stepHtml(g, sp, k, st)).join('')}</ol>
+    <section class="gd-tool" id="gdTool">${toolHtml(g, st)}</section>
+    <nav class="gd-pn" aria-label="${tx('More guides', '다른 가이드')}">
+      ${prev ? `<a class="gd-pn-a" href="guides/${prev.slug}"><span>${ico('i-back')} ${tx('Previous', '이전 가이드')}</span><b>${esc(tx(...prev.title))}</b></a>` : '<span></span>'}
+      ${next ? `<a class="gd-pn-a nx" href="guides/${next.slug}"><span>${tx('Next', '다음 가이드')} ${ico('i-arrow')}</span><b>${esc(tx(...next.title))}</b></a>` : '<span></span>'}
+    </nav>`;
+  $('#gdBack span').textContent = tx('All guides', '전체 가이드');
+  if (g.tool.type === 'weight') drawWeight();
+  if (g.tool.type === 'decide') drawDecide(st.node);
+}
+$('#guideBody').addEventListener('click', e => {
+  if (!gView) return;
+  const g = gView, st = stateFor(g.slug);
+  const r = e.target.closest('[data-read]');
+  if (r) {
+    const i = +r.dataset.read;
+    st.read = st.read.includes(i) ? st.read.filter(x => x !== i) : st.read.concat(i);
+    gStore.set(g.slug, st);
+    r.closest('.gd-step').outerHTML = stepHtml(g, g.steps[i], i, st);
+    $('#gdProg').innerHTML = progressHtml(g, st);
+    return;
+  }
+  if (e.target.closest('.gd-reset') && g.tool.type === 'check') { st.checks = []; gStore.set(g.slug, st); $('#gdTool').innerHTML = toolHtml(g, st); return; }
+  const d = e.target.closest('[data-dnext]');
+  if (d) { st.node = d.dataset.dnext; gStore.set(g.slug, st); drawDecide(st.node); return; }
+  if (e.target.closest('[data-gdview]')) { openViewer(LANG === 'ko' && g.img_ko ? g.img_ko : g.img, tx(...g.title)); return; }
+});
+$('#guideBody').addEventListener('change', e => {
+  const c = e.target.closest('[data-check]'); if (!c || !gView) return;
+  const g = gView, st = stateFor(g.slug), i = +c.dataset.check;
+  st.checks = c.checked ? [...new Set(st.checks.concat(i))] : st.checks.filter(x => x !== i);
+  gStore.set(g.slug, st);
+  const n = st.checks.length, res = g.tool.results.find(x => n >= x[0]);
+  $('#gdTool .gd-result').innerHTML = `<b>${n} / ${g.tool.items.length}</b><p>${esc(tx(...res[1]))}</p>`;
+});
+$('#guideBody').addEventListener('input', e => { if (e.target.id === 'gwPet' || e.target.id === 'gwBag') drawWeight(); });
+// Links that open the Shelters page with "Takes surrenders" switched on, or a specific Resources tab
+document.addEventListener('click', e => {
+  if (e.target.closest('a[data-surr]')) { shelterSurr = true; shelterShown = 12; renderShelters(); }
+  const t = e.target.closest('a[data-rtab-go]'); if (t) showRtab(t.dataset.rtabGo);
+  if (e.target.closest('#gdBack')) showRtab('guides');
+}, true);
+/* Products tab: sample products by category (replace them in PRODUCTS below) + shopping guides (the product-related links) */
+const PCATS = [
+  { id: 'food', icon: 'i-bowl', t: ['Food & treats', '사료·간식'] },
+  { id: 'toys', icon: 'i-ball', t: ['Toys & play', '장난감·놀이'] },
+  { id: 'comfort', icon: 'i-bed', t: ['Beds & comfort', '침구·휴식'] },
+  { id: 'walk', icon: 'i-paw', t: ['Walk & travel', '산책·이동'] },
+  { id: 'groom', icon: 'i-brush', t: ['Grooming & hygiene', '미용·위생'] },
+  { id: 'guides', icon: 'i-book', t: ['Shopping guides', '쇼핑 가이드'] }
+];
+const PTAGS = { essential: ['Essential', '필수'], dog: ['Dogs', '강아지'], cat: ['Cats', '고양이'], puppy: ['Puppies', '퍼피'] };
+// SAMPLE PRODUCTS — replace with real ones. Fields: cat, name, desc ([English, Korean]), tags, price, url (link to the store; leave '' for none), sample (true shows a "Sample" label)
+const PRODUCTS = [
+  { cat: 'food', name: ['Adult dog dry food', '성견용 건식 사료'], desc: ['Complete daily nutrition with a good balance of protein, vitamins and minerals.', '단백질, 비타민, 미네랄이 균형 잡힌 매일 먹는 완전 사료예요.'], tags: ['dog', 'essential'], price: '₩32,000', url: '', sample: true },
+  { cat: 'food', name: ['Kitten wet food pack', '키튼용 습식 사료 세트'], desc: ['Soft, easy-to-eat meals for growing kittens.', '성장기 아기 고양이를 위한 부드러운 습식 사료예요.'], tags: ['cat'], price: '₩18,000', url: '', sample: true },
+  { cat: 'food', name: ['Training treats', '훈련용 간식'], desc: ['Small, low-calorie rewards — perfect for practising commands.', '작고 칼로리가 낮아 훈련할 때 보상으로 주기 좋아요.'], tags: ['dog', 'puppy'], price: '₩9,000', url: '', sample: true },
+  { cat: 'toys', name: ['Rope tug toy', '로프 터그 장난감'], desc: ['A sturdy cotton rope for tug-of-war and fetch.', '당기기 놀이와 공 던지기에 좋은 튼튼한 면 로프예요.'], tags: ['dog'], price: '₩8,000', url: '', sample: true },
+  { cat: 'toys', name: ['Feather wand toy', '깃털 낚싯대 장난감'], desc: ['Interactive play that keeps indoor cats active.', '실내 고양이가 활발하게 움직이도록 도와주는 놀이 장난감이에요.'], tags: ['cat'], price: '₩7,000', url: '', sample: true },
+  { cat: 'toys', name: ['Puzzle feeder', '노즈워크 퍼즐 급식기'], desc: ['Slows down fast eaters and keeps busy minds entertained.', '급하게 먹는 습관을 줄이고 머리를 쓰며 놀 수 있어요.'], tags: ['dog', 'cat'], price: '₩15,000', url: '', sample: true },
+  { cat: 'comfort', name: ['Washable pet bed', '세탁 가능한 방석'], desc: ['A soft bolster bed with a removable, machine-washable cover.', '커버를 분리해 세탁할 수 있는 푹신한 방석이에요.'], tags: ['dog', 'cat', 'essential'], price: '₩39,000', url: '', sample: true },
+  { cat: 'comfort', name: ['Calming blanket', '안정감 담요'], desc: ['A cosy blanket that helps nervous or rescued pets settle in.', '불안해하는 아이나 유기동물이 새 집에 적응하도록 도와줘요.'], tags: ['dog', 'cat'], price: '₩19,000', url: '', sample: true },
+  { cat: 'walk', name: ['Harness & leash set', '하네스 & 리드줄 세트'], desc: ['An adjustable harness that doesn’t press on the throat.', '목에 부담을 주지 않는 사이즈 조절 하네스예요.'], tags: ['dog', 'essential'], price: '₩22,000', url: '', sample: true },
+  { cat: 'walk', name: ['Soft travel carrier', '기내용 소프트 이동장'], desc: ['A lightweight carrier for cabin travel — check your airline’s size limits.', '기내 탑승용 가벼운 이동장이에요. 항공사 크기 기준을 꼭 확인하세요.'], tags: ['dog', 'cat'], price: '₩45,000', url: '', sample: true },
+  { cat: 'groom', name: ['Slicker brush', '슬리커 브러시'], desc: ['Removes loose fur and tangles for a healthy coat.', '빠진 털과 엉킨 털을 정리해 건강한 털을 유지해요.'], tags: ['dog', 'cat'], price: '₩11,000', url: '', sample: true },
+  { cat: 'groom', name: ['Nail clippers', '발톱깎이'], desc: ['Safe clippers with a guard to stop you cutting too short.', '너무 짧게 자르지 않도록 가드가 달린 안전한 발톱깎이예요.'], tags: ['dog', 'cat', 'essential'], price: '₩9,000', url: '', sample: true },
+  { cat: 'groom', name: ['Toothbrush & toothpaste set', '칫솔 & 치약 세트'], desc: ['Pet-safe toothpaste and a soft brush for daily dental care.', '반려동물 전용 치약과 부드러운 칫솔로 매일 양치해 주세요.'], tags: ['dog', 'cat'], price: '₩8,000', url: '', sample: true },
+  { cat: 'groom', name: ['Litter box & scoop', '화장실 & 모래삽'], desc: ['A roomy, easy-to-clean litter box with a scoop.', '넓고 청소하기 쉬운 고양이 화장실과 모래삽이에요.'], tags: ['cat', 'essential'], price: '₩25,000', url: '', sample: true }
+];
+let prodCat = '';
+const host = u => { try { return new URL(u).hostname.replace(/^www\.|^m\./, ''); } catch (e) { return ''; } };
+function productTile(pr, i) {
+  const c = PCATS.find(x => x.id === pr.cat);
+  return `<div class="prod-item c${i % 3}">
+    <${pr.url ? `a class="prod" href="${esc(pr.url)}" target="_blank" rel="noopener"` : 'div class="prod"'}>
+      <span class="prod-top"><span class="prod-ico">${ico(c.icon)}</span>${pr.sample ? `<span class="prod-sample">${tx('Sample', '샘플')}</span>` : ''}</span>
+      <span class="prod-kind">${tx(...c.t)}</span>
+      <h3>${esc(tx(...pr.name))}</h3>
+      <p>${esc(tx(...pr.desc))}</p>
+      <span class="prod-tags">${pr.tags.map(t => `<span class="ptag${t === 'essential' ? ' ess' : ''}">${tx(...PTAGS[t])}</span>`).join('')}</span>
+      <span class="prod-foot"><b class="prod-price">${esc(pr.price || '')}</b>${pr.url ? `<span class="prod-go">${tx('View product', '상품 보기')} <svg><use href="#i-arrow"/></svg></span>` : ''}</span>
+    </${pr.url ? 'a' : 'div'}>
+  </div>`;
+}
+function guideTile(r, i) {
+  const vid = r.type === 'Videos';
+  return `<div class="prod-item c${i % 3}">
+    <a class="prod" href="${esc(L(r, 'url'))}" target="_blank" rel="noopener">
+      <span class="prod-top"><span class="prod-ico">${ico(vid ? 'i-play' : 'i-book')}</span></span>
+      <span class="prod-kind">${vid ? tx('Video', '영상') : tx('Website', '웹사이트')} · ${esc(host(L(r, 'url')))}</span>
+      <h3>${esc(L(r, 'title'))}</h3>
+      <p>${esc(L(r, 'text'))}</p>
+      <span class="prod-go">${vid ? tx('Watch', '보러 가기') : tx('Read', '읽어 보기')} <svg><use href="#i-arrow"/></svg></span>
+    </a>
+    <button type="button" class="res-share" data-share="resources" data-kind="res" data-url="${esc(L(r, 'url'))}" data-title="${esc(L(r, 'title'))}" aria-label="${tx('Share', '공유하기')}" title="${tx('Share', '공유하기')}">${ico('i-share')}</button>
+  </div>`;
+}
+function renderProducts() {
+  const counts = id => id === 'guides' ? RESOURCES.filter(r => r.tab === 'products').length : PRODUCTS.filter(p => p.cat === id).length;
+  $('#resProducts').innerHTML = `<p class="rtab-intro">${tx('Supplies we recommend for a new pet, plus guides to help you shop.', '새 반려동물을 위한 추천 용품과 쇼핑에 도움이 되는 가이드를 모았어요.')}</p>
+    <div class="gchips" role="group" aria-label="${tx('Product categories', '용품 카테고리')}">${[['', ['All', '전체']], ...PCATS.map(c => [c.id, c.t])].map(([id, t]) =>
+      `<button type="button" class="gchip${prodCat === id ? ' on' : ''}" data-pcat="${id}" aria-pressed="${prodCat === id}">${tx(...t)}${id ? ` <span class="gchip-n">${counts(id)}</span>` : ''}</button>`).join('')}</div>
+    ${PCATS.filter(c => !prodCat || c.id === prodCat).map(c => {
+      const tiles = c.id === 'guides' ? RESOURCES.filter(r => r.tab === 'products').map(guideTile) : PRODUCTS.filter(p => p.cat === c.id).map(productTile);
+      return tiles.length ? `<div class="g-group"><h2 class="g-label">${tx(...c.t)}</h2><div class="prod-grid">${tiles.join('')}</div></div>` : '';
+    }).join('')}`;
+}
+$('#resProducts').addEventListener('click', e => { const b = e.target.closest('[data-pcat]'); if (!b) return; prodCat = b.dataset.pcat; renderProducts(); });
+renderResources();
+// Homepage stats: real counts from the data on this site
+$('#st-pets').textContent = PETS.length;
+$('#st-shelters').textContent = SHELTERS.length;
+$('#st-res').textContent = GUIDES.length + RESOURCES.filter(r => r.type !== 'Guides').length;   // each guide is counted once
 
 /* Guides open in an in-page viewer (works the same on GitHub Pages) */
 function openViewer(src, title) {
@@ -6195,7 +6889,7 @@ function openViewer(src, title) {
   fit(); $('#viewerImg').addEventListener('load', fit, { once: true }); requestAnimationFrame(fit);
 }
 function closeViewer() { $('#viewer').hidden = true; document.body.classList.remove('no-scroll'); }
-$('#resSections').addEventListener('click', e => {
+$('#p-resources').addEventListener('click', e => {
   const card = e.target.closest('a.res'); if (!card) return;
   const href = card.getAttribute('href');
   if (href.startsWith('images/')) { e.preventDefault(); openViewer(href, card.querySelector('h3').textContent); }
@@ -6297,6 +6991,7 @@ function shareInfo(b) {
     const u = b.dataset.url || '';
     return { url: /^https?:/.test(u) ? u : (window.PG_BASE ? location.origin + BASE : LIVE_URL) + u, title: name, text: tx(`${name} — a helpful pet guide shared from Pawgive`, `${name} — 포기브에서 공유한 반려동물 자료`) };
   }
+  if (h.startsWith('guide-')) return { url, title: name, text: tx(`${name} — a free guide from Pawgive`, `${name} — 포기브 가이드`) };
   if (h.startsWith('pet-') || h.startsWith('fl-')) return { url, title: name, text: tx(`Meet ${name} — looking for a loving home on Pawgive.`, `포기브에서 가족을 기다리는 ${name}을 만나 보세요.`) };
   return { url, title: 'Pawgive', text: tx('Pawgive — find your companion', '포기브 — 나의 반려동물을 찾아보세요') };
 }
@@ -7023,6 +7718,7 @@ function setLang(lang) {
   renderTeam(); renderResources(); quizRelabel.forEach(f => f());
   renderPets(); renderHomePets(); renderShelters(); renderHomeShelters(); if (auth && auth.currentUser) renderProfile(); if (currentPet && $('#p-pet').classList.contains('active')) renderDetail(currentPet);
   fosterRelang(); relabelApply();
+  if (gView && currentRoute && currentRoute.startsWith('guide-')) renderGuide(gView.slug);
   trTree(document.body);
   document.documentElement.classList.remove('pg-init');
 }
@@ -7051,7 +7747,7 @@ const IS_PREVIEW = location.protocol === 'file:' || /claude|anthropic/i.test(loc
 const BASE = window.PG_BASE || '/';
 const TITLES = { about: ['About', '소개'], pets: ['Pets', '반려동물'], foster: ['Foster', '임시보호'], fpost: ['Post a pet', '반려동물 등록'], shelters: ['Shelters', '보호소'], resources: ['Resources', '자료실'], quiz: ['Quiz', '퀴즈'], contact: ['Contact', '문의'], login: ['Login', '로그인'], signup: ['Sign Up', '회원가입'], profile: ['My profile', '내 프로필'], privacy: ['Privacy Policy', '개인정보처리방침'], terms: ['Terms of Service', '이용약관'], admin: ['Admin', '관리자'], '404': ['Page not found', '페이지를 찾을 수 없어요'] };
 // Route names → paths:  pet-p5 → pets/p5 · foster-new → foster/new · fl-ID → foster/ID · fe-ID → foster/ID/edit
-const pathFor = h => h === 'home' ? '' : h.startsWith('pet-') ? 'pets/' + h.slice(4) : h === 'foster-new' ? 'foster/new'
+const pathFor = h => h === 'home' ? '' : h.startsWith('pet-') ? 'pets/' + h.slice(4) : h.startsWith('guide-') ? 'guides/' + h.slice(6) : h === 'foster-new' ? 'foster/new'
   : h.startsWith('fl-') ? 'foster/' + h.slice(3) : h.startsWith('fe-') ? 'foster/' + h.slice(3) + '/edit' : h;
 const hrefFor = h => pathFor(h) || './';
 function nameFor(path) {
@@ -7059,6 +7755,8 @@ function nameFor(path) {
   if (!path) return 'home';
   let m;
   if ((m = path.match(/^pets\/([\w-]+)$/))) return 'pet-' + m[1];
+  if ((m = path.match(/^guides\/([\w-]+)$/))) return 'guide-' + m[1];
+  if (path === 'guides') return 'resources';
   if (path === 'foster/new') return 'foster-new';
   if ((m = path.match(/^foster\/([\w-]+)\/edit$/))) return 'fe-' + m[1];
   if ((m = path.match(/^foster\/([\w-]+)$/))) return 'fl-' + m[1];
@@ -7111,6 +7809,7 @@ function route(h, push) {
         $('#petBack span').textContent = tx(...labels[backTo]);
       }
     }
+    else if (h.startsWith('guide-')) { if (!guideBySlug(h.slice(6))) page = '404'; else { page = 'guide'; renderGuide(h.slice(6)); } }
     else if (h.startsWith('fl-')) { page = 'flisting'; if (prev !== h) renderListing(h.slice(3)); else drawListing(); }
     else if (h === 'foster-new' || h.startsWith('fe-')) {
       page = 'fpost'; openPostForm(h.startsWith('fe-') ? h.slice(3) : null);
@@ -7127,12 +7826,13 @@ function route(h, push) {
   if (page === 'admin' && isAdmin()) loadAdmin();
   if (page !== 'fpost') foFormFor = null;
   document.querySelectorAll('.page').forEach(p => p.classList.toggle('active', p.id === 'p-' + page));
-  const navKey = hrefFor(page === 'pet' ? 'pets' : page === 'flisting' || page === 'fpost' ? 'foster' : page);
+  const navKey = hrefFor(page === 'pet' ? 'pets' : page === 'guide' ? 'resources' : page === 'flisting' || page === 'fpost' ? 'foster' : page);
   document.querySelectorAll('#nav a, .foot-cols a, .mm-links a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === navKey));
   // Page title (a foster listing sets its own once it loads)
   if (page !== 'flisting' && !(page === 'fpost' && h.startsWith('fe-'))) {
     const p = page === 'pet' ? PETS.find(x => x.id === h.slice(4)) : null;
-    const t = p ? L(p, "name") : TITLES[page] ? tx(...TITLES[page]) : '';
+    const gd = page === 'guide' ? guideBySlug(h.slice(6)) : null;
+    const t = p ? L(p, "name") : gd ? tx(...gd.title) : TITLES[page] ? tx(...TITLES[page]) : '';
     document.title = t ? `${t} | Pawgive` : (LANG === 'ko' ? '포기브 Pawgive' : 'Pawgive | Find your companion');
   }
   // Address bar: a new entry for clicks, a fix-up when we were redirected (e.g. profile → login)
