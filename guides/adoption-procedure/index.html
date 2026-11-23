@@ -126,8 +126,7 @@ h1,h2,h3{font-family:var(--display);color:var(--ink);font-weight:400;font-variat
 .btn-row .pill-btn{padding:10px 22px;font-size:15px}
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,3vw,32px);margin-top:40px;padding-top:28px;border-top:1px solid var(--line)}
 .stats b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(28px,6vw,40px);line-height:1;font-variant-numeric:tabular-nums}
-.stats span{display:block;margin-top:12px;font-size:clamp(11px,2.8vw,14px);letter-spacing:.06em;text-transform:uppercase;line-height:1.3;white-space:nowrap}
-@media (max-width:420px){.stats span{white-space:normal}}
+.stats span{display:block;margin-top:12px;font-size:clamp(11px,2.8vw,14px);letter-spacing:.06em;text-transform:uppercase;line-height:1.3;overflow-wrap:break-word;text-wrap:balance}   /* labels wrap instead of running into each other */
 @media (max-width:860px){.hero{grid-template-columns:1fr}.hero-img{order:-1;aspect-ratio:16/10}}
 .home-sec{margin-top:clamp(80px,10vw,130px)}
 .mini-pet .ph{aspect-ratio:1/1}
@@ -6874,9 +6873,21 @@ function renderProducts() {
 $('#resProducts').addEventListener('click', e => { const b = e.target.closest('[data-pcat]'); if (!b) return; prodCat = b.dataset.pcat; renderProducts(); });
 renderResources();
 // Homepage stats: real counts from the data on this site
-$('#st-pets').textContent = PETS.length;
-$('#st-shelters').textContent = SHELTERS.length;
-$('#st-res').textContent = GUIDES.length + RESOURCES.filter(r => r.type !== 'Guides').length;   // each guide is counted once
+const STATS = { '#st-pets': PETS.length, '#st-shelters': SHELTERS.length, '#st-res': GUIDES.length + RESOURCES.filter(r => r.type !== 'Guides').length };   // each guide is counted once
+// Count up from 0 when the stats come into view (shown straight away if the visitor prefers less motion)
+(function countUp() {
+  const set = f => Object.entries(STATS).forEach(([id, n]) => { $(id).textContent = Math.round(n * f); });
+  const box = $('#homeStats');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return set(1);
+  set(0);
+  const run = () => {
+    const t0 = performance.now(), dur = 1400;
+    const tick = now => { const k = Math.min(1, (now - t0) / dur); set(1 - Math.pow(1 - k, 3)); if (k < 1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  };
+  const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); run(); } }, { threshold: 0.4 });
+  io.observe(box);
+})();
 
 /* Guides open in an in-page viewer (works the same on GitHub Pages) */
 function openViewer(src, title) {
