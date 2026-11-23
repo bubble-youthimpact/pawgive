@@ -64,6 +64,34 @@ service cloud.firestore {
       allow delete: if isAdmin() || (signedIn() && resource.data.ownerUid == request.auth.uid);
     }
 
+    // Contact form messages + shelter applications (Contact page).
+    // Anyone can send one (no login needed); only admins can read them, mark them done, or delete them.
+    function okStr(d, k, n) { return !(k in d) || (d[k] is string && d[k].size() <= n); }
+    function newForm(d) { return d.status == 'new' && d.createdAt == request.time && okStr(d, 'lang', 5)
+      && d.email is string && d.email.size() > 3 && d.email.size() <= 120; }
+    match /inquiries/{id} {
+      allow create: if request.resource.data.keys().hasOnly(['name', 'email', 'interest', 'message', 'status', 'lang', 'createdAt'])
+        && newForm(request.resource.data)
+        && request.resource.data.name is string && request.resource.data.name.size() > 0 && request.resource.data.name.size() <= 80
+        && okStr(request.resource.data, 'interest', 200)
+        && request.resource.data.message is string && request.resource.data.message.size() > 0 && request.resource.data.message.size() <= 3000;
+      allow read, delete: if isAdmin();
+      allow update: if isAdmin() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']);
+    }
+    match /shelterApps/{id} {
+      allow create: if request.resource.data.keys().hasOnly(['shelterName', 'type', 'region', 'animals', 'address', 'web', 'offers',
+          'contactName', 'role', 'email', 'phone', 'about', 'status', 'lang', 'createdAt'])
+        && newForm(request.resource.data)
+        && request.resource.data.shelterName is string && request.resource.data.shelterName.size() > 0 && request.resource.data.shelterName.size() <= 80
+        && request.resource.data.contactName is string && request.resource.data.contactName.size() > 0 && request.resource.data.contactName.size() <= 60
+        && okStr(request.resource.data, 'type', 40) && okStr(request.resource.data, 'region', 40) && okStr(request.resource.data, 'animals', 10)
+        && okStr(request.resource.data, 'address', 160) && okStr(request.resource.data, 'web', 160) && okStr(request.resource.data, 'offers', 200)
+        && okStr(request.resource.data, 'role', 60) && okStr(request.resource.data, 'phone', 30)
+        && request.resource.data.about is string && request.resource.data.about.size() <= 2000;
+      allow read, delete: if isAdmin();
+      allow update: if isAdmin() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']);
+    }
+
     // Reports: any logged-in member can send one; only admins can read them
     match /reports/{id} {
       allow create: if signedIn() && request.resource.data.reporterUid == request.auth.uid

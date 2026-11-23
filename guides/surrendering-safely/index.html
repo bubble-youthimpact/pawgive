@@ -835,6 +835,7 @@ button.apply-link{border:0;background:none;padding:0;font:inherit;cursor:pointer
 .faq-item[open] summary svg{transform:rotate(45deg)}
 .faq-a{padding:0 44px 22px 4px;color:var(--text);font-size:16.5px;line-height:1.65}
 .faq-a p{margin:0}
+.faq-a a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 @media (max-width:820px){.faq{grid-template-columns:1fr}.faq-item summary{font-size:17px}}
 
 /* Resources tabs */
@@ -982,6 +983,18 @@ button.apply-link{border:0;background:none;padding:0;font:inherit;cursor:pointer
 .prod-price{font-size:19px;color:var(--ink);font-variant-numeric:tabular-nums}
 .prod-foot .prod-go{margin-top:0}
 div.prod{cursor:default}
+
+/* Admin: messages + shelter applications */
+.ad-msg{display:block}
+.ad-msg summary{list-style:none;cursor:pointer}
+.ad-msg summary::-webkit-details-marker{display:none}
+.ad-msg.done{opacity:.7}
+.ad-fields{display:grid;grid-template-columns:max-content 1fr;gap:8px 18px;margin:16px 0 0;font-size:15px}
+.ad-fields dt{color:var(--ink-2);font-weight:600}
+.ad-fields dd{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.ad-msg .acts{margin-top:14px;display:flex;gap:6px;flex-wrap:wrap}
+.fo-badge.new{background:var(--orange);color:#fff}
+@media (max-width:560px){.ad-fields{grid-template-columns:1fr}.ad-fields dd{margin-bottom:6px}}
 </style>
 </head>
 <body>
@@ -1090,7 +1103,7 @@ div.prod{cursor:default}
     <div class="grid g3" id="homeShelters"></div>
   </div>
 
-  <!-- FAQ: sample questions — replace the questions and answers with your own -->
+  <!-- FAQ: each answer has an English (lang-en) and Korean (lang-ko) version -->
   <div class="home-sec faq">
     <div class="faq-head">
       <span class="eyebrow">FAQ</span>
@@ -1098,18 +1111,16 @@ div.prod{cursor:default}
       <p class="sec-sub">Can’t find your answer? <a href="contact">Send us a message</a>.</p>
     </div>
     <div class="faq-list">
-      <details class="faq-item"><summary><span>Is Pawgive a shelter?</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
-        <div class="faq-a"><p>No. Pawgive is a student-run website that brings together pets and shelters from across Korea, so it’s easier to find a pet to adopt. Adoptions are arranged directly with each shelter.</p></div></details>
-      <details class="faq-item"><summary><span>How do I adopt a pet I found on Pawgive?</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
-        <div class="faq-a"><p>Open the pet’s profile and tap “Visit shelter”. Each shelter has its own adoption steps, so contact them to ask about visiting and applying.</p></div></details>
-      <details class="faq-item"><summary><span>Does it cost anything to use Pawgive?</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
-        <div class="faq-a"><p>Using Pawgive is free. Some shelters may ask for an adoption fee or a donation — check with the shelter for details.</p></div></details>
-      <details class="faq-item"><summary><span>Can foreigners adopt a pet in Korea?</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
-        <div class="faq-a"><p>Yes, but requirements vary by shelter. Read our guide on adopting as a foreigner before you contact a shelter.</p></div></details>
-      <details class="faq-item"><summary><span>What should I do if I can’t keep my pet anymore?</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
-        <div class="faq-a"><p>Never leave a pet outside. Our surrender guides explain your options, and the Shelters page shows which shelters accept surrendered pets.</p></div></details>
-      <details class="faq-item"><summary><span>How can my shelter be featured on Pawgive?</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
-        <div class="faq-a"><p>Fill in the shelter application on our Contact page. We review every application and reply by email.</p></div></details>
+      <details class="faq-item"><summary><span>What are the procedures for forming a partnership with Pawgive?</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
+        <div class="faq-a"><p class="lang-en">Please send us a message through <a href="contact" data-ctab-go="general">General inquiry</a> on our Contact page, or email us at <a href="mailto:pawgive.official@gmail.com">pawgive.official@gmail.com</a>.</p><p class="lang-ko">문의 페이지의 <a href="contact" data-ctab-go="general">일반 문의</a>를 이용하시거나, <a href="mailto:pawgive.official@gmail.com">pawgive.official@gmail.com</a>으로 이메일을 보내 주세요.</p></div></details>
+      <details class="faq-item"><summary><span>How can shelters apply to be on the website?</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
+        <div class="faq-a"><p class="lang-en">Shelters can apply through our <a href="contact" data-apply>shelter application</a> on the Contact page. We’ll need the shelter’s name, address and contact information. Every application is reviewed before the shelter is added to our Shelters page.</p><p class="lang-ko">문의 페이지의 <a href="contact" data-apply>보호소 신청서</a>로 신청할 수 있어요. 보호소 이름, 주소, 연락처가 꼭 필요합니다. 모든 신청서는 검토를 거친 뒤 보호소 페이지에 추가됩니다.</p></div></details>
+      <details class="faq-item"><summary><span>How do individuals upload pet profiles on the website?</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
+        <div class="faq-a"><p class="lang-en">On the <a href="foster">Foster</a> page, you can post a pet that needs a foster or a new home. You’ll need to be signed in — if you don’t have an account, click “Sign up” at the top right of the page. The form asks for your contact information and the pet’s name, breed, size and weight. We review every post, and once it’s approved, other users can see the pet’s profile on the Foster page.</p><p class="lang-ko"><a href="foster">임시보호</a> 페이지에서 임시보호나 새 가족이 필요한 반려동물을 등록할 수 있어요. 등록하려면 로그인이 필요하며, 계정이 없다면 오른쪽 위의 ‘회원가입’을 눌러 가입해 주세요. 신청서에는 연락처와 반려동물의 이름, 품종, 크기, 몸무게 등을 입력합니다. 모든 글은 검토를 거치며, 승인되면 임시보호 페이지에서 다른 사용자들이 반려동물 프로필을 볼 수 있어요.</p></div></details>
+      <details class="faq-item"><summary><span>Can I apply to adopt a pet on the website?</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
+        <div class="faq-a"><p class="lang-en">You can’t apply for a pet directly on Pawgive, but each pet profile shows where the pet is from — the shelter’s name, its contact details and a link to the original listing. Please contact the shelter directly to ask about adopting. Our <a href="guides/adoption-procedure">adoption procedure guide</a> on the Resources page can help you prepare.</p><p class="lang-ko">포기브에서 직접 입양 신청을 할 수는 없지만, 각 반려동물 프로필에서 보호소 이름, 연락처, 원래 게시글 링크를 확인할 수 있어요. 입양 절차는 보호소에 직접 문의해 주세요. 자료실의 <a href="guides/adoption-procedure">입양 절차 가이드</a>도 준비에 도움이 될 거예요.</p></div></details>
+      <details class="faq-item"><summary><span>Can I contact Pawgive in Korean or English?</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
+        <div class="faq-a"><p class="lang-en">Yes! Pawgive is run by people who speak both languages, so feel free to send emails or messages in either Korean or English.</p><p class="lang-ko">네! 포기브는 한국어와 영어를 모두 할 수 있는 사람들이 운영하고 있어요. 이메일이나 문의는 편한 언어로 보내 주세요.</p></div></details>
     </div>
   </div>
 
@@ -1504,7 +1515,7 @@ div.prod{cursor:default}
     <h2>4. How long we keep it</h2>
     <p>We keep your account information and saved pets until you delete your account or ask us to delete them. Foster listings are kept until you delete them or we remove them. Deleting a listing also deletes its photos and contact details. Contact messages are kept only as long as needed to respond to you, and normally no longer than one year.</p>
     <h2>5. Your rights</h2>
-    <p>You can see and change your name on your profile page at any time. You may also ask us to access, correct, or delete your personal information, or to delete your account, by emailing <strong>pawgive@gmail.com</strong>. We will respond as soon as we can.</p>
+    <p>You can see and change your name on your profile page at any time. You may also ask us to access, correct, or delete your personal information, or to delete your account, by emailing <strong>pawgive.official@gmail.com</strong>. We will respond as soon as we can.</p>
     <h2>6. Children</h2>
     <p>If you are under 14, please ask a parent or guardian before creating an account or sending us your information.</p>
     <h2>7. Cookies and browser storage</h2>
@@ -1514,7 +1525,7 @@ div.prod{cursor:default}
     <h2>9. Changes to this policy</h2>
     <p>If we update this policy, we will post the new version on this page and change the effective date above.</p>
     <h2>10. Contact</h2>
-    <p>Questions about your privacy? Email us at <strong>pawgive@gmail.com</strong>.</p>
+    <p>Questions about your privacy? Email us at <strong>pawgive.official@gmail.com</strong>.</p>
   </div>
   <div class="legal lang-ko">
     <p>본 개인정보처리방침은 포기브(이하 “포기브” 또는 “저희”)가 웹사이트 이용 시 어떤 정보를 수집하고, 어떻게 이용하며, 이용자에게 어떤 선택권이 있는지 설명합니다. 포기브는 대한민국의 입양 가능한 반려동물과 동물보호소를 찾을 수 있도록 돕는 학생 운영 프로젝트입니다.</p>
@@ -1549,7 +1560,7 @@ div.prod{cursor:default}
     <h2>4. 보유 기간</h2>
     <p>계정 정보와 관심 반려동물은 계정을 삭제하거나 삭제를 요청할 때까지 보관합니다. 임시보호 게시글은 작성자가 삭제하거나 포기브가 삭제할 때까지 보관하며, 게시글을 삭제하면 사진과 연락처도 함께 삭제됩니다. 문의 내용은 답변에 필요한 기간 동안만 보관하며, 통상 1년을 넘기지 않습니다.</p>
     <h2>5. 이용자의 권리</h2>
-    <p>프로필 페이지에서 언제든지 이름을 확인하고 변경할 수 있습니다. 개인정보의 열람, 정정, 삭제 또는 계정 삭제를 원하시면 <strong>pawgive@gmail.com</strong>으로 이메일을 보내 주세요. 최대한 빠르게 처리하겠습니다.</p>
+    <p>프로필 페이지에서 언제든지 이름을 확인하고 변경할 수 있습니다. 개인정보의 열람, 정정, 삭제 또는 계정 삭제를 원하시면 <strong>pawgive.official@gmail.com</strong>으로 이메일을 보내 주세요. 최대한 빠르게 처리하겠습니다.</p>
     <h2>6. 아동</h2>
     <p>만 14세 미만이라면 계정을 만들거나 정보를 보내기 전에 부모님 또는 보호자의 동의를 받아 주세요.</p>
     <h2>7. 쿠키 및 브라우저 저장소</h2>
@@ -1559,7 +1570,7 @@ div.prod{cursor:default}
     <h2>9. 방침의 변경</h2>
     <p>본 방침이 변경되는 경우 이 페이지에 새로운 내용을 게시하고 위의 시행일을 변경합니다.</p>
     <h2>10. 문의</h2>
-    <p>개인정보에 관한 문의는 <strong>pawgive@gmail.com</strong>으로 보내 주세요.</p>
+    <p>개인정보에 관한 문의는 <strong>pawgive.official@gmail.com</strong>으로 보내 주세요.</p>
   </div>
 </div></section>
 
@@ -1578,7 +1589,7 @@ div.prod{cursor:default}
     <ul>
       <li>Provide accurate information when you create an account.</li>
       <li>Keep your password private. You are responsible for activity on your account.</li>
-      <li>You can stop using your account at any time, and you can ask us to delete it by emailing pawgive@gmail.com.</li>
+      <li>You can stop using your account at any time, and you can ask us to delete it by emailing pawgive.official@gmail.com.</li>
       <li>We may suspend or remove accounts that break these Terms.</li>
     </ul>
     <h2>4. Foster listings</h2>
@@ -1588,7 +1599,7 @@ div.prod{cursor:default}
       <li>We review listings before they are published. We may decline or remove any listing, and suspend accounts that break these rules.</li>
       <li>Pawgive is not part of any arrangement between users and does not check the people or animals in listings. You are responsible for checking details, meeting safely, and agreeing on care, costs and responsibilities, ideally in writing.</li>
       <li>Owners who arrange a temporary foster remain responsible for their pet, including veterinary costs, unless they agree otherwise with the foster.</li>
-      <li>If a listing breaks these rules or an animal may be at risk, please use “Report this listing” or email pawgive@gmail.com.</li>
+      <li>If a listing breaks these rules or an animal may be at risk, please use “Report this listing” or email pawgive.official@gmail.com.</li>
     </ul>
     <h2>5. Acceptable use</h2>
     <p>You agree not to:</p>
@@ -1609,7 +1620,7 @@ div.prod{cursor:default}
     <h2>10. Governing law</h2>
     <p>These Terms are governed by the laws of the Republic of Korea.</p>
     <h2>11. Contact</h2>
-    <p>Questions about these Terms? Email us at <strong>pawgive@gmail.com</strong>.</p>
+    <p>Questions about these Terms? Email us at <strong>pawgive.official@gmail.com</strong>.</p>
   </div>
   <div class="legal lang-ko">
     <p>본 이용약관(이하 “약관”)은 포기브 웹사이트 이용에 적용됩니다. 웹사이트를 이용하거나 계정을 만들면 본 약관에 동의하는 것으로 봅니다.</p>
@@ -1621,7 +1632,7 @@ div.prod{cursor:default}
     <ul>
       <li>계정을 만들 때 정확한 정보를 제공해 주세요.</li>
       <li>비밀번호는 다른 사람과 공유하지 마세요. 계정에서 발생하는 활동은 이용자 본인의 책임입니다.</li>
-      <li>언제든지 계정 이용을 중단할 수 있으며, pawgive@gmail.com으로 이메일을 보내 계정 삭제를 요청할 수 있습니다.</li>
+      <li>언제든지 계정 이용을 중단할 수 있으며, pawgive.official@gmail.com으로 이메일을 보내 계정 삭제를 요청할 수 있습니다.</li>
       <li>본 약관을 위반하는 계정은 이용이 정지되거나 삭제될 수 있습니다.</li>
     </ul>
     <h2>4. 임시보호 게시글</h2>
@@ -1631,7 +1642,7 @@ div.prod{cursor:default}
       <li>게시글은 게시 전에 검토합니다. 포기브는 게시글을 거절하거나 삭제할 수 있으며, 이 규칙을 어기는 계정의 이용을 정지할 수 있습니다.</li>
       <li>포기브는 이용자 간의 약속에 관여하지 않으며, 게시글 속 사람이나 동물을 확인하지 않습니다. 정보 확인, 안전한 만남, 돌봄·비용·책임에 대한 합의는 이용자 본인의 책임이며, 가능하면 글로 남겨 두세요.</li>
       <li>임시보호를 맡긴 보호자는 임시보호자와 따로 합의하지 않는 한 진료비를 포함해 반려동물에 대한 책임을 계속 집니다.</li>
-      <li>규칙을 어기는 게시글이나 위험에 처한 동물을 발견하면 “게시글 신고하기”를 누르거나 pawgive@gmail.com으로 알려 주세요.</li>
+      <li>규칙을 어기는 게시글이나 위험에 처한 동물을 발견하면 “게시글 신고하기”를 누르거나 pawgive.official@gmail.com으로 알려 주세요.</li>
     </ul>
     <h2>5. 이용 시 금지 사항</h2>
     <p>다음 행위를 해서는 안 됩니다.</p>
@@ -1652,7 +1663,7 @@ div.prod{cursor:default}
     <h2>10. 준거법</h2>
     <p>본 약관은 대한민국 법률에 따릅니다.</p>
     <h2>11. 문의</h2>
-    <p>약관에 관한 문의는 <strong>pawgive@gmail.com</strong>으로 보내 주세요.</p>
+    <p>약관에 관한 문의는 <strong>pawgive.official@gmail.com</strong>으로 보내 주세요.</p>
   </div>
 </div></section>
 
@@ -1693,7 +1704,7 @@ div.prod{cursor:default}
         <div><h4>Learn</h4><a href="resources">Resources</a><a href="about">About us</a><a href="contact">Contact</a></div>
         <div><h4>Account</h4><a href="signup">Sign up</a><a href="login">Login</a></div>
         <div class="foot-contact"><h4>Get in touch</h4>
-          <a href="mailto:pawgive@gmail.com" class="ig-link mail-link" id="footEmail"><svg class="ig"><use href="#i-mail"/></svg><span data-bind="email"></span></a>
+          <a href="mailto:pawgive.official@gmail.com" class="ig-link mail-link" id="footEmail"><svg class="ig"><use href="#i-mail"/></svg><span data-bind="email"></span></a>
           <a href="https://www.instagram.com/pawgive" target="_blank" rel="noopener" class="ig-link"><svg class="ig"><use href="#i-ig"/></svg><span data-bind="instagram"></span></a>
         </div>
       </nav>
@@ -1722,7 +1733,7 @@ div.prod{cursor:default}
    / data: URI.
    ===================================================================== */
 const SITE = {
-  email: "pawgive@gmail.com",
+  email: "pawgive.official@gmail.com",
   instagram: "@pawgive"
 };
 
@@ -6101,6 +6112,11 @@ const KO = {
   "Products": "용품",
   "Websites & Videos": "웹사이트 & 영상",
   "All guides": "전체 가이드",
+  "What are the procedures for forming a partnership with Pawgive?": "포기브와 파트너십을 맺으려면 어떻게 하나요?",
+  "How can shelters apply to be on the website?": "보호소는 어떻게 웹사이트에 등록을 신청하나요?",
+  "How do individuals upload pet profiles on the website?": "개인도 반려동물 프로필을 올릴 수 있나요?",
+  "Can I apply to adopt a pet on the website?": "웹사이트에서 바로 입양 신청을 할 수 있나요?",
+  "Can I contact Pawgive in Korean or English?": "한국어나 영어로 문의할 수 있나요?",
   "Pet profiles": "반려동물 프로필",
   "Guides & resources": "가이드·자료",
   "Three pets we're shining a light on this week.": "이번 주에 소개하는 세 친구예요.",
@@ -7032,39 +7048,42 @@ function toast(msg) {
 /* Contact form → FormSubmit (formsubmit.co) → your inbox.
    To change where messages go, change CONTACT_TO. */
 const CONTACT_TO = 'bubble.youthimpact@gmail.com';
+/* Each form is sent two ways at once:
+   1. FormSubmit emails it to CONTACT_TO
+   2. It's saved in Firestore (collections "inquiries" and "shelterApps"), so admins can see it on the Admin page
+   The visitor sees "sent" if either one works. */
+async function sendForm({ subject, email, mailFields, col, doc }) {
+  const mail = fetch('https://formsubmit.co/ajax/' + CONTACT_TO, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ ...mailFields, _replyto: email, _subject: subject, _template: 'table', _captcha: 'false' })
+  }).then(async res => {
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || String(data.success) === 'false') { console.warn('FormSubmit:', res.status, data); throw new Error(/activat/i.test(data.message || '') ? 'activation' : (data.message || 'failed')); }
+  });
+  const save = db ? db.collection(col).add({ ...doc, status: 'new', lang: LANG, createdAt: fsNow() })
+    : Promise.reject(new Error('no database'));
+  const [m, d] = await Promise.allSettled([mail, save]);
+  if (d.status === 'rejected') console.warn('Firestore save (' + col + '):', d.reason);
+  if (m.status === 'fulfilled' || d.status === 'fulfilled') return 'ok';
+  return m.reason && m.reason.message === 'activation' ? 'activation' : 'error';
+}
+const ACTIVATE_MSG = () => tx('This form is waiting to be activated. Please check the Pawgive inbox for the activation email.', '문의 양식이 아직 활성화되지 않았어요. 포기브 메일함에서 활성화 이메일을 확인해 주세요.');
+
 $('#contactForm').addEventListener('submit', async e => {
   e.preventDefault();
   if (!$('#c-name').value.trim() || !$('#c-email').value.includes('@') || !$('#c-msg').value.trim())
-    return note('#contactMsg', 'Please fill in your name, a valid email and a message.');
+    return note('#contactMsg', tx('Please fill in your name, a valid email and a message.', '이름, 올바른 이메일, 메시지를 입력해 주세요.'));
   if ($('#c-honey').value) return; // spam bot filled the hidden field
   const btn = $('#c-send'); btn.disabled = true;
-  note('#contactMsg', 'Sending…', 'info');
-  try {
-    const res = await fetch('https://formsubmit.co/ajax/' + CONTACT_TO, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        name: $('#c-name').value.trim(),
-        email: $('#c-email').value.trim(),
-        'interested in': $('#c-int').value.trim(),
-        message: $('#c-msg').value.trim(),
-        _subject: 'New message from the Pawgive website',
-        _template: 'table',
-        _captcha: 'false'
-      })
-    });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok || String(data.success) === 'false') {
-      console.warn('FormSubmit:', res.status, data);
-      if (/activat/i.test(data.message || '')) return note('#contactMsg', tx('This form is waiting to be activated. Please check the Pawgive inbox for the activation email.', '문의 양식이 아직 활성화되지 않았어요. 포기브 메일함에서 활성화 이메일을 확인해 주세요.'), 'info');
-      throw new Error(data.message || 'failed');
-    }
-    note('#contactMsg', 'Thanks! Your message was sent. We’ll get back to you soon.', 'ok');
-    e.target.reset();
-  } catch (err) {
-    console.warn('Contact form error:', err);
-    note('#contactMsg', 'Sorry, your message couldn’t be sent. Please try again, or email us directly.');
-  } finally { btn.disabled = false; }
+  note('#contactMsg', tx('Sending…', '보내는 중…'), 'info');
+  const f = { name: $('#c-name').value.trim().slice(0, 80), email: $('#c-email').value.trim().slice(0, 120), interest: $('#c-int').value.trim().slice(0, 200), message: $('#c-msg').value.trim().slice(0, 3000) };
+  const r = await sendForm({ subject: 'New message from the Pawgive website', email: f.email, col: 'inquiries', doc: f,
+    mailFields: { name: f.name, email: f.email, 'interested in': f.interest, message: f.message } });
+  btn.disabled = false;
+  if (r === 'ok') { note('#contactMsg', tx('Thanks! Your message was sent. We’ll get back to you soon.', '감사합니다! 메시지가 전송되었어요. 곧 답변드릴게요.'), 'ok'); e.target.reset(); }
+  else if (r === 'activation') note('#contactMsg', ACTIVATE_MSG(), 'info');
+  else note('#contactMsg', tx('Sorry, your message couldn’t be sent. Please try again, or email us directly.', '죄송해요, 메시지를 보내지 못했어요. 다시 시도하거나 이메일로 직접 연락해 주세요.'));
 });
 // Korean regions, used by the shelter application and the foster forms
 const REGIONS = [['Seoul', '서울'], ['Busan', '부산'], ['Daegu', '대구'], ['Incheon', '인천'], ['Gwangju', '광주'], ['Daejeon', '대전'], ['Ulsan', '울산'], ['Sejong', '세종'], ['Gyeonggi', '경기'], ['Gangwon', '강원'], ['Chungbuk', '충북'], ['Chungnam', '충남'], ['Jeonbuk', '전북'], ['Jeonnam', '전남'], ['Gyeongbuk', '경북'], ['Gyeongnam', '경남'], ['Jeju', '제주']];
@@ -7083,6 +7102,7 @@ function showCtab(name) {
 document.addEventListener('click', e => {
   const b = e.target.closest('[data-ctab]'); if (b) { showCtab(b.dataset.ctab); if (b.closest('.ctab-panel')) scrollTo({ top: 0, behavior: 'smooth' }); return; }
   if (e.target.closest('a[data-apply]')) showCtab('shelter');   // "Apply to be featured" links from other pages
+  const cg = e.target.closest('a[data-ctab-go]'); if (cg) showCtab(cg.dataset.ctabGo);
 });
 $('.ctabs').addEventListener('keydown', e => {
   if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
@@ -7097,33 +7117,20 @@ $('#applyForm').addEventListener('submit', async e => {
   if ($('#a-honey').value) return;
   const btn = $('#a-send'); btn.disabled = true;
   note('#applyMsg', tx('Sending…', '보내는 중…'), 'info');
-  try {
-    const offers = [...document.querySelectorAll('#applyForm .fp-checks input:checked')].map(i => i.value).join(', ');
-    const res = await fetch('https://formsubmit.co/ajax/' + CONTACT_TO, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        'shelter name': v('#a-name'), type: v('#a-type'), region: v('#a-region'), 'animals in care': v('#a-count'),
-        address: v('#a-addr'), 'website / instagram': v('#a-web'), offers: offers || '—',
-        'contact person': v('#a-person'), role: v('#a-role'), email: v('#a-email'), phone: v('#a-phone'),
-        about: v('#a-msg'), 'site language': LANG,
-        _replyto: v('#a-email'),
-        _subject: 'New shelter application: ' + v('#a-name'),
-        _template: 'table', _captcha: 'false'
-      })
-    });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok || String(data.success) === 'false') {
-      console.warn('FormSubmit:', res.status, data);
-      if (/activat/i.test(data.message || '')) return note('#applyMsg', tx('This form is waiting to be activated. Please check the Pawgive inbox for the activation email.', '문의 양식이 아직 활성화되지 않았어요. 포기브 메일함에서 활성화 이메일을 확인해 주세요.'), 'info');
-      throw new Error(data.message || 'failed');
-    }
-    note('#applyMsg', tx('Thank you! Your application was sent. We’ll review it and reply by email.', '감사합니다! 신청서가 전송되었어요. 검토 후 이메일로 답변드릴게요.'), 'ok');
-    e.target.reset();
-  } catch (err) {
-    console.warn('Shelter application error:', err);
-    note('#applyMsg', tx('Sorry, your application couldn’t be sent. Please try again, or email us directly.', '죄송해요, 신청서를 보내지 못했어요. 다시 시도하거나 이메일로 직접 연락해 주세요.'));
-  } finally { btn.disabled = false; }
+  const cut = (id, n) => v(id).slice(0, n);
+  const d = {
+    shelterName: cut('#a-name', 80), type: cut('#a-type', 40), region: cut('#a-region', 40), animals: cut('#a-count', 10),
+    address: cut('#a-addr', 160), web: cut('#a-web', 160),
+    offers: [...document.querySelectorAll('#applyForm .fp-checks input:checked')].map(i => i.value).join(', ').slice(0, 200),
+    contactName: cut('#a-person', 60), role: cut('#a-role', 60), email: cut('#a-email', 120), phone: cut('#a-phone', 30), about: cut('#a-msg', 2000)
+  };
+  const r = await sendForm({ subject: 'New shelter application: ' + d.shelterName, email: d.email, col: 'shelterApps', doc: d,
+    mailFields: { 'shelter name': d.shelterName, type: d.type, region: d.region, 'animals in care': d.animals, address: d.address, 'website / instagram': d.web,
+      offers: d.offers || '—', 'contact person': d.contactName, role: d.role, email: d.email, phone: d.phone, about: d.about, 'site language': LANG } });
+  btn.disabled = false;
+  if (r === 'ok') { note('#applyMsg', tx('Thank you! Your application was sent. We’ll review it and reply by email.', '감사합니다! 신청서가 전송되었어요. 검토 후 이메일로 답변드릴게요.'), 'ok'); e.target.reset(); }
+  else if (r === 'activation') note('#applyMsg', ACTIVATE_MSG(), 'info');
+  else note('#applyMsg', tx('Sorry, your application couldn’t be sent. Please try again, or email us directly.', '죄송해요, 신청서를 보내지 못했어요. 다시 시도하거나 이메일로 직접 연락해 주세요.'));
 });
 /* ===================== ACCOUNTS (Firebase Authentication) =====================
    Works on the live site only. Project: pawgive-63d8f */
@@ -7665,21 +7672,43 @@ function renderMyListings() {
 }
 
 /* ---------- Admin ---------- */
-let adTab = 'pending', AD = [], AD_REPORTS = [];
+let adTab = 'pending', AD = [], AD_REPORTS = [], AD_MSGS = [], AD_APPS = [];
 async function loadAdmin() {
   if (!db || !isAdmin()) return;
   $('#adList').innerHTML = `<p class="empty">${tx('Loading…', '불러오는 중…')}</p>`;
   try {
-    const [s, r] = await Promise.all([db.collection('fosters').get(), db.collection('reports').get()]);
+    const [s, r, q, sa] = await Promise.all([db.collection('fosters').get(), db.collection('reports').get(),
+      db.collection('inquiries').get().catch(e => (console.warn('inquiries:', e), { docs: [] })), db.collection('shelterApps').get().catch(e => (console.warn('shelterApps:', e), { docs: [] }))]);
     AD = s.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => tsMs(b.createdAt) - tsMs(a.createdAt));
     AD_REPORTS = r.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => tsMs(b.createdAt) - tsMs(a.createdAt));
+    const byNew = x => x.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => tsMs(b.createdAt) - tsMs(a.createdAt));
+    AD_MSGS = byNew(q); AD_APPS = byNew(sa);
     $('#adMsg').hidden = true;
   } catch (e) { console.warn('Admin:', e); return note('#adMsg', tx('Couldn’t load listings. Check that the Firestore rules have been updated.', '게시글을 불러오지 못했어요. Firestore 규칙이 업데이트되었는지 확인해 주세요.')); }
   renderAdmin();
 }
 function renderAdmin() {
-  const tabs = [['pending', tx('To review', '검토 대기')], ['approved', tx('Live', '게시 중')], ['rejected', tx('Not approved', '승인 안 됨')], ['closed', tx('Placed', '완료')], ['reports', tx('Reports', '신고')]];
-  $('#adTabs').innerHTML = tabs.map(([k, l]) => `<button type="button" role="tab" data-adtab="${k}" class="${k === adTab ? 'on' : ''}" aria-selected="${k === adTab}">${esc(l)} (${k === 'reports' ? AD_REPORTS.length : AD.filter(f => f.status === k).length})</button>`).join('');
+  const tabs = [['pending', tx('To review', '검토 대기')], ['approved', tx('Live', '게시 중')], ['rejected', tx('Not approved', '승인 안 됨')], ['closed', tx('Placed', '완료')], ['reports', tx('Reports', '신고')], ['msgs', tx('Messages', '문의')], ['apps', tx('Shelter applications', '보호소 신청')]];
+  $('#adTabs').innerHTML = tabs.map(([k, l]) => `<button type="button" role="tab" data-adtab="${k}" class="${k === adTab ? 'on' : ''}" aria-selected="${k === adTab}">${esc(l)} (${k === 'reports' ? AD_REPORTS.length : k === 'msgs' ? AD_MSGS.filter(x => x.status !== 'done').length : k === 'apps' ? AD_APPS.filter(x => x.status !== 'done').length : AD.filter(f => f.status === k).length})</button>`).join('');
+  if (adTab === 'msgs' || adTab === 'apps') {
+    const list = adTab === 'msgs' ? AD_MSGS : AD_APPS, col = adTab === 'msgs' ? 'inquiries' : 'shelterApps';
+    const rows = adTab === 'msgs'
+      ? m => [[tx('Interested in', '관심 분야'), m.interest], [tx('Message', '메시지'), m.message]]
+      : m => [[tx('Type', '유형'), m.type], [tx('Region', '지역'), m.region && tx(m.region, (REGIONS.find(r => r[0] === m.region) || [])[1] || m.region)], [tx('Animals in care', '보호 동물 수'), m.animals], [tx('Address', '주소'), m.address],
+              [tx('Website / Instagram', '웹사이트 / 인스타그램'), m.web], [tx('Offers', '활동'), m.offers], [tx('Contact person', '담당자'), [m.contactName, m.role].filter(Boolean).join(' · ')],
+              [tx('Phone', '전화'), m.phone], [tx('About', '소개'), m.about]];
+    $('#adList').innerHTML = list.length ? list.map(m => `<details class="ad-row ad-msg${m.status === 'done' ? ' done' : ''}">
+        <summary class="info"><h3>${esc(adTab === 'msgs' ? m.name : m.shelterName)}${m.status === 'done' ? ` <span class="fo-badge">${tx('Done', '처리 완료')}</span>` : ` <span class="fo-badge new">${tx('New', '새 글')}</span>`}</h3>
+          <p>${esc(m.email || '')} · ${esc(fmtDate(m.createdAt))}${m.lang ? ' · ' + esc(String(m.lang).toUpperCase()) : ''}</p></summary>
+        <dl class="ad-fields">${rows(m).filter(([, val]) => val).map(([k, val]) => `<dt>${esc(k)}</dt><dd>${esc(val)}</dd>`).join('')}</dl>
+        <div class="acts">
+          <a class="text-btn" href="mailto:${esc(m.email || '')}">${tx('Reply by email', '이메일로 답장')}</a>
+          <button class="text-btn ok" type="button" data-msgact="${m.status === 'done' ? 'new' : 'done'}" data-col="${col}" data-id="${esc(m.id)}">${m.status === 'done' ? tx('Mark as new', '새 글로 표시') : tx('Mark as done', '처리 완료')}</button>
+          <button class="text-btn del" type="button" data-msgact="delete" data-col="${col}" data-id="${esc(m.id)}">${tx('Delete', '삭제')}</button>
+        </div></details>`).join('')
+      : `<div class="my-empty">${adTab === 'msgs' ? tx('No messages yet.', '아직 문의가 없어요.') : tx('No applications yet.', '아직 신청이 없어요.')}</div>`;
+    return;
+  }
   if (adTab === 'reports') {
     $('#adList').innerHTML = AD_REPORTS.length ? AD_REPORTS.map(r => `<div class="ad-row report"><div class="info">
         <h3><a href="foster/${esc(r.listingId)}" style="text-decoration:underline">${esc(r.listingName || r.listingId)}</a></h3>
@@ -7704,6 +7733,16 @@ function renderAdmin() {
     </div>`).join('') : `<div class="my-empty">${tx('Nothing here.', '해당하는 게시글이 없어요.')}</div>`;
 }
 document.addEventListener('click', e => { const t = e.target.closest('[data-adtab]'); if (t) { adTab = t.dataset.adtab; renderAdmin(); } });
+// Messages + shelter applications: mark done / new, or delete
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-msgact]'); if (!b || !db || !isAdmin()) return;
+  const ref = db.collection(b.dataset.col).doc(b.dataset.id), act = b.dataset.msgact;
+  try {
+    if (act === 'delete') { if (!confirm(tx('Delete this permanently?', '영구 삭제할까요?'))) return; await ref.delete(); }
+    else await ref.update({ status: act });
+    loadAdmin();
+  } catch (err) { console.warn(err); note('#adMsg', tx('Couldn’t update it. Check that the Firestore rules have been updated.', '업데이트하지 못했어요. Firestore 규칙을 확인해 주세요.')); }
+});
 function fosterRelang() {
   renderFosters(); relabelRegionSelect(); drawPhotos();
   const cr = currentRoute || '';
